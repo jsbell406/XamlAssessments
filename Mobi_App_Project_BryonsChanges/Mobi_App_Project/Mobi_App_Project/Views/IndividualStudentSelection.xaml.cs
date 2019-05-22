@@ -22,9 +22,12 @@ namespace Mobi_App_Project.Views
 
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         
        
        
+=======
+>>>>>>> 4c960ee717bca5e186f2fa2cb87f5728b43acac4
 =======
 >>>>>>> 4c960ee717bca5e186f2fa2cb87f5728b43acac4
     }

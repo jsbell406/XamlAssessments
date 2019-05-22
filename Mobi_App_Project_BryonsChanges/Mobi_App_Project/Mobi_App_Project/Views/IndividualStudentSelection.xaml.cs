@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Mobi_App_Project.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class IndividualAssessmentHome : ContentPage
+	public partial class IndividualStudentSelection : ContentPage
 	{
-		public IndividualAssessmentHome ()
+		public IndividualStudentSelection ()
 		{
 			InitializeComponent ();
 		}

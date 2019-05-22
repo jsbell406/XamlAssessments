@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="17.1.0.48" />
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />  
   </ItemGroup>
 
@@ -43,7 +44,7 @@
     <EmbeddedResource Update="Views\AssessmentHome.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\IndividualAssessmentHome.xaml">
+    <EmbeddedResource Update="Views\IndividualStudentSelection.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewStudentForm.xaml">

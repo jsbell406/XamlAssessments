@@ -13,7 +13,7 @@ namespace Mobi_App_Project.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-
+        public IDataStore<Student> StudentDataStore => DependencyService.Get<IDataStore<Student>>();
         bool isBusy = false;
         public bool IsBusy
         {

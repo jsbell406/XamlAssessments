@@ -23,17 +23,17 @@
                    HorizontalOptions="CenterAndExpand"/>
             <Entry Text="{Binding }" FontSize="Large"/>
 
-            <Label Text="Age"
+            <!--<Label Text="Age"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"/>
-            <Entry Text="{Binding }" FontSize="Large"/>
+            <Entry Text="{Binding }" FontSize="Large"/>-->
 
             <Label Text="Grade"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"/>
             <Entry Text="{Binding }" FontSize="Large"/>
 
-            <Button Text="Begin Assessment"
+            <Button Text="Submit Student"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
                 Clicked="Submit_Clicked" />

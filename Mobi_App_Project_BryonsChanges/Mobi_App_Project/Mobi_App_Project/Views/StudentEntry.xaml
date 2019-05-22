@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobi_App_Project.Views.StudentEntry">
+    
+    <StackLayout>
+        
+        
+        <Label Text="Please enter Students Full Name"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
+        <Label Text="First Name"
+                VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
+        <Entry Text="{Binding userName}" FontSize="Medium" />
+        <Label Text="Middle Name" 
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand"/>
+        <Entry Text="{Binding userName}" FontSize="Medium" />
+        <Label Text="Last Name" 
+               VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand"/>
+        <Entry Text="{Binding userName}" FontSize="Medium" />
+        <Button Text="Submit Student and Begin Assessment"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Clicked="Submit_Clicked" />
+
+
+    </StackLayout>
+    
+</ContentPage>

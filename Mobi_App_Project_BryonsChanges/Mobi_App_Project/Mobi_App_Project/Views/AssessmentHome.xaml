@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobi_App_Project.Views.AssessmentHome">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="FEELINGS CHECK IN"
+                FontSize="Large"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                   FontAttributes="Italic"/>
+            <Label Text="Eduational emotional screening tool"
+                   FontSize="Large"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"
+                   FontAttributes="Bold"/>
+            <Button Text="Begin Assessment"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="Center"
+                Clicked="Start_Clicked" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

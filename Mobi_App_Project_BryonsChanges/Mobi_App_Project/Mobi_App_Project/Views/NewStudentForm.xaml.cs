@@ -10,11 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace Mobi_App_Project.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class IndividualStudentSelection : ContentPage
+	public partial class NewStudentForm : ContentPage
 	{
         public Student Student { get; set; }
 
-		public IndividualStudentSelection ()
+		public NewStudentForm()
 		{
 			InitializeComponent ();
 
@@ -24,9 +24,17 @@ namespace Mobi_App_Project.Views
                 LastName = "Last Name",
                 MiddleName = "Middle Name",
                 Age = 00,
-                Grade = 0
+                Grade = "Grade"
             };
 
+            BindingContext = this;
 		}
-	}
+
+        async void Submit_Clicked(object sender, EventArgs e)
+        {
+            App.StudentDB.SaveItemAsync(Student);
+            await Navigation.PushAsync(new AssessmentHome());
+        }
+
+    }
 }

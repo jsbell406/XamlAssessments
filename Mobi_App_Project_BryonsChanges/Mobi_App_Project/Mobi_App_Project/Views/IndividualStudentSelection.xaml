@@ -22,6 +22,7 @@
                                  <!--SuggestionBoxPlacement="Contains"-->
                
         </Grid>
+    </Grid>
 
 
         <StackLayout>

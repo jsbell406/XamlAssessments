@@ -38,7 +38,8 @@ namespace Mobi_App_Project
             InitializeComponent();
 
             LoginViewModel lvm = new LoginViewModel();
-            MainPage = new NavigationPage(new AdminLogin(lvm));
+            MainPage = new NewStudentForm();
+            //MainPage = new NavigationPage(new AdminLogin(lvm));
         }
         public static AssesmentDB AssesmentDB
         {

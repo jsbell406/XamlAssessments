@@ -1,27 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mobi_App_Project.Views.IndividualStudentSelection">
+             x:Class="Mobi_App_Project.Views.NewStudentForm">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Please select an exsisting student or enter a new student."
+            <Label Text="Please enter a new student."
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Label Text="First Name"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"/>
        
-            <Entry Text="{Binding }" FontSize="Large"/>
+            <Entry Text="{Binding FirstName}" FontSize="Large"/>
 
             <Label Text="Middle Name"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"/>
-            <Entry Text="{Binding }" FontSize="Large"/>
+            <Entry Text="{Binding MiddleName}" FontSize="Large"/>
 
             <Label Text="Last Name"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"/>
-            <Entry Text="{Binding }" FontSize="Large"/>
+            <Entry Text="{Binding LastName}" FontSize="Large"/>
 
             <!--<Label Text="Age"
                    VerticalOptions="CenterAndExpand"
@@ -31,7 +31,7 @@
             <Label Text="Grade"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"/>
-            <Entry Text="{Binding }" FontSize="Large"/>
+            <Entry Text="{Binding Grade}" FontSize="Large"/>
 
             <Button Text="Submit Student"
                 VerticalOptions="CenterAndExpand"

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mobi_App_Project.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,18 +21,8 @@ namespace Mobi_App_Project.Views
             this.BindingContext = view;
 
         }
-        public ToleratingTypos()
-        {
-            
-            
-            check = false;
-            listView.SeparatorColor = Color.Transparent;
-            check = true;
-        }
-        public override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
+        
+       
        
     }
 }

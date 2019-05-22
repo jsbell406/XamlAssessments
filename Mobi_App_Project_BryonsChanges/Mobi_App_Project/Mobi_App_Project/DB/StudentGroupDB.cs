@@ -30,12 +30,12 @@ namespace Mobi_App_Project.DB
 
         public Task<StudentGroup> GetItemAsync(int id)
         {
-            return database.Table<StudentGroup>().Where(i => i.ID == id).FirstOrDefaultAsync();
+            return database.Table<StudentGroup>().Where(i => i.StudentGroupId == id).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveItemAsync(StudentGroup item)
         {
-            if (item.ID != 0)
+            if (item.StudentGroupId != 0)
             {
                 return database.UpdateAsync(item);
             }

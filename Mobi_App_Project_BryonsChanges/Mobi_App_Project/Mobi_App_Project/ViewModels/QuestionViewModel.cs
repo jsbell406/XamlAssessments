@@ -1,5 +1,6 @@
 ﻿using Mobi_App_Project.DB;
 using Mobi_App_Project.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Mobi_App_Project.ViewModels
@@ -14,6 +15,7 @@ namespace Mobi_App_Project.ViewModels
         QuestionDB questionDB = App.QuestionDB;
         AssesmentQuestionDB assesmentQuestionDB = App.AssesmentQuestionDB;
         ResultDB resultDB = App.ResultDB;
+      
         public Student Student { get; set; }
        // public Assessment Assessment { get; set; }
         public Question Question { get; set; }
@@ -43,7 +45,7 @@ namespace Mobi_App_Project.ViewModels
                
                //adminUsers = new List<AdminUser>();
                //adminUsers.Add(await userDB.GetItemAsync(1));
-               adminUsers = await userDB.GetItemsAsync();
+               //adminUsers = await userDB.GetItemsAsync();
             }
             catch (Exception ex)
             {

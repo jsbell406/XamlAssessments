@@ -33,12 +33,12 @@ namespace Mobi_App_Project.DB
 
         public Task<Group> GetItemAsync(int id)
         {
-            return database.Table<Group>().Where(i => i.ID == id).FirstOrDefaultAsync();
+            return database.Table<Group>().Where(i => i.GroupId == id).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveItemAsync(Group item)
         {
-            if (item.ID != 0)
+            if (item.GroupId != 0)
             {
                 return database.UpdateAsync(item);
             }

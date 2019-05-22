@@ -19,13 +19,13 @@
                                  DisplayMemberPath="AppName"
                                  Grid.Row="0"
                                  MaximumDropDownHeight="180"-->
-                                 <!--SuggestionBoxPlacement="Contains"-->
-               
+            <!--SuggestionBoxPlacement="Contains"-->
+
         </Grid>
     </Grid>
 
 
-        <StackLayout>
+    <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />

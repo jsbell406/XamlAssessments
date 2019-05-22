@@ -12,9 +12,26 @@ namespace Mobi_App_Project.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class IndividualStudentSelection : ContentPage
 	{
-		public IndividualStudentSelection ()
+		public IndividualStudentSelection()
 		{
-			InitializeComponent ();
-		}
-	}
+            InitializeComponent();
+            bool check = true;
+            IndividualStudentSelectionViewModel view = new IndividualStudentSelectionViewModel();
+            this.BindingContext = view;
+
+        }
+        public ToleratingTypos()
+        {
+            
+            
+            check = false;
+            listView.SeparatorColor = Color.Transparent;
+            check = true;
+        }
+        public override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+       
+    }
 }

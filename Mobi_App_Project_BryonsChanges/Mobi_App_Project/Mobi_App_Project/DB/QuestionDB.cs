@@ -23,19 +23,15 @@ namespace Mobi_App_Project.DB
             return database.Table<Question>().ToListAsync();
         }
 
-        //public Task<IList<TodoItem>> GetItemsNotDoneAsync()
-        //{
-        //    return database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
-        //}
-
+        
         public Task<Question> GetItemAsync(int id)
         {
-            return database.Table<Question>().Where(i => i.ID == id).FirstOrDefaultAsync();
+            return database.Table<Question>().Where(i => i.QuestionId == id).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveItemAsync(Question item)
         {
-            if (item.ID != 0)
+            if (item.QuestionId != 0)
             {
                 return database.UpdateAsync(item);
             }
@@ -47,7 +43,7 @@ namespace Mobi_App_Project.DB
 
         public Task<int> DeleteItemAsync(Question item)
         {
-            //GetItemAsync(id);
+            
             return database.DeleteAsync(item);
         }
     }

@@ -7,9 +7,8 @@ namespace Mobi_App_Project.Models
 {
     public class Assessment
     {
-        public static int ID { get; internal set; }
         [PrimaryKey, AutoIncrement]
-        public int AssessmentID { get; set; }
+        public int AssessmentId { get; set; }
         public string AssesName { get; set; }
         
     }

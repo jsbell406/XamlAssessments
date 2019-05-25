@@ -30,6 +30,6 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
-        </StackLayout>
+     </StackLayout>
 
 </ContentPage>

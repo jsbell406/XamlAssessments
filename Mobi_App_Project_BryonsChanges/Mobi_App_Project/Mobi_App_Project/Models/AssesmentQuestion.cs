@@ -11,6 +11,6 @@ namespace Mobi_App_Project.Models
         public int QuestionId { get; set; }
         public int AssessmentId { get; set; }
         public int OrderNum { get; set; }
-        //public int ID { get; internal set; }
+        
     }
 }

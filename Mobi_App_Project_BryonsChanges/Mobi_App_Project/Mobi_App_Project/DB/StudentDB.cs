@@ -24,10 +24,7 @@ namespace Mobi_App_Project.DB
             return database.Table<Student>().ToListAsync();
         }
 
-        //public Task<IList<TodoItem>> GetItemsNotDoneAsync()
-        //{
-        //    return database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
-        //}
+        
 
         public Task<Student> GetItemAsync(int id)
         {

@@ -32,25 +32,12 @@ namespace Mobi_App_Project.DB
         }
         public Task<List<AdminUser>> GetItemsAsync()
         {
-            //database.CreateTableAsync<AdminUser>();
-
-            //AdminUser user = new AdminUser();
-            //user.UserName = "GarretA";
-            //user.PasswordHash = "Password01";
-            //user.DBName = user.UserName;
-            //user.InstructorName = "Alice";
-            //user.PasswordSalt = "a;lsdkjf";
-            //SaveItemAsync(user);
-            //var users = GetItemsAsync();
-            //App.AdminUsers = users;
+           
             return database.Table<AdminUser>().ToListAsync();
            
         }
 
-        //public Task<IList<TodoItem>> GetItemsNotDoneAsync()
-        //{
-        //    return database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
-        //}
+       
 
         public Task<AdminUser> GetItemAsync(int id)
         {
@@ -71,7 +58,7 @@ namespace Mobi_App_Project.DB
 
         public Task<int> DeleteItemAsync(AdminUser item)
         {
-            //GetItemAsync(id);
+            
             return database.DeleteAsync(item);
         }
     }

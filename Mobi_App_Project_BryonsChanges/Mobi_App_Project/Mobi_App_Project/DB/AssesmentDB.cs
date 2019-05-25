@@ -31,13 +31,13 @@ namespace Mobi_App_Project.DB
 
         public Task<Assessment> GetItemAsync(int id)
         {
-            return database.Table<Assessment>().Where(i => i.AssessmentID == id).FirstOrDefaultAsync();
+            return database.Table<Assessment>().Where(i => i.AssessmentId == id).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveItemAsync(Assessment item)
         {
             
-            if (item.AssessmentID != 0)
+            if (item.AssessmentId != 0)
             {
                 return database.UpdateAsync(item);
             }

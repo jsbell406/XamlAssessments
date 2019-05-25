@@ -26,11 +26,7 @@ namespace Mobi_App_Project.DB
             return database.Table<Group>().ToListAsync();
         }
 
-        //public Task<IList<TodoItem>> GetItemsNotDoneAsync()
-        //{
-        //    return database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
-        //}
-
+        
         public Task<Group> GetItemAsync(int id)
         {
             return database.Table<Group>().Where(i => i.GroupId == id).FirstOrDefaultAsync();

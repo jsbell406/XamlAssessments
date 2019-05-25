@@ -23,11 +23,7 @@ namespace Mobi_App_Project.DB
             return database.Table<StudentGroup>().ToListAsync();
         }
 
-        //public Task<IList<TodoItem>> GetItemsNotDoneAsync()
-        //{
-        //    return database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
-        //}
-
+        
         public Task<StudentGroup> GetItemAsync(int id)
         {
             return database.Table<StudentGroup>().Where(i => i.StudentGroupId == id).FirstOrDefaultAsync();
@@ -47,7 +43,7 @@ namespace Mobi_App_Project.DB
 
         public Task<int> DeleteItemAsync(StudentGroup item)
         {
-            //GetItemAsync(id);
+            
             return database.DeleteAsync(item);
         }
     }

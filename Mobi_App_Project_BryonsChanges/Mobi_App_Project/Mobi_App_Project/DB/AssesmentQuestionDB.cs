@@ -23,10 +23,7 @@ namespace Mobi_App_Project.DB
             return database.Table<AssesmentQuestion>().ToListAsync();
         }
 
-        //public Task<IList<TodoItem>> GetItemsNotDoneAsync()
-        //{
-        //    return database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
-        //}
+       
 
         public  Task<AssesmentQuestion> GetItemAsync(int id)
         {
@@ -47,7 +44,7 @@ namespace Mobi_App_Project.DB
 
         public Task<int> DeleteItemAsync(AssesmentQuestionDB item)
         {
-            //GetItemAsync(id);
+            
             return database.DeleteAsync(item);
         }
     }

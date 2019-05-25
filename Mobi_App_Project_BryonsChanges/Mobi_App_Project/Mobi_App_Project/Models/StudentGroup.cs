@@ -11,7 +11,7 @@ namespace Mobi_App_Project.Models
         public int StudentGroupId { get; set; }
         public int GroupId { get; set; }
         public int StudentId { get; set; }
-        //public int ID { get; internal set; }
+       
 
     }
 }

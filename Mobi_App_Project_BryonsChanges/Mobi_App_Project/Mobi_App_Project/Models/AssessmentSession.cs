@@ -13,6 +13,6 @@ namespace Mobi_App_Project.Models
         public double SessionDate { get; set; }
         public int AssessmentId { get; set; }
         public int GroupId { get; set; }
-        //public int ID { get; internal set; }
+        
     }
 }

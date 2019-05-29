@@ -36,7 +36,7 @@ namespace Mobi_App_Project
         public App()
         {
             InitializeComponent();
-
+            ////////////
             LoginViewModel lvm = new LoginViewModel();
             MainPage = new NewStudentForm();
             //MainPage = new NavigationPage(new AdminLogin(lvm));

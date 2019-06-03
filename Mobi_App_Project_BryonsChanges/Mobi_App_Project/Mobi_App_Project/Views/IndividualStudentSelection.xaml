@@ -1,35 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
-             xmlns:local="clr-namespace:Mobi_App_Project.Core;assembly=SampleBrowser.Core"
-             xmlns:core="clr-namespace:Mobi_App_Project.SfComboBox;"
-             xmlns:icon="clr-namespace:Mobi_App_Project.SfComboBox;assembly=SampleBrowser.SfComboBox"
              x:Class="Mobi_App_Project.Views.IndividualStudentSelection">
 
-    <Grid>
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="45"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            <!--<comboBox:SfComboBox x:Name="combobox" MultiSelectMode="Token"
-                                 IsEditableMode="True"
-                                 DisplayMemberPath="AppName"
-                                 Grid.Row="0"
-                                 MaximumDropDownHeight="180"-->
-            <!--SuggestionBoxPlacement="Contains"-->
+    
+
+    <StackLayout Orientation="Vertical">
+
+        <SearchBar x:Name="StudentSearchBar"
+                   SearchButtonPressed="StudentSearchBar_SearchButtonPressed"
+                   TextChanged="StudentSearchBar_TextChanged"
+                    />
+
+        <Grid>
+            
+        <ListView x:Name="SuggestionsListView"
+                   ItemTapped="SuggestionsListView_ItemTapped"
+                   BackgroundColor="Aqua" />
+        <ListView x:Name="StudentListView {Binding studentList}"/>
+           
 
         </Grid>
-    </Grid>
 
 
-    <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-
-     </StackLayout>
+    </StackLayout>
 
 </ContentPage>

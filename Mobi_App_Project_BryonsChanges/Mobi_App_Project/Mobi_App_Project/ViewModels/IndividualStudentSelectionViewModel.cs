@@ -1,4 +1,6 @@
 ﻿using Mobi_App_Project.Models;
+using Mobi_App_Project.DB;
+using Mobi_App_Project.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,33 +13,13 @@ namespace Mobi_App_Project.ViewModels
 {
     public class IndividualStudentSelectionViewModel : BaseViewModel
     {
-        public ObservableCollection<Student> StudentList { get; set; }
+        public ObservableCollection<Student> studentList { get; set; }
         public Command LoadStudentListCommand { get; set; }
 
-        async Task ExecuteLoadItemsCommand()
+        public IndividualStudentSelectionViewModel()
         {
-            if (IsBusy)
-                return;
-
-            IsBusy = true;
-
-            try
-            {
-                StudentList.Clear();
-                var Students = await App.StudentDB.GetItemsAsync();
-                foreach (var student in Students)
-                {
-                    StudentList.Add(student);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
+            studentList = new ObservableCollection<Student>();
+            studentList.Add(new Student() { });
         }
     }
 }

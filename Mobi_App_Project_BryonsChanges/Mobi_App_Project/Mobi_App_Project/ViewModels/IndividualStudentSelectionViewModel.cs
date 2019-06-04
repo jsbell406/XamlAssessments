@@ -19,7 +19,7 @@ namespace Mobi_App_Project.ViewModels
         public IndividualStudentSelectionViewModel()
         {
             studentList = new ObservableCollection<Student>();
-            studentList.Add(new Student() { });
+           // studentList.Add(new Student() { });
         }
     }
 }

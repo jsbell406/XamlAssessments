@@ -20,8 +20,9 @@ namespace Mobi_App_Project.Views
         //{
         //    "FirstName", "LastName"
         //};
-
-        ObservableCollection<string> myStudents = new ObservableCollection<string>();
+        IndividualStudentSelectionViewModel view = new IndividualStudentSelectionViewModel();
+        ObservableCollection<Student> myStudents = new ObservableCollection<Student>();
+        
         private int c;
 
         public IndividualStudentSelection()
@@ -29,8 +30,8 @@ namespace Mobi_App_Project.Views
             
             InitializeComponent();
             //bool check = true;
-            IndividualStudentSelectionViewModel view = new IndividualStudentSelectionViewModel();
-            this.BindingContext = view;
+           
+            this.BindingContext = view = new IndividualStudentSelectionViewModel();
             
           
 
@@ -67,7 +68,7 @@ namespace Mobi_App_Project.Views
 
         private void SuggestionsListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var selection = e.Item as string;
+            var selection = e.Item as Student;
             myStudents.Add(selection);
             StudentListView.ItemsSource = myStudents;
             SuggestionsListView.IsVisible = false;

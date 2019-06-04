@@ -17,7 +17,9 @@
         <ListView x:Name="SuggestionsListView"
                    ItemTapped="SuggestionsListView_ItemTapped"
                    BackgroundColor="Aqua" />
-        <ListView x:Name="StudentListView {Binding studentList}"/>
+        <ListView x:Name= "StudentListView"
+                  ItemsSource="{Binding StudentList}" />
+            
            
 
         </Grid>

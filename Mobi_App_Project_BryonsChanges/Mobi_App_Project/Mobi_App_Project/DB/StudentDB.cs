@@ -17,7 +17,7 @@ namespace Mobi_App_Project.DB
         public StudentDB(SQLiteAsyncConnection db)
         {
             database = db;
-            database.CreateTableAsync<Group>();
+            database.CreateTableAsync<Student>();
             //loadData();
         }
         public Task<List<Student>> GetItemsAsync()
@@ -25,7 +25,13 @@ namespace Mobi_App_Project.DB
             return database.Table<Student>().ToListAsync();
         }
 
-        
+        public SQLiteAsyncConnection GetConnection()
+        {
+            return database;
+
+        }
+
+
 
         public Task<Student> GetItemAsync(int id)
         {

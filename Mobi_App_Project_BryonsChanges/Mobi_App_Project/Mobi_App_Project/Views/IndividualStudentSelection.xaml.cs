@@ -20,7 +20,7 @@ namespace Mobi_App_Project.Views
         //{
         //    "FirstName", "LastName"
         //};
-        IndividualStudentSelectionViewModel view = new IndividualStudentSelectionViewModel();
+        IndividualStudentSelectionViewModel vm = new IndividualStudentSelectionViewModel();
         ObservableCollection<Student> myStudents = new ObservableCollection<Student>();
         
         private int c;
@@ -31,14 +31,14 @@ namespace Mobi_App_Project.Views
             InitializeComponent();
             //bool check = true;
            
-            this.BindingContext = view = new IndividualStudentSelectionViewModel();
+            this.BindingContext = vm = new IndividualStudentSelectionViewModel();
             
-          
-
-
-
+        
         }
-
+        private void SelectedStudent(object sender, EventArgs e)
+        {
+           // BindingContext = new IndividualStudentSelectionViewModel();
+        }
 
 
         private void StudentSearchBar_SearchButtonPressed(object sender, EventArgs e)
@@ -46,33 +46,33 @@ namespace Mobi_App_Project.Views
             BindingContext = new IndividualStudentSelectionViewModel();
         }
 
-        private void StudentSearchBar_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var keyword = StudentSearchBar.Text;
-            if(keyword.Length >= 1)
-            {
+        //private void StudentSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    var keyword = StudentSearchBar.Text;
+        //    if(keyword.Length >= 1)
+        //    {
                 
-                var suggestions = studentList.Where(c => c.ToLower().Contains(keyword.ToLower()));
-                // var s = from c in studentList where c.Contains(keyword) select c;
-                SuggestionsListView.ItemsSource = suggestions;
-                SuggestionsListView.IsVisible = true;
+        //        var suggestions = vm.studentList.Where(c => c.FirstName.ToLower().StartsWith(keyword.ToLower()));
+        //        // var s = from c in studentList where c.Contains(keyword) select c;
+        //        SuggestionsListView.ItemsSource = suggestions;
+        //        SuggestionsListView.IsVisible = true;
                 
-            }
-            else
-            {
-                SuggestionsListView.IsVisible = false;
-            }
+        //    }
+        //    else
+        //    {
+        //        SuggestionsListView.IsVisible = false;
+        //    }
             
 
-        }
+        //}
 
-        private void SuggestionsListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            var selection = e.Item as Student;
-            myStudents.Add(selection);
-            StudentListView.ItemsSource = myStudents;
-            SuggestionsListView.IsVisible = false;
-            App.StudentDB.SaveItemAsync(myStudents);
-        }
+        //private void SuggestionsListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        //{
+        //    var selection = e.Item as Student;
+        //    myStudents.Add(selection);
+        //    StudentListView.ItemsSource = myStudents;
+        //    SuggestionsListView.IsVisible = false;
+        //    //App.StudentDB.SaveItemAsync();
+        //}
     }
 }

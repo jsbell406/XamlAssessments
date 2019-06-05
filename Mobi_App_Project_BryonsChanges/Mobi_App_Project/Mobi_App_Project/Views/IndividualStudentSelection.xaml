@@ -1,28 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Mobi_App_Project.Helpers"
              x:Class="Mobi_App_Project.Views.IndividualStudentSelection">
 
     
 
     <StackLayout Orientation="Vertical">
 
-        <SearchBar x:Name="StudentSearchBar"
-                   SearchButtonPressed="StudentSearchBar_SearchButtonPressed"
-                   TextChanged="StudentSearchBar_TextChanged"
-                    />
+        <SearchBar x:Name="SearchBar" SearchCommand="{Binding SearchCommand}" 
+                   SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}">
+            <SearchBar.Behaviors>
+                <local:TextChangedBehavior/>
+            </SearchBar.Behaviors>
+        </SearchBar>
 
-        <Grid>
-            
-        <ListView x:Name="SuggestionsListView"
-                   ItemTapped="SuggestionsListView_ItemTapped"
-                   BackgroundColor="Aqua" />
+
         <ListView x:Name= "StudentListView"
-                  ItemsSource="{Binding StudentList}" />
+                  ItemsSource="{Binding FilteredList}" 
+                  HasUnevenRows="True"
+                  ItemSelected="SelectedStudent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding FirstName}" 
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                            <Label Text="{Binding LastName}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+        <!--<Grid>
+            
+        --><!--<ListView x:Name="SuggestionsListView"
+                   ItemTapped="SuggestionsListView_ItemTapped"
+                   BackgroundColor="Aqua" />--><!--
+        
             
            
 
-        </Grid>
+        </Grid>-->
 
 
     </StackLayout>

@@ -16,7 +16,7 @@ namespace Mobi_App_Project.DB
         public StudentDB(SQLiteAsyncConnection db)
         {
             database = db;
-            database.CreateTableAsync<Group>();
+            database.CreateTableAsync<Student>();
             //loadData();
         }
         public Task<List<Student>> GetItemsAsync()

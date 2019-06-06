@@ -16,6 +16,7 @@ namespace Mobi_App_Project.DB
         public AdminUserDB(SQLiteAsyncConnection db)
         {
             database = db;
+            DBName = App.AdminUser.DBName;
             database.CreateTableAsync<AdminUser>();
             //loadData();
         }

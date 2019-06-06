@@ -32,7 +32,7 @@ namespace Mobi_App_Project.Views
 
         async void Submit_Clicked(object sender, EventArgs e)
         {
-            App.StudentDB.SaveItemAsync(Student);
+            await App.StudentDB.SaveItemAsync(Student);
             await Navigation.PushAsync(new AssessmentHome());
         }
 

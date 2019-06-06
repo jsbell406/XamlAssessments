@@ -33,24 +33,24 @@ namespace Mobi_App_Project.ViewModels
             this.studentId = studentId;
             this.questionNumber = questionNumber;
             this.assessmentId = assessmentId;
-            init();
+            //init();
         }
 
         public object adminUsers { get; private set; }
 
-        private async void init()
-        {
-            try
-            {
+        //private async void init()
+        //{
+        //    try
+        //    {
                
-               //adminUsers = new List<AdminUser>();
-               //adminUsers.Add(await userDB.GetItemAsync(1));
-               //adminUsers = await userDB.GetItemsAsync();
-            }
-            catch (Exception ex)
-            {
-                string msg = ex.Message;
-            }
-        }
+        //       //adminUsers = new List<AdminUser>();
+        //       //adminUsers.Add(await userDB.GetItemAsync(1));
+        //       //adminUsers = await userDB.GetItemsAsync();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        string msg = ex.Message;
+        //    }
+        //}
     }
 }

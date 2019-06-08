@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Mobi_App_Project.Models;
+using Mobi_App_Project.Helpers;
 
 namespace Mobi_App_Project.Helpers
 {
@@ -43,6 +44,16 @@ namespace Mobi_App_Project.Helpers
                 App.StudentDB.SaveItemAsync(s2);
                 App.StudentDB.SaveItemAsync(s3);
             }
+
+            List<Assessment> assessments = App.AssesmentDB.GetItemsAsync().Result;
+            if(assessments.Count == 0 )
+            {
+                Assessment assess1 = new Assessment();
+                assess1.AssessName = EnumHatersGonnaVerify.AssessName_FeelingsCheckIn;
+
+                App.AssesmentDB.SaveItemAsync(assess1);
+            }
+
         }      
     }
 }

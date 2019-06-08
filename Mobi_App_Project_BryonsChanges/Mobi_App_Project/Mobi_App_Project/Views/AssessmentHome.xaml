@@ -4,7 +4,7 @@
              x:Class="Mobi_App_Project.Views.AssessmentHome">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="FEELINGS CHECK IN"
+            <Label Text="{Binding assessName}"
                 FontSize="Large"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 

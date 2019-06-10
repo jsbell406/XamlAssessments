@@ -1,4 +1,5 @@
-﻿using Mobi_App_Project.ViewModels;
+﻿using Mobi_App_Project.Models;
+using Mobi_App_Project.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +17,19 @@ namespace Mobi_App_Project.Views
 		public AssessmentHome ()
 		{
 			InitializeComponent ();
+            Assessment assessment = new Assessment();
+            assessment.AssessName = App.Assessment.AssessName;
+            Title = "Assessment Title";
+            BindingContext = assessment;
+          
 		}
 
         async void Start_Clicked(object sender, EventArgs e)
         {
-            int studentId = 1; // from selection;
-            int assessmentId = 1;  // only have one now
-            QuestionViewModel qvm = new QuestionViewModel(studentId, 1, assessmentId);
+            //QuestionViewModel qvm = new QuestionViewModel(studentId, 1, assessmentId);
 
 
-            await Navigation.PushAsync(new Question1());
+           // await Navigation.PushAsync(new Question1());
         }
     }
 }

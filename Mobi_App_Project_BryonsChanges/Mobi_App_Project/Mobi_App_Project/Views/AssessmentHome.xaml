@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mobi_App_Project.Views.AssessmentHome">
+             x:Class="Mobi_App_Project.Views.AssessmentHome"
+             Title="{Binding Title}"
+             x:Name="AssessmentHomePage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="{Binding assessName}"
+            <Label Text="{Binding AssessName}"
                 FontSize="Large"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 

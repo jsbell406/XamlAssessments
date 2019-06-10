@@ -28,9 +28,9 @@ namespace Mobi_App_Project.Views
             if (assessment == null)
                 return;
 
-            // TODO: Add Nav
-
-            //await Navigation.
+            // TODO: verify assessment gets set in app
+            App.Assessment = assessment;
+            await Navigation.PushAsync(new NavigationPage(new AssessmentHome()));
 
             AssessmentListView.SelectedItem = null;
         }

@@ -26,7 +26,7 @@ namespace Mobi_App_Project.Views
         async void Individual_Clicked(object sender, EventArgs e)
         {
 
-            await Navigation.PushAsync(new StudentEntry());
+            await Navigation.PushAsync(new IndividualStudentSelection());
         }
 
         async void Record_Clicked(object sender, EventArgs e)

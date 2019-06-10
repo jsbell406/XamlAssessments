@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SQLite;
 using Mobi_App_Project.Models;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
 
 namespace Mobi_App_Project.DB
 {
@@ -24,7 +25,13 @@ namespace Mobi_App_Project.DB
             return database.Table<Student>().ToListAsync();
         }
 
-        
+        public SQLiteAsyncConnection GetConnection()
+        {
+            return database;
+
+        }
+
+
 
         public Task<Student> GetItemAsync(int id)
         {
@@ -47,6 +54,11 @@ namespace Mobi_App_Project.DB
         {
             //GetItemAsync(id);
             return database.DeleteAsync(item);
+        }
+
+        internal void SaveItemAsync(ObservableCollection<string> myStudents)
+        {
+            throw new NotImplementedException();
         }
     }
 }

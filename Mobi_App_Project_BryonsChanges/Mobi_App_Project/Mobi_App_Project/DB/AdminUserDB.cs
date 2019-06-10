@@ -18,6 +18,7 @@ namespace Mobi_App_Project.DB
             database = db;
             DBName = App.AdminUser.DBName;
             database.CreateTableAsync<AdminUser>();
+            DBName = "testDb";
             //loadData();
         }
 

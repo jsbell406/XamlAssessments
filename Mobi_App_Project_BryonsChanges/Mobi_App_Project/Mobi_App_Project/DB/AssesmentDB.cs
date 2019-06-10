@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 using System.Threading.Tasks;
 using SQLite;
 using Mobi_App_Project.Models;
 using Xamarin.Forms;
+
 namespace Mobi_App_Project.DB
 {
     public class AssesmentDB
@@ -32,6 +32,11 @@ namespace Mobi_App_Project.DB
         public Task<Assessment> GetItemAsync(int id)
         {
             return database.Table<Assessment>().Where(i => i.AssessmentId == id).FirstOrDefaultAsync();
+        }
+
+        public Task<Assessment> GetAssessmentByAssessNameAsync(string assessName)
+        {
+            return database.Table<Assessment>().Where(a => a.AssessName == assessName).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveItemAsync(Assessment item)

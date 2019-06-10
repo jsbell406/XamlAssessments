@@ -6,6 +6,6 @@ namespace Mobi_App_Project.Models
     {
         [PrimaryKey, AutoIncrement]
         public int AssessmentId { get; set; }
-        public string AssesName { get; set; }    
+        public string AssessName { get; set; }    
     }
 }

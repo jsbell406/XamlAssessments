@@ -38,6 +38,16 @@ namespace Mobi_App_Project.DB
             return database.Table<Student>().Where(i => i.StudentId == id).FirstOrDefaultAsync();
         }
 
+        public Task<Student> GetStudentByName(string firstName, string middleName, string lastName)
+        {
+            return database.Table<Student>().Where(s => s.FirstName == firstName & s.MiddleName == middleName & s.LastName == lastName).FirstOrDefaultAsync();
+        }
+
+        public Task<Student> GetStudentByName(string firstName, string lastName)
+        {
+            return database.Table<Student>().Where(s => s.FirstName == firstName & s.LastName == lastName).FirstOrDefaultAsync();
+        }
+
         public Task<int> SaveItemAsync(Student item)
         {
             if (item.StudentId != 0)

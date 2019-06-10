@@ -24,7 +24,7 @@ namespace Mobi_App_Project.Views
         private async void SelectedStudent(object sender, EventArgs e)
         {
             // Nav to assessment selection
-            //await Navigation.PushAsync(new NavigationPage(new AssessmentSelection()));         
+            await Navigation.PushAsync(new NavigationPage(new AssessmentSelection()));         
         }
 
         async void Create_Clicked(object sender, EventArgs e)

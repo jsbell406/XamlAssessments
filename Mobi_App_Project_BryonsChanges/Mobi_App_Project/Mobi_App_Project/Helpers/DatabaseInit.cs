@@ -15,9 +15,9 @@ namespace Mobi_App_Project.Helpers
 
         private void Seed()
         {
-           // List<Student> students = App.StudentDB.GetItemsAsync().Result;
-           // if (students.Count == 0)
-           // {
+            List<Student> students = App.StudentDB.GetItemsAsync().Result;
+            if (students.Count == 0)
+            {
                 Student s1 = new Student();
                 s1.FirstName = "James";
                 s1.MiddleName = "Spencer";
@@ -42,7 +42,7 @@ namespace Mobi_App_Project.Helpers
                 App.StudentDB.SaveItemAsync(s1);
                 App.StudentDB.SaveItemAsync(s2);
                 App.StudentDB.SaveItemAsync(s3);
-           // }
+            }
         }      
     }
 }

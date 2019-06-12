@@ -12,11 +12,12 @@ namespace Mobi_App_Project.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Record : ContentPage
     {
-          
+        public RecordViewModel viewModel;
+
         public Record()
         {
             InitializeComponent();
-            BindingContext = viewModel = new Record();
+            BindingContext = viewModel = new RecordViewModel();
         }
         private async void SelectedDate(object sender, EventArgs e)
         {
@@ -24,7 +25,11 @@ namespace Mobi_App_Project.Views
             //await Navigation.PushAsync(new NavigationPage(new AssessmentSelection()));         
         }
 
-       
+        private async void SelectedStudent(object sender, EventArgs e)
+        {
+            // Nav to assessment selection
+            //await Navigation.PushAsync(new NavigationPage(new AssessmentSelection()));         
+        }
     }
 	
 }

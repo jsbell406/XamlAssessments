@@ -1,10 +1,19 @@
-﻿using System;
+﻿using Mobi_App_Project.Models;
+using Mobi_App_Project.DB;
+using Mobi_App_Project.Views;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Text;
-using Mobi_App_Project.Models;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+using System.Windows.Input;
+using System.Linq;
+
 namespace Mobi_App_Project.ViewModels
 {
-    class RecordViewModel
+    class RecordViewModel : BaseViewModel
     {
         public ObservableCollection<AssessmentSession> SearchDateList { get; set; }
         public ObservableCollection<AssessmentSession> DateList { get; set; }
@@ -39,7 +48,7 @@ namespace Mobi_App_Project.ViewModels
             LoadDateCommand = new Command(async () => await ExecuteLoadDateCommand());
 
             DateList = new ObservableCollection<AssessmentSession>();
-            AssessmentSession = App.AssesmentDB.GetItemsAsync().Result;
+            AssessmentSession = App.AssesmentSessionDB.GetItemsAsync().Result;
             SearchCommand = new Command(async () => await SearchCommandExecute());
 
         }
@@ -80,7 +89,7 @@ namespace Mobi_App_Project.ViewModels
             try
             {
                 SearchDateList.Clear();
-                var items = await App.AssesmentDB.GetItemsAsync();
+                var items = await App.AssesmentSessionDB.GetItemsAsync();
                 foreach (var item in items)
                 {
                     SearchDateList.Add(item);

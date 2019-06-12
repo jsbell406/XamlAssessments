@@ -19,5 +19,11 @@ namespace Mobi_App_Project.ViewModels
         {
             Question = question;
         }
+
+        private void OptionsParser()
+        {
+
+        }
+
     }
 }

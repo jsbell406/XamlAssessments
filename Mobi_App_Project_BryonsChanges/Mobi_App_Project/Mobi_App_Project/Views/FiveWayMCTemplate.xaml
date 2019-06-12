@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobi_App_Project.Views.FiveWayMCTemplate">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding AssessName}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                BackgroundColor="Green"/>
+
+            <Button Text="{Binding Opt1}"
+                Clicked="Submit_Opt1_Clicked"
+                Style="{StaticResource buttonstyle}"/>
+            <Button Text="{Binding Opt2}"
+                Clicked="Submit_Opt2_Clicked"
+                     Style="{StaticResource buttonstyle}"/>
+            <Button Text="{Binding Opt3}"
+                Clicked="Submit_Opt3_Clicked"
+                     Style="{StaticResource buttonstyle}"/>
+            <Button Text="{Binding Opt4}"
+                Clicked="Submit_Opt4_Clicked"
+                     Style="{StaticResource buttonstyle}"/>
+            <Button Text="{Binding Opt5}"
+                Clicked="Submit_Opt5_Clicked" 
+                     Style="{StaticResource buttonstyle}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

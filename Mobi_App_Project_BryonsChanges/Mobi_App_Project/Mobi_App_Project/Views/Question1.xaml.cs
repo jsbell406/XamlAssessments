@@ -7,6 +7,7 @@ using SQLite;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Mobi_App_Project.ViewModels;
+using Mobi_App_Project.Models;
 
 namespace Mobi_App_Project.Views
 {
@@ -31,8 +32,10 @@ namespace Mobi_App_Project.Views
 
         async void Submit_Clicked(object sender, EventArgs e)
         {
-
+            Result result = new Result();
+            result.TextResults = "Happy";
             await Navigation.PushAsync(new Question2());
         }
+      
     }
 }

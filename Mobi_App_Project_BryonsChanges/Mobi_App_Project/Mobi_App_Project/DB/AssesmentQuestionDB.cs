@@ -23,7 +23,10 @@ namespace Mobi_App_Project.DB
             return database.Table<AssessmentQuestion>().ToListAsync();
         }
 
-       
+        public Task<AssessmentQuestion> GetNextAssessmentQuestion(int assessmentId, int questionOrderNum)
+        {
+            return database.Table<AssessmentQuestion>().Where(aq => aq.AssessmentId == assessmentId & aq.OrderNum == questionOrderNum).FirstOrDefaultAsync();        
+        }
 
         public  Task<AssessmentQuestion> GetItemAsync(int id)
         {

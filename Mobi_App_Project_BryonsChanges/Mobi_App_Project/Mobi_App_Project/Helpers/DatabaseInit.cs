@@ -54,7 +54,7 @@ namespace Mobi_App_Project.Helpers
                 assess1.AssessName = EnumHatersGonnaVerify.AssessName_FeelingsCheckIn;
                 assessId = App.AssesmentDB.SaveItemAsync(assess1).Result;
             }
-
+            List<AssessmentQuestion> assessmentQuestions = App.AssesmentQuestionDB.GetItemsAsync().Result;
             List<Question> questions = App.QuestionDB.GetItemsAsync().Result;
             if(questions.Count == 0)
             {

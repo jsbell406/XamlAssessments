@@ -15,15 +15,22 @@ namespace Mobi_App_Project.DB
         public QuestionDB(SQLiteAsyncConnection db)
         {
             database = db;
-            database.CreateTableAsync<Group>();
+            database.CreateTableAsync<Question>();
             //loadData();
         }
+
         public Task<List<Question>> GetItemsAsync()
         {
             return database.Table<Question>().ToListAsync();
         }
 
-        
+        public Task<Question> GetNextQuestion(int assessmentId, int orderNum)
+        {
+            AssessmentQuestion assessmentQuestion = App.AssesmentQuestionDB.GetNextAssessmentQuestion(assessmentId, orderNum).Result;
+
+            return database.Table<Question>().Where(q => q.QuestionId == assessmentQuestion.QuestionId).FirstOrDefaultAsync();
+        }
+
         public Task<Question> GetItemAsync(int id)
         {
             return database.Table<Question>().Where(i => i.QuestionId == id).FirstOrDefaultAsync();

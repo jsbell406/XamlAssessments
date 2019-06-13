@@ -18,7 +18,13 @@ namespace Mobi_App_Project.Views
 		public FiveWayMCTemplate ()
 		{
 			InitializeComponent ();
+            
 		}
+        public FiveWayMCTemplate(FiveWayMCTemplateViewModel vm)
+        {
+            InitializeComponent();
+            BindingContext = viewModel = vm;
+        }
 
         async void Submit_Opt1_Clicked(object sender, EventArgs e)
         {

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Data.Common;
 using System.Threading.Tasks;
 using SQLite;
 using Mobi_App_Project.Models;
 using Xamarin.Forms;
+using SQLiteNetExtensionsAsync.Extensions;
 
 namespace Mobi_App_Project.DB
 {
@@ -26,9 +27,9 @@ namespace Mobi_App_Project.DB
 
         public Task<Question> GetNextQuestion(int assessmentId, int orderNum)
         {
-            AssessmentQuestion assessmentQuestion = App.AssesmentQuestionDB.GetNextAssessmentQuestion(assessmentId, orderNum).Result;
 
-            return database.Table<Question>().Where(q => q.QuestionId == assessmentQuestion.QuestionId).FirstOrDefaultAsync();
+            AssessmentQuestion ques = database.Table<AssessmentQuestion>().Where(aq => aq.AssessmentId == assessmentId && aq.OrderNum == orderNum).FirstOrDefaultAsync().Result;
+            return database.Table<Question>().Where(q => q.QuestionId == ques.QuestionId).FirstOrDefaultAsync();           
         }
 
         public Task<Question> GetItemAsync(int id)

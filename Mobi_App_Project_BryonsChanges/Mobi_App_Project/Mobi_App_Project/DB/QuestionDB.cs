@@ -17,6 +17,7 @@ namespace Mobi_App_Project.DB
         {
             database = db;
             database.CreateTableAsync<Question>();
+            //database.CreateTableAsync<AssessmentQuestion>();
             //loadData();
         }
 
@@ -25,12 +26,11 @@ namespace Mobi_App_Project.DB
             return database.Table<Question>().ToListAsync();
         }
 
-        public Task<Question> GetNextQuestion(int assessmentId, int orderNum)
-        {
-
-            AssessmentQuestion ques = database.Table<AssessmentQuestion>().Where(aq => aq.AssessmentId == assessmentId && aq.OrderNum == orderNum).FirstOrDefaultAsync().Result;
-            return database.Table<Question>().Where(q => q.QuestionId == ques.QuestionId).FirstOrDefaultAsync();           
-        }
+        //public Task<Question> GetNextQuestion(int assessmentId, int orderNum)
+        //{
+        //    AssessmentQuestion ques = database.Table<AssessmentQuestion>().Where(aq => aq.AssessmentId == assessmentId && aq.OrderNum == (orderNum + 1)).FirstOrDefaultAsync().Result;
+        //    return database.Table<Question>().Where(q => q.QuestionId == ques.QuestionId).FirstOrDefaultAsync();
+        //}
 
         public Task<Question> GetItemAsync(int id)
         {

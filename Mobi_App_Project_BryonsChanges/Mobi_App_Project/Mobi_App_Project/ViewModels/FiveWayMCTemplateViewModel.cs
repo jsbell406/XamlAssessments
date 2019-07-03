@@ -1,4 +1,5 @@
-﻿using Mobi_App_Project.Models;
+﻿using Mobi_App_Project.Helpers;
+using Mobi_App_Project.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,16 +9,30 @@ namespace Mobi_App_Project.ViewModels
     public class FiveWayMCTemplateViewModel : BaseViewModel
     {
         public Question Question { get; set; }
+        public Question NextQuestion { get; set; }
+        public Result Result { get; set; }
+        public AssessmentQuestion AssessmentQuestion { get; set; }
+        public AssessmentQuestion NextAssessmentQuestion { get; set; }
+        public TemplateNavigation TemplateNavigation { get; set; }
+
         public string Opt1 { get; set; }
         public string Opt2 { get; set; }
         public string Opt3 { get; set; }
         public string Opt4 { get; set; }
         public string Opt5 { get; set; }
 
-        public FiveWayMCTemplateViewModel(Question question)
+        public FiveWayMCTemplateViewModel(Question question, AssessmentQuestion assessmentQuestion)
         {
             Question = question;
+            AssessmentQuestion = assessmentQuestion;
             OptionsParser();
+            Result = new Result();
+
+            TemplateNavigation = new TemplateNavigation();
+
+            // RISK: question object without id
+            NextAssessmentQuestion = App.AssesmentQuestionDB.GetNextAssessmentQuestion(App.Assessment.AssessmentId,AssessmentQuestion.OrderNum).Result;
+            NextQuestion = App.QuestionDB.GetItemAsync(NextAssessmentQuestion.QuestionId).Result;
         }
 
         private void OptionsParser()

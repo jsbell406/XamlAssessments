@@ -23,6 +23,18 @@ namespace Mobi_App_Project.DB
             return database.Table<AssessmentQuestion>().ToListAsync();
         }
 
+        public Task<AssessmentQuestion> GetNextAssessmentQuestion(int assessmentId, int orderNumber)
+        {
+            orderNumber++;
+
+            return database.Table<AssessmentQuestion>().Where(aq => aq.AssessmentId == assessmentId & aq.OrderNum == orderNumber).FirstOrDefaultAsync();
+        }
+
+        public Task<AssessmentQuestion> GetAssessmentQuestionByQuestionIdAssessmentId(int questionId, int assessmentId)
+        {
+            return database.Table<AssessmentQuestion>().Where(aq => aq.QuestionId == questionId && aq.AssessmentId == assessmentId).FirstOrDefaultAsync();
+        }
+
         public  Task<AssessmentQuestion> GetItemAsync(int id)
         {
             return database.Table<AssessmentQuestion>().Where(i => i.AssessmentQuestionId == id).FirstOrDefaultAsync();

@@ -9,16 +9,20 @@ namespace Mobi_App_Project.Helpers
 {
     public class DatabaseInit
     {
-        public DatabaseInit()
+        public DatabaseInit(bool dropCreateAlways)
         {
-            Seed();
+            Seed(dropCreateAlways);
         }
 
-        private void Seed()
+        private void Seed(bool dropCreateAlways)
         {
             int assessId = 0;
 
             List<Student> students = App.StudentDB.GetItemsAsync().Result;
+            foreach(Student student in students)
+            {
+                App.StudentDB.DeleteItemAsync(student);
+            }
             if (students.Count == 0)
             {
                 Student s1 = new Student();

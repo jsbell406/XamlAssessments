@@ -17,8 +17,6 @@ namespace Mobi_App_Project.Services
             database.CreateTableAsync<TodoItem>().Wait();
         }
 
-
-
         public UserDatabase()
         {
             string dbPath = "";

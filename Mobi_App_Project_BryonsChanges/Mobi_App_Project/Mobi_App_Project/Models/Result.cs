@@ -9,5 +9,6 @@ namespace Mobi_App_Project.Models
         public int AssesmentQuestionId { get; set; }
         public int QuestionId { get; set; }
         public string TextResults { get; set; }
+        public string AdminNotes { get; set; }
     }
 }

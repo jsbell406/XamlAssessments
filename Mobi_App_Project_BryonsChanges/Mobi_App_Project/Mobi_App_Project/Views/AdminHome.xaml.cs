@@ -20,12 +20,13 @@ namespace Mobi_App_Project.Views
         async void Group_Clicked(object sender, EventArgs e)
         {
             //check login MessagingCenter.Send(this, "AddItem", Item);
+            App.IsGroup = true;
             await Navigation.PushAsync(new StudentEntry());
         }
 
         async void Individual_Clicked(object sender, EventArgs e)
         {
-
+            App.IsGroup = false;
             await Navigation.PushAsync(new IndividualStudentSelection());
         }
 

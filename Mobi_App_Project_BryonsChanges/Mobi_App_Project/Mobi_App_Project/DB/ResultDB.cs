@@ -17,6 +17,12 @@ namespace Mobi_App_Project.DB
             database.CreateTableAsync<Group>();
             //loadData();
         }
+
+        internal object SaveItemAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<Result>> GetItemsAsync()
         {
             return database.Table<Result>().ToListAsync();

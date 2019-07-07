@@ -17,9 +17,7 @@ namespace Mobi_App_Project.Views
 
         public Results()
         {
-           // var MyEditor = new Editor { Text = "I am an Editor", AutoSize = EditorAutoSizeOption.TextChanges};
-            //var text = MyEditor.Text;
-           //Editor textEntry = MyEditor;
+          
             BindingContext = viewModel = new ResultsViewModel();
             InitializeComponent();
         }

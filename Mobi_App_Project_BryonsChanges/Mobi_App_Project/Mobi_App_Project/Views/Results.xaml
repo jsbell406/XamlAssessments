@@ -9,9 +9,8 @@
             <Button Text="Submit Notes"
                     Clicked="Submit_Clicked"/>
 
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

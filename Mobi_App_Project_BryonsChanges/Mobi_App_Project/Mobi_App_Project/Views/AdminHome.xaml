@@ -18,10 +18,10 @@
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
                 Clicked="Individual_Clicked" />
-        <Button Text="View Records"
+      <!-- <Button Text="View Records"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
-                Clicked="Record_Clicked" />
+                Clicked="Record_Clicked" />-->
 
     </StackLayout>
    

@@ -17,18 +17,21 @@ namespace Mobi_App_Project.Views
 
         public Results()
         {
-            var MyEditor = new Editor { Text = "I am an Editor", AutoSize = EditorAutoSizeOption.TextChanges};
+           // var MyEditor = new Editor { Text = "I am an Editor", AutoSize = EditorAutoSizeOption.TextChanges};
             //var text = MyEditor.Text;
            //Editor textEntry = MyEditor;
             BindingContext = viewModel = new ResultsViewModel();
             InitializeComponent();
         }
 
-        public Result MyEditor { get; private set; }
-
+        public AssessmentSession AdminNotes { get; private set; }
+        
         async void Submit_Clicked(object sender, EventArgs e)
         {
-            await App.ResultDB.SaveItemAsync(MyEditor);
+            AdminNotes = new AssessmentSession();
+            App.AssessmentSession.AdminNotes = viewModel.MyEditor;
+            //AdminNotes. = viewModel.MyEditor;
+            await App.AssesmentSessionDB.SaveItemAsync(App.AssessmentSession);
             if (App.IsGroup)
             {
                 await Navigation.PushModalAsync(new NavigationPage(new AssessmentHome()));

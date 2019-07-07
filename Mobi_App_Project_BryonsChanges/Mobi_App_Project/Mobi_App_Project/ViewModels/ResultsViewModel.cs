@@ -22,7 +22,7 @@ namespace Mobi_App_Project.ViewModels
         public ResultsViewModel()
         {
             
-            MyEditor = App.ResultDB.SaveItemAsync().Result;
+            //AdminNotes = App.ResultDB.SaveItemAsync().Result;
         }
     }
 }

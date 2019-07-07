@@ -30,9 +30,9 @@ namespace Mobi_App_Project.Views
             await Navigation.PushAsync(new IndividualStudentSelection());
         }
 
-        async void Record_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Record());
-        }     
+        //async void Record_Clicked(object sender, EventArgs e)
+        //{
+        //    await Navigation.PushAsync(new Record());
+        //}     
     }
 }

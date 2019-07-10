@@ -17,16 +17,16 @@ namespace Mobi_App_Project.ViewModels
     public class ResultsViewModel : BaseViewModel
     {
         
-        public ObservableCollection<Question> ResultsList { get; set; }
+        public ObservableCollection<Result> ResultsList { get; set; }
         public Command LoadResultsCommand { get; set; }
         public string MyEditor { get; set;}
-        public bool IsReadOnly { get; set; }
+        
         
 
         public ResultsViewModel()
         {
             Title = "Browse Reults";
-            ResultsList = new ObservableCollection<Question>();
+            ResultsList = new ObservableCollection<Result>();
             LoadResultsCommand = new Command(async () => await ExecuteLoadResultsCommand());
 
 
@@ -45,7 +45,7 @@ namespace Mobi_App_Project.ViewModels
             try
             {
                 ResultsList.Clear();
-                var items = await App.QuestionDB.GetItemsAsync();
+                var items = await App.ResultDB.GetItemsAsync();
                 foreach (var item in items)
                 {
                     ResultsList.Add(item);

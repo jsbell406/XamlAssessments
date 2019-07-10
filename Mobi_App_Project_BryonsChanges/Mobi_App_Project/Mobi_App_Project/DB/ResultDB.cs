@@ -32,12 +32,12 @@ namespace Mobi_App_Project.DB
 
         public Task<Result> GetItemAsync(int id)
         {
-            return database.Table<Result>().Where(i => i.ResuldId == id).FirstOrDefaultAsync();
+            return database.Table<Result>().Where(i => i.ResultId == id).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveItemAsync(Result item)
         {
-            if (item.ResuldId != 0)
+            if (item.ResultId != 0)
             {
                 return database.UpdateAsync(item);
             }
@@ -49,8 +49,13 @@ namespace Mobi_App_Project.DB
 
         public Task<int> DeleteItemAsync(Result item)
         {
-            
+
             return database.DeleteAsync(item);
+        }
+
+        public Task<List<Result>> GetResultsByAssessmentSession(int assessmentSessionId)
+        {
+            return database.Table<Result>().Where(r => r.AssessmentSessionId == assessmentSessionId).ToListAsync();
         }
     }
 }

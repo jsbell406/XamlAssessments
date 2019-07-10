@@ -20,10 +20,17 @@ namespace Mobi_App_Project.Views
           
             BindingContext = viewModel = new ResultsViewModel();
             InitializeComponent();
+            
         }
 
         public AssessmentSession AdminNotes { get; private set; }
-        
+
+        private async void SelectedResult(object sender, EventArgs e)
+        {
+            
+            
+        }
+
         async void Submit_Clicked(object sender, EventArgs e)
         {
             AdminNotes = new AssessmentSession();
@@ -39,6 +46,11 @@ namespace Mobi_App_Project.Views
                 await Navigation.PushModalAsync(new NavigationPage(new AdminHome()));
             }
             //await Navigation.PushModalAsync(new NavigationPage(new AssessmentSelection()));
+        }
+
+        internal Task GetItemsAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

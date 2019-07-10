@@ -4,7 +4,31 @@
              x:Class="Mobi_App_Project.Views.Results">
     <ContentPage.Content>
         <StackLayout>
-            <Editor Text=" I am an Editor" AutoSize="TextChanges"
+            <ListView x:Name="ResultsListView"
+                ItemsSource="{Binding ResultList}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"               
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="SelectedResult">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Result}" 
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                               
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+            <Editor Text="" AutoSize="TextChanges"
              BindingContext="{Binding MyEditor}" />
             <Button Text="Submit Notes"
                     Clicked="Submit_Clicked"/>

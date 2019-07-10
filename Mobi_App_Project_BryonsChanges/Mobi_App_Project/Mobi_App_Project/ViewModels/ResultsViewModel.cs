@@ -16,13 +16,54 @@ namespace Mobi_App_Project.ViewModels
 {
     public class ResultsViewModel : BaseViewModel
     {
+        
+        public ObservableCollection<Question> ResultsList { get; set; }
+        public Command LoadResultsCommand { get; set; }
         public string MyEditor { get; set;}
+        public bool IsReadOnly { get; set; }
         
 
         public ResultsViewModel()
         {
-            
+            Title = "Browse Reults";
+            ResultsList = new ObservableCollection<Question>();
+            LoadResultsCommand = new Command(async () => await ExecuteLoadResultsCommand());
+
+
             //AdminNotes = App.ResultDB.SaveItemAsync().Result;
         }
+
+        
+
+        async Task ExecuteLoadResultsCommand()
+        {
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+
+            try
+            {
+                ResultsList.Clear();
+                var items = await App.QuestionDB.GetItemsAsync();
+                foreach (var item in items)
+                {
+                    ResultsList.Add(item);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+        //private Task ExecuteLoadResultsCommand()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

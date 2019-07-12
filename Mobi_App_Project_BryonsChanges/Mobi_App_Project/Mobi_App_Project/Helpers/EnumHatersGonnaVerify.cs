@@ -23,5 +23,9 @@ namespace Mobi_App_Project.Helpers
         public static readonly string QType_2WayMultipleChoice = "2WayMC";
         public static readonly string QType_SingleTextResponse = "SingleText";
         public static readonly string QType_TripleTextResponse = "TripleText";
+
+        public static readonly string OptionText_HappySadExcitedMadScared = "Happy,Sad,Excited,Mad,Scared";
+        public static readonly string OptionText_YesNo = "Yes,No";
+        public static readonly string OptionText_YesNoKinda = "Yes,No,Kinda";
     }
 }

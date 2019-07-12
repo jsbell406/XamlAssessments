@@ -18,6 +18,11 @@ namespace Mobi_App_Project.DB
             //loadData();
         }
 
+        public Task<AssessmentQuestion> GetFirstAssessmentQuestion(int assessmentId)
+        {
+            return database.Table<AssessmentQuestion>().Where(aq => aq.AssessmentId == assessmentId && aq.OrderNum == 1).FirstOrDefaultAsync();
+        }
+
         public Task<List<AssessmentQuestion>> GetItemsAsync()
         {
             return database.Table<AssessmentQuestion>().ToListAsync();
@@ -30,10 +35,10 @@ namespace Mobi_App_Project.DB
             return database.Table<AssessmentQuestion>().Where(aq => aq.AssessmentId == assessmentId & aq.OrderNum == orderNumber).FirstOrDefaultAsync();
         }
 
-        public Task<AssessmentQuestion> GetAssessmentQuestionByQuestionIdAssessmentId(int questionId, int assessmentId)
-        {
-            return database.Table<AssessmentQuestion>().Where(aq => aq.QuestionId == questionId && aq.AssessmentId == assessmentId).FirstOrDefaultAsync();
-        }
+        //public Task<AssessmentQuestion> GetAssessmentQuestionByQuestionIdAssessmentId(int questionId, int assessmentId)
+        //{
+        //    return database.Table<AssessmentQuestion>().Where(aq => aq.QuestionId == questionId && aq.AssessmentId == assessmentId).FirstOrDefaultAsync();
+        //}
 
         public  Task<AssessmentQuestion> GetItemAsync(int id)
         {
@@ -52,9 +57,8 @@ namespace Mobi_App_Project.DB
             }
         }
 
-        public Task<int> DeleteItemAsync(AssesmentQuestionDB item)
-        {
-            
+        public Task<int> DeleteItemAsync(AssessmentQuestion item)
+        {          
             return database.DeleteAsync(item);
         }
     }

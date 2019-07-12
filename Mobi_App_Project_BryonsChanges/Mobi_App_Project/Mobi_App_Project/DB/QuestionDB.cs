@@ -20,6 +20,10 @@ namespace Mobi_App_Project.DB
             //database.CreateTableAsync<AssessmentQuestion>();
             //loadData();
         }
+        public Task<Question> GetQuestionByDisplayText(string displayText)
+        {
+            return database.Table<Question>().Where(q => q.DisplayText == displayText).FirstOrDefaultAsync();
+        }
 
         public Task<List<Question>> GetItemsAsync()
         {

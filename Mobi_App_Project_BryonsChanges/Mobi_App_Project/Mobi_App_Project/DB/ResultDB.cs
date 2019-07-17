@@ -14,7 +14,7 @@ namespace Mobi_App_Project.DB
         public ResultDB(SQLiteAsyncConnection db)
         {
             database = db;
-            database.CreateTableAsync<Group>();
+            database.CreateTableAsync<Result>();
             //loadData();
         }
 
@@ -28,6 +28,10 @@ namespace Mobi_App_Project.DB
             return database.Table<Result>().ToListAsync();
         }
 
+        public Task<List<Result>> GetResultsByAssessmentSession(int assessmentSessionId)
+        {
+            return database.Table<Result>().Where(r => r.AssessmentSessionId == assessmentSessionId).ToListAsync();
+        }
         
 
         public Task<Result> GetItemAsync(int id)

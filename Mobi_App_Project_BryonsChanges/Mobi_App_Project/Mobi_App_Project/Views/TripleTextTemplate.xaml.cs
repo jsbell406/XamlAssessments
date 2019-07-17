@@ -7,22 +7,45 @@ using Xamarin.Forms.Xaml;
 namespace Mobi_App_Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FiveWayMCTemplate : ContentPage
-    {
-        FiveWayMCTemplateViewModel viewModel;
+	public partial class TripleTextTemplate : ContentPage
+	{
+        TripleTextTemplateViewModel viewModel;
 
-        public FiveWayMCTemplate()
-        {
-            InitializeComponent();
-        }
-        public FiveWayMCTemplate(FiveWayMCTemplateViewModel vm)
+		public TripleTextTemplate ()
+		{
+			InitializeComponent ();
+		}
+
+        public TripleTextTemplate(TripleTextTemplateViewModel vm)
         {
             InitializeComponent();
             BindingContext = viewModel = vm;
         }
 
-        private async void HandleResult(string result)
+        void First_OnEditorCompleted(object sender, EventArgs e)
         {
+            viewModel.FirstAnswer = ((Editor)sender).Text;
+        }
+
+        void Second_OnEditorCompleted(object sender, EventArgs e)
+        {
+            viewModel.SecondAnswer = ((Editor)sender).Text;    
+        }
+
+        void Third_OnEditorCompleted(object sender, EventArgs e)
+        {
+            viewModel.ThirdAnswer = ((Editor)sender).Text;      
+        }
+
+        void Done_Clicked(object sender, EventArgs e)
+        {
+            HandleResult();
+        }
+
+        private async void HandleResult()
+        {
+            string result = viewModel.BuildResultString();
+
             viewModel.Result.AssesmentQuestionId = viewModel.Question.QuestionId;
             viewModel.Result.TextResults = result;
             viewModel.Result.QuestionId = viewModel.Question.QuestionId;
@@ -30,31 +53,6 @@ namespace Mobi_App_Project.Views
             viewModel.Result.ResuldId = await App.ResultDB.SaveItemAsync(viewModel.Result);
 
             NavigateToNextQuestionViewAsync(viewModel.NextQuestion, viewModel.NextAssessmentQuestion);
-        }
-
-        void Submit_Opt1_Clicked(object sender, EventArgs e)
-        {
-             HandleResult(viewModel.Opt1);          
-        }
-
-        void Submit_Opt2_Clicked(object sender, EventArgs e)
-        {
-            HandleResult(viewModel.Opt2);
-        }
-
-        void Submit_Opt3_Clicked(object sender, EventArgs e)
-        {
-            HandleResult(viewModel.Opt3);
-        }
-
-        void Submit_Opt4_Clicked(object sender, EventArgs e)
-        {
-            HandleResult(viewModel.Opt4);
-        }
-
-        void Submit_Opt5_Clicked(object sender, EventArgs e)
-        {
-            HandleResult(viewModel.Opt5);           
         }
 
         public async void NavigateToNextQuestionViewAsync(Question question, AssessmentQuestion assessmentQuestion)

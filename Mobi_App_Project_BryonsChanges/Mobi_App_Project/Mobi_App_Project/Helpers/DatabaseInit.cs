@@ -14,6 +14,7 @@ namespace Mobi_App_Project.Helpers
             LoadData();
         }
 
+<<<<<<< HEAD
         private void LoadData()
         {
 
@@ -76,10 +77,92 @@ namespace Mobi_App_Project.Helpers
             Student s3Verify = App.StudentDB.GetStudentByName(s3.FirstName, s3.MiddleName, s3.LastName).Result;
 
             if (s3Verify == null)
+=======
+        public List<Question> GetAssessmentQuetions()
+        {
+            List<Question> questions = new List<Question>();
+            List<AssessmentQuestion> assessmentQuestions = new List<AssessmentQuestion>();
+
+            int assessmentId = App.Assessment.AssessmentId;
+
+            assessmentQuestions = App.AssesmentQuestionDB.GetAssessmentQuestionsByAssessmentId(assessmentId).Result;
+
+            foreach(AssessmentQuestion assessmentQuestion in assessmentQuestions)
+            {
+
+            }
+
+            return questions;
+        }
+
+        private void LoadData()
+        {
+           
+            //--------------------------------------------------------------------------------------------------------------
+          
+            int assessId = 0;
+
+            Assessment assessment = App.AssesmentDB.GetAssessmentByAssessNameAsync(EnumHatersGonnaVerify.AssessName_FeelingsCheckIn).Result;
+
+            if (assessment == null)
+>>>>>>> dev
+            {
+                App.StudentDB.SaveItemAsync(s3);
+            }
+            else
+            {
+                assessId = assessment.AssessmentId;
+            }
+
+
+            //--------------------------------------------------------------------------------------------------------------
+
+          
+            Student s1 = new Student();
+            s1.FirstName = "James";
+            s1.MiddleName = "Spencer";
+            s1.LastName = "Bell";
+            s1.Grade = "K";
+            s1.Age = 5;
+
+            Student s1Verify = App.StudentDB.GetStudentByName(s1.FirstName, s1.MiddleName, s1.LastName).Result;
+
+            if(s1Verify == null)
+            {
+                App.StudentDB.SaveItemAsync(s1);
+            }
+            
+            Student s2 = new Student();
+            s2.FirstName = "Garret";
+            s2.MiddleName = "Danger";
+            s2.LastName = "Allen";
+            s2.Grade = "1";
+            s2.Age = 6;
+
+            Student s2Verify = App.StudentDB.GetStudentByName(s2.FirstName, s2.MiddleName, s2.LastName).Result;
+
+            if (s2Verify == null)
+            {
+                App.StudentDB.SaveItemAsync(s2);
+            }
+
+            Student s3 = new Student();
+            s3.FirstName = "Bryon";
+            s3.MiddleName = "Byron";
+            s3.LastName = "Steinwand";
+            s3.Grade = "2";
+            s3.Age = 7;
+
+            Student s3Verify = App.StudentDB.GetStudentByName(s3.FirstName, s3.MiddleName, s3.LastName).Result;
+
+<<<<<<< HEAD
+=======
+            if (s3Verify == null)
             {
                 App.StudentDB.SaveItemAsync(s3);
             }
 
+>>>>>>> dev
             //--------------------------------------------------------------------------------------------------------------
 
             List<AssessmentQuestion> assessmentQuestions = App.AssesmentQuestionDB.GetItemsAsync().Result;
@@ -104,7 +187,11 @@ namespace Mobi_App_Project.Helpers
 
             int success = 0;
 
+<<<<<<< HEAD
             Question q1 = new Question();
+=======
+            Question q1 = new Question();           
+>>>>>>> dev
             q1.DisplayText = EnumHatersGonnaVerify.DisplayText_HowDoYouFeelRightNow;
             q1.Qtype = EnumHatersGonnaVerify.QType_5WayMultipleChoice;
             q1.Option1 = EnumHatersGonnaVerify.OptionText_HappySadExcitedMadScared;
@@ -115,16 +202,26 @@ namespace Mobi_App_Project.Helpers
             aq1.QuestionId = q1.QuestionId;
             aq1.OrderNum = 1;
             App.AssesmentQuestionDB.SaveItemAsync(aq1);
+<<<<<<< HEAD
 
 
             //--------------------------------------------------------------------------------------------------------------
 
 
             Question q2 = new Question();
+=======
+            
+           
+//--------------------------------------------------------------------------------------------------------------
+
+
+            Question q2 = new Question();          
+>>>>>>> dev
             q2.DisplayText = EnumHatersGonnaVerify.DisplayText_WhereDoYouLive;
             q2.Qtype = EnumHatersGonnaVerify.QType_SingleTextResponse;
             success = App.QuestionDB.SaveItemAsync(q2).Result;
 
+<<<<<<< HEAD
             AssessmentQuestion aq2 = new AssessmentQuestion();
             aq2.AssessmentId = assessId;
             aq2.QuestionId = q2.QuestionId;
@@ -132,6 +229,15 @@ namespace Mobi_App_Project.Helpers
             App.AssesmentQuestionDB.SaveItemAsync(aq2);
 
             //--------------------------------------------------------------------------------------------------------------
+=======
+            AssessmentQuestion aq2 = new AssessmentQuestion();           
+            aq2.AssessmentId = assessId;
+            aq2.QuestionId = q2.QuestionId; 
+            aq2.OrderNum = 2;
+            App.AssesmentQuestionDB.SaveItemAsync(aq2);
+
+//--------------------------------------------------------------------------------------------------------------
+>>>>>>> dev
 
             Question q3 = new Question();
             q3.DisplayText = EnumHatersGonnaVerify.DisplayText_WhoDoYouLiveWith;
@@ -140,11 +246,19 @@ namespace Mobi_App_Project.Helpers
 
             AssessmentQuestion aq3 = new AssessmentQuestion();
             aq3.AssessmentId = assessId;
+<<<<<<< HEAD
             aq3.QuestionId = q3.QuestionId;
             aq3.OrderNum = 3;
             App.AssesmentQuestionDB.SaveItemAsync(aq3);
 
             //--------------------------------------------------------------------------------------------------------------          
+=======
+            aq3.QuestionId = q3.QuestionId; 
+            aq3.OrderNum = 3;
+            App.AssesmentQuestionDB.SaveItemAsync(aq3);
+
+//--------------------------------------------------------------------------------------------------------------          
+>>>>>>> dev
 
             Question q4 = new Question();
             q4.DisplayText = EnumHatersGonnaVerify.DisplayText_DoYouHaveFriends;
@@ -158,7 +272,11 @@ namespace Mobi_App_Project.Helpers
             aq4.OrderNum = 4;
             App.AssesmentQuestionDB.SaveItemAsync(aq4);
 
+<<<<<<< HEAD
             //--------------------------------------------------------------------------------------------------------------
+=======
+//--------------------------------------------------------------------------------------------------------------
+>>>>>>> dev
 
             Question q5 = new Question();
             q5.DisplayText = EnumHatersGonnaVerify.DisplayText_WhoAreThePeopleThatLoveYouAndMakeYouFeelSafe;
@@ -167,11 +285,19 @@ namespace Mobi_App_Project.Helpers
 
             AssessmentQuestion aq5 = new AssessmentQuestion();
             aq5.AssessmentId = assessId;
+<<<<<<< HEAD
             aq5.QuestionId = q5.QuestionId;
             aq5.OrderNum = 5;
             App.AssesmentQuestionDB.SaveItemAsync(aq5);
 
             //--------------------------------------------------------------------------------------------------------------
+=======
+            aq5.QuestionId = q5.QuestionId; 
+            aq5.OrderNum = 5;
+            App.AssesmentQuestionDB.SaveItemAsync(aq5);
+            
+//--------------------------------------------------------------------------------------------------------------
+>>>>>>> dev
 
             Question q6 = new Question();
             q6.DisplayText = EnumHatersGonnaVerify.DisplayText_DoYouFeelSaveWhenYouAreAtHome;
@@ -181,11 +307,19 @@ namespace Mobi_App_Project.Helpers
 
             AssessmentQuestion aq6 = new AssessmentQuestion();
             aq6.AssessmentId = assessId;
+<<<<<<< HEAD
             aq6.QuestionId = q6.QuestionId;
             aq6.OrderNum = 6;
             App.AssesmentQuestionDB.SaveItemAsync(aq6);
 
             //--------------------------------------------------------------------------------------------------------------
+=======
+            aq6.QuestionId = q6.QuestionId; 
+            aq6.OrderNum = 6;
+            App.AssesmentQuestionDB.SaveItemAsync(aq6);
+
+//--------------------------------------------------------------------------------------------------------------
+>>>>>>> dev
 
             Question q7 = new Question();
             q7.DisplayText = EnumHatersGonnaVerify.DisplayText_DoYouHaveEnoughFoodAtHome;
@@ -199,7 +333,11 @@ namespace Mobi_App_Project.Helpers
             aq7.OrderNum = 7;
             App.AssesmentQuestionDB.SaveItemAsync(aq7);
 
+<<<<<<< HEAD
             //--------------------------------------------------------------------------------------------------------------
+=======
+//--------------------------------------------------------------------------------------------------------------
+>>>>>>> dev
 
             Question q8 = new Question();
             q8.DisplayText = EnumHatersGonnaVerify.DisplayText_WhatAreYourThreeBigWishes;
@@ -212,7 +350,11 @@ namespace Mobi_App_Project.Helpers
             aq8.OrderNum = 8;
             App.AssesmentQuestionDB.SaveItemAsync(aq8);
 
+<<<<<<< HEAD
             //--------------------------------------------------------------------------------------------------------------
+=======
+//--------------------------------------------------------------------------------------------------------------
+>>>>>>> dev
 
             Question q9 = new Question();
             q9.DisplayText = EnumHatersGonnaVerify.DisplayText_HowDoYouGetReadyForBed;
@@ -224,6 +366,10 @@ namespace Mobi_App_Project.Helpers
             aq9.QuestionId = q9.QuestionId;
             aq9.OrderNum = 9;
             App.AssesmentQuestionDB.SaveItemAsync(aq9);
+<<<<<<< HEAD
         }
+=======
+        }       
+>>>>>>> dev
     }
 }

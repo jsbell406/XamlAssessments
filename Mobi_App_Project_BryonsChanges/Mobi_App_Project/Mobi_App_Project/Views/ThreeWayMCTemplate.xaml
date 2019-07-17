@@ -1,14 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mobi_App_Project.Views.FiveWayMCTemplate">
+             x:Class="Mobi_App_Project.Views.ThreeWayMCTemplate">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="{Binding Question.DisplayText}"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                BackgroundColor="Green"/>
-
+                HorizontalOptions="CenterAndExpand" />
             <Button Text="{Binding Opt1}"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"    
@@ -21,14 +19,6 @@
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
                 Clicked="Submit_Opt3_Clicked"/>
-            <Button Text="{Binding Opt4}"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="Center"
-                Clicked="Submit_Opt4_Clicked"/>
-            <Button Text="{Binding Opt5}"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="Center"
-                Clicked="Submit_Opt5_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -7,18 +7,29 @@ using Xamarin.Forms.Xaml;
 namespace Mobi_App_Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FiveWayMCTemplate : ContentPage
-    {
-        FiveWayMCTemplateViewModel viewModel;
+	public partial class TwoWayMCTemplate : ContentPage
+	{
+        TwoWayMCTemplateViewModel viewModel;
 
-        public FiveWayMCTemplate()
-        {
-            InitializeComponent();
-        }
-        public FiveWayMCTemplate(FiveWayMCTemplateViewModel vm)
+		public TwoWayMCTemplate ()
+		{
+			InitializeComponent ();
+		}
+
+        public TwoWayMCTemplate(TwoWayMCTemplateViewModel vm)
         {
             InitializeComponent();
             BindingContext = viewModel = vm;
+        }
+
+        void Submit_Opt1_Clicked(object sender, EventArgs e)
+        {
+            HandleResult(viewModel.Opt1);
+        }
+
+        void Submit_Opt2_Clicked(object sender, EventArgs e)
+        {
+            HandleResult(viewModel.Opt2);
         }
 
         private async void HandleResult(string result)
@@ -30,31 +41,6 @@ namespace Mobi_App_Project.Views
             viewModel.Result.ResuldId = await App.ResultDB.SaveItemAsync(viewModel.Result);
 
             NavigateToNextQuestionViewAsync(viewModel.NextQuestion, viewModel.NextAssessmentQuestion);
-        }
-
-        void Submit_Opt1_Clicked(object sender, EventArgs e)
-        {
-             HandleResult(viewModel.Opt1);          
-        }
-
-        void Submit_Opt2_Clicked(object sender, EventArgs e)
-        {
-            HandleResult(viewModel.Opt2);
-        }
-
-        void Submit_Opt3_Clicked(object sender, EventArgs e)
-        {
-            HandleResult(viewModel.Opt3);
-        }
-
-        void Submit_Opt4_Clicked(object sender, EventArgs e)
-        {
-            HandleResult(viewModel.Opt4);
-        }
-
-        void Submit_Opt5_Clicked(object sender, EventArgs e)
-        {
-            HandleResult(viewModel.Opt5);           
         }
 
         public async void NavigateToNextQuestionViewAsync(Question question, AssessmentQuestion assessmentQuestion)

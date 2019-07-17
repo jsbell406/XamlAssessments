@@ -13,8 +13,6 @@ namespace Mobi_App_Project.DB
     {
         static SQLiteAsyncConnection database;
 
-        
-
         public GroupDB(SQLiteAsyncConnection db)
         {
             database = db;

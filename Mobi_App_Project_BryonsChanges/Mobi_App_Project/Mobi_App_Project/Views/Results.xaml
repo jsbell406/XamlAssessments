@@ -16,8 +16,8 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10">
-                                <Label Text="{Binding Result}" 
-                                LineBreakMode="NoWrap" 
+                                <Label Text="{Binding TextResults}" 
+                                LineBreakMode="WordWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
                                

@@ -27,7 +27,7 @@ namespace Mobi_App_Project.Views
 
         private async void SelectedResult(object sender, EventArgs e)
         {
-            
+            //Possible addition to view result answer in pop up box
             
         }
 
@@ -46,6 +46,13 @@ namespace Mobi_App_Project.Views
                 await Navigation.PushModalAsync(new NavigationPage(new AdminHome()));
             }
             //await Navigation.PushModalAsync(new NavigationPage(new AssessmentSelection()));
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            viewModel.LoadResultsCommand.Execute(true);
         }
 
         internal Task GetItemsAsync()

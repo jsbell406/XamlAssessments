@@ -45,7 +45,7 @@ namespace Mobi_App_Project.ViewModels
             try
             {
                 ResultsList.Clear();
-                var items = await App.ResultDB.GetItemsAsync();
+                var items = await App.ResultDB.GetResultsByAssessmentSession(App.AssessmentSession.SessionId);
                 foreach (var item in items)
                 {
                     ResultsList.Add(item);

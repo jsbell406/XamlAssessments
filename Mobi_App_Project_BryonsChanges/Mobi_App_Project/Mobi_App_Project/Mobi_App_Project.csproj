@@ -10,9 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="ViewModels\RecordViewModel.cs" />
     <Compile Remove="ViewModels\TodoItemsViewModel.cs" />
-    <Compile Remove="Views\Record.xaml.cs" />
     <Compile Remove="Views\TodoItemPage.xaml.cs" />
     <Compile Remove="Views\TodoItemPageCS.cs" />
     <Compile Remove="Views\TodoListPage.xaml.cs" />
@@ -20,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="Views\Record.xaml" />
     <EmbeddedResource Remove="Views\TodoItemPage.xaml" />
     <EmbeddedResource Remove="Views\TodoListPage.xaml" />
   </ItemGroup>
@@ -85,11 +82,7 @@
     <EmbeddedResource Update="Views\ThreeWayMCTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Update="Views\Results.xaml">
-=======
     <EmbeddedResource Update="Views\TripleTextTemplate.xaml">
->>>>>>> dev
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\TwoWayMCTemplate.xaml">

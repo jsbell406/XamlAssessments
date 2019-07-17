@@ -3,7 +3,7 @@ using Mobi_App_Project.Models;
 
 namespace Mobi_App_Project.ViewModels
 {
-    public class SingleTextTemplateViewModel : BaseViewModel
+    public class ThreeWayMCTemplateViewModel : BaseViewModel
     {
         public Question Question { get; set; }
         public Question NextQuestion { get; set; }
@@ -12,16 +12,30 @@ namespace Mobi_App_Project.ViewModels
         public AssessmentQuestion NextAssessmentQuestion { get; set; }
         public TemplateNavigation TemplateNavigation { get; set; }
 
-        public SingleTextTemplateViewModel(Question question, AssessmentQuestion assessmentQuestion)
+        public string Opt1 { get; set; }
+        public string Opt2 { get; set; }
+        public string Opt3 { get; set; }
+
+        public ThreeWayMCTemplateViewModel(Question question, AssessmentQuestion assessmentQuestion)
         {
             Question = question;
             AssessmentQuestion = assessmentQuestion;
 
+            OptionsParser();
+
             Result = new Result();
-            TemplateNavigation = new TemplateNavigation();
-          
+
             NextAssessmentQuestion = App.AssesmentQuestionDB.GetNextAssessmentQuestion(App.Assessment.AssessmentId, AssessmentQuestion.OrderNum).Result;
             NextQuestion = App.QuestionDB.GetItemAsync(NextAssessmentQuestion.QuestionId).Result;
+        }
+
+        private void OptionsParser()
+        {
+            char[] delim = ",".ToCharArray();
+            string[] options = Question.Option1.Split(delim);
+            Opt1 = options[0];
+            Opt2 = options[1];
+            Opt3 = options[2];     
         }
     }
 }

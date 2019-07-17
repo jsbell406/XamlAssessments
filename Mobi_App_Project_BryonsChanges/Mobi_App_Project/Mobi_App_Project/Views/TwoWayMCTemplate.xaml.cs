@@ -7,30 +7,39 @@ using Xamarin.Forms.Xaml;
 namespace Mobi_App_Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SingleTextTemplate : ContentPage
+	public partial class TwoWayMCTemplate : ContentPage
 	{
-        SingleTextTemplateViewModel viewModel;
-        
-		public SingleTextTemplate ()
+        TwoWayMCTemplateViewModel viewModel;
+
+		public TwoWayMCTemplate ()
 		{
 			InitializeComponent ();
 		}
 
-        public SingleTextTemplate(SingleTextTemplateViewModel vm)
+        public TwoWayMCTemplate(TwoWayMCTemplateViewModel vm)
         {
             InitializeComponent();
             BindingContext = viewModel = vm;
         }
 
-        void OnEditorTextChanged(object sender, TextChangedEventArgs e)
+        void Submit_Opt1_Clicked(object sender, EventArgs e)
         {
-            //string oldText = e.OldTextValue;
-            //string newText = e.NewTextValue;
+            HandleResult(viewModel.Opt1);
         }
 
-        void OnEditorCompleted(object sender, EventArgs e)
+        void Submit_Opt2_Clicked(object sender, EventArgs e)
         {
-            viewModel.Result.TextResults = ((Editor)sender).Text;
+            HandleResult(viewModel.Opt2);
+        }
+
+        private async void HandleResult(string result)
+        {
+            viewModel.Result.AssesmentQuestionId = viewModel.Question.QuestionId;
+            viewModel.Result.TextResults = result;
+            viewModel.Result.QuestionId = viewModel.Question.QuestionId;
+            viewModel.Result.AssesmentQuestionId = viewModel.AssessmentQuestion.AssessmentQuestionId;
+            viewModel.Result.ResuldId = await App.ResultDB.SaveItemAsync(viewModel.Result);
+
             NavigateToNextQuestionViewAsync(viewModel.NextQuestion, viewModel.NextAssessmentQuestion);
         }
 

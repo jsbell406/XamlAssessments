@@ -10,9 +10,10 @@ using Xamarin.Forms.Internals;
 
 namespace Mobi_App_Project.Helpers
 {
-    public class TemplateNavigation
+    public class TemplateNavigation 
     {
         public NavigationProxy Navigation { get; set; }
+       
 
         public TemplateNavigation()
         {
@@ -32,6 +33,7 @@ namespace Mobi_App_Project.Helpers
             switch(question.Qtype)
             {
                 case "5WayMC":
+                    
                     await Navigation.PushAsync(new FiveWayMCTemplate(new FiveWayMCTemplateViewModel(question, assessmentQuestion)));
                     break;
                 case "3WayMC":

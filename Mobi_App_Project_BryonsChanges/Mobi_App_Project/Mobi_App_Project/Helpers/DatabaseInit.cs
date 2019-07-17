@@ -14,6 +14,23 @@ namespace Mobi_App_Project.Helpers
             LoadData();
         }
 
+        public List<Question> GetAssessmentQuetions()
+        {
+            List<Question> questions = new List<Question>();
+            List<AssessmentQuestion> assessmentQuestions = new List<AssessmentQuestion>();
+
+            int assessmentId = App.Assessment.AssessmentId;
+
+            assessmentQuestions = App.AssesmentQuestionDB.GetAssessmentQuestionsByAssessmentId(assessmentId).Result;
+
+            foreach(AssessmentQuestion assessmentQuestion in assessmentQuestions)
+            {
+
+            }
+
+            return questions;
+        }
+
         private void LoadData()
         {
            

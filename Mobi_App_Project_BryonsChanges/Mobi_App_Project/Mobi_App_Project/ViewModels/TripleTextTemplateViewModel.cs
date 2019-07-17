@@ -3,7 +3,7 @@ using Mobi_App_Project.Models;
 
 namespace Mobi_App_Project.ViewModels
 {
-    public class SingleTextTemplateViewModel : BaseViewModel
+    public class TripleTextTemplateViewModel : BaseViewModel
     {
         public Question Question { get; set; }
         public Question NextQuestion { get; set; }
@@ -12,16 +12,29 @@ namespace Mobi_App_Project.ViewModels
         public AssessmentQuestion NextAssessmentQuestion { get; set; }
         public TemplateNavigation TemplateNavigation { get; set; }
 
-        public SingleTextTemplateViewModel(Question question, AssessmentQuestion assessmentQuestion)
+        public string FirstAnswer { get; set; }
+        public string SecondAnswer { get; set; }
+        public string ThirdAnswer { get; set; }
+
+        public string ResultString { get; private set; }
+
+        public TripleTextTemplateViewModel(Question question, AssessmentQuestion assessmentQuestion)
         {
             Question = question;
             AssessmentQuestion = assessmentQuestion;
 
             Result = new Result();
             TemplateNavigation = new TemplateNavigation();
-          
+
             NextAssessmentQuestion = App.AssesmentQuestionDB.GetNextAssessmentQuestion(App.Assessment.AssessmentId, AssessmentQuestion.OrderNum).Result;
             NextQuestion = App.QuestionDB.GetItemAsync(NextAssessmentQuestion.QuestionId).Result;
+        }
+
+        public string BuildResultString()
+        {
+            string Delim = " :FULLSTOP: ";
+
+            return ResultString = FirstAnswer + Delim + SecondAnswer + Delim + ThirdAnswer;
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using Mobi_App_Project.Helpers;
 using Mobi_App_Project.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Mobi_App_Project.ViewModels
 {
@@ -25,12 +22,12 @@ namespace Mobi_App_Project.ViewModels
         {
             Question = question;
             AssessmentQuestion = assessmentQuestion;
-            OptionsParser();
-            Result = new Result();
 
+            OptionsParser();
+
+            Result = new Result();
             TemplateNavigation = new TemplateNavigation();
 
-            // RISK: question object without id
             NextAssessmentQuestion = App.AssesmentQuestionDB.GetNextAssessmentQuestion(App.Assessment.AssessmentId,AssessmentQuestion.OrderNum).Result;
             NextQuestion = App.QuestionDB.GetItemAsync(NextAssessmentQuestion.QuestionId).Result;
         }

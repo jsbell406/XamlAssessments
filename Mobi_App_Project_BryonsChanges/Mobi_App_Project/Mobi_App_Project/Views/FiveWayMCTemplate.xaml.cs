@@ -1,12 +1,6 @@
-﻿using Mobi_App_Project.Helpers;
-using Mobi_App_Project.Models;
+﻿using Mobi_App_Project.Models;
 using Mobi_App_Project.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -33,11 +27,9 @@ namespace Mobi_App_Project.Views
             viewModel.Result.TextResults = result;
             viewModel.Result.QuestionId = viewModel.Question.QuestionId;
             viewModel.Result.AssesmentQuestionId = viewModel.AssessmentQuestion.AssessmentQuestionId;
-
             viewModel.Result.ResuldId = await App.ResultDB.SaveItemAsync(viewModel.Result);
 
-            // some sort of nav to next template passing next question
-            viewModel.TemplateNavigation.NavigateToNextQuestionViewAsync(viewModel.NextQuestion,viewModel.NextAssessmentQuestion);
+            NavigateToNextQuestionViewAsync(viewModel.NextQuestion, viewModel.NextAssessmentQuestion);
         }
 
         void Submit_Opt1_Clicked(object sender, EventArgs e)
@@ -62,7 +54,32 @@ namespace Mobi_App_Project.Views
 
         void Submit_Opt5_Clicked(object sender, EventArgs e)
         {
-            HandleResult(viewModel.Opt5);
+            HandleResult(viewModel.Opt5);           
+        }
+
+        public async void NavigateToNextQuestionViewAsync(Question question, AssessmentQuestion assessmentQuestion)
+        {
+            switch (question.Qtype)
+            {
+                case "5WayMC":
+                    await Navigation.PushAsync(new FiveWayMCTemplate(new FiveWayMCTemplateViewModel(question, assessmentQuestion)));
+                    break;
+                case "3WayMC":
+                    await Navigation.PushAsync(new ThreeWayMCTemplate(new ThreeWayMCTemplateViewModel(question, assessmentQuestion)));
+                    break;
+                case "2WayMC":
+                    await Navigation.PushAsync(new TwoWayMCTemplate(new TwoWayMCTemplateViewModel(question, assessmentQuestion)));
+                    break;
+                case "SingleText":
+                    await Navigation.PushAsync(new SingleTextTemplate(new SingleTextTemplateViewModel(question, assessmentQuestion)));
+                    break;
+                case "TripleText":
+                    await Navigation.PushAsync(new TripleTextTemplate(new TripleTextTemplateViewModel(question, assessmentQuestion)));
+                    break;
+                default:
+                    await Navigation.PushModalAsync(new AssessmentHome());
+                    break;
+            }
         }
     }
 }

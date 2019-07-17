@@ -18,6 +18,11 @@ namespace Mobi_App_Project.DB
             //loadData();
         }
 
+        public Task<List<AssessmentQuestion>> GetAssessmentQuestionsByAssessmentId(int assessmentId)
+        {
+            return database.Table<AssessmentQuestion>().Where(aq => aq.AssessmentId == assessmentId).ToListAsync();
+        }
+
         public Task<AssessmentQuestion> GetFirstAssessmentQuestion(int assessmentId)
         {
             return database.Table<AssessmentQuestion>().Where(aq => aq.AssessmentId == assessmentId && aq.OrderNum == 1).FirstOrDefaultAsync();

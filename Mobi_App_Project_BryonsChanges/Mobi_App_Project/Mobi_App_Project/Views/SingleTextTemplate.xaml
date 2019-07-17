@@ -7,12 +7,11 @@
             <Label Text="{Binding Question.DisplayText}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Entry Text="{Binding passWord}" FontSize="Large"/>
-
-            <!--<Button Text="Next"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="Center"
-                Clicked="Submit_Clicked" />-->
+            
+            <Editor Placeholder="Enter multi-line text here"
+        HeightRequest="200"
+        TextChanged="OnEditorTextChanged"
+        Completed="OnEditorCompleted" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

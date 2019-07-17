@@ -7,30 +7,51 @@ using Xamarin.Forms.Xaml;
 namespace Mobi_App_Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SingleTextTemplate : ContentPage
+	public partial class TripleTextTemplate : ContentPage
 	{
-        SingleTextTemplateViewModel viewModel;
-        
-		public SingleTextTemplate ()
+        TripleTextTemplateViewModel viewModel;
+
+		public TripleTextTemplate ()
 		{
 			InitializeComponent ();
 		}
 
-        public SingleTextTemplate(SingleTextTemplateViewModel vm)
+        public TripleTextTemplate(TripleTextTemplateViewModel vm)
         {
             InitializeComponent();
             BindingContext = viewModel = vm;
         }
 
-        void OnEditorTextChanged(object sender, TextChangedEventArgs e)
+        void First_OnEditorCompleted(object sender, EventArgs e)
         {
-            //string oldText = e.OldTextValue;
-            //string newText = e.NewTextValue;
+            viewModel.FirstAnswer = ((Editor)sender).Text;
         }
 
-        void OnEditorCompleted(object sender, EventArgs e)
+        void Second_OnEditorCompleted(object sender, EventArgs e)
         {
-            viewModel.Result.TextResults = ((Editor)sender).Text;
+            viewModel.SecondAnswer = ((Editor)sender).Text;    
+        }
+
+        void Third_OnEditorCompleted(object sender, EventArgs e)
+        {
+            viewModel.ThirdAnswer = ((Editor)sender).Text;      
+        }
+
+        void Done_Clicked(object sender, EventArgs e)
+        {
+            HandleResult();
+        }
+
+        private async void HandleResult()
+        {
+            string result = viewModel.BuildResultString();
+
+            viewModel.Result.AssesmentQuestionId = viewModel.Question.QuestionId;
+            viewModel.Result.TextResults = result;
+            viewModel.Result.QuestionId = viewModel.Question.QuestionId;
+            viewModel.Result.AssesmentQuestionId = viewModel.AssessmentQuestion.AssessmentQuestionId;
+            viewModel.Result.ResuldId = await App.ResultDB.SaveItemAsync(viewModel.Result);
+
             NavigateToNextQuestionViewAsync(viewModel.NextQuestion, viewModel.NextAssessmentQuestion);
         }
 

@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mobi_App_Project.Views.Question4">
+             x:Class="Mobi_App_Project.Views.TwoWayMCTemplate">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="DO YOU HAVE FRIENDS?"
+            <Label Text="{Binding Question.DisplayText}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Yes :)"
+            <Button Text="{Binding Opt1}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
-                Clicked="Submit_Clicked" />
-            <Button Text="No :("
+                Clicked="Submit_Opt1_Clicked" />
+            <Button Text="{Binding Opt2}"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"
-                Clicked="Submit_Clicked" />
+                Clicked="Submit_Opt2_Clicked" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

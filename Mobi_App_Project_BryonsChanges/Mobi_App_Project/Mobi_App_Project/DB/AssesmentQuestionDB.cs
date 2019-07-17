@@ -66,10 +66,5 @@ namespace Mobi_App_Project.DB
         {          
             return database.DeleteAsync(item);
         }
-
-        internal void DeleteItemAsync(AssessmentQuestion assessmentQuestion)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

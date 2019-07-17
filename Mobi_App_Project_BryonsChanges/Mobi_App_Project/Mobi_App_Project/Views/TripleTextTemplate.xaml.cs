@@ -50,7 +50,7 @@ namespace Mobi_App_Project.Views
             viewModel.Result.TextResults = result;
             viewModel.Result.QuestionId = viewModel.Question.QuestionId;
             viewModel.Result.AssesmentQuestionId = viewModel.AssessmentQuestion.AssessmentQuestionId;
-            viewModel.Result.ResuldId = await App.ResultDB.SaveItemAsync(viewModel.Result);
+            viewModel.Result.ResultId = await App.ResultDB.SaveItemAsync(viewModel.Result);
 
             NavigateToNextQuestionViewAsync(viewModel.NextQuestion, viewModel.NextAssessmentQuestion);
         }

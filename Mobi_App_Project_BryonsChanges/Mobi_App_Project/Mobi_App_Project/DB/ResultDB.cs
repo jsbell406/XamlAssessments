@@ -55,11 +55,6 @@ namespace Mobi_App_Project.DB
         {
 
             return database.DeleteAsync(item);
-        }
-
-        public Task<List<Result>> GetResultsByAssessmentSession(int assessmentSessionId)
-        {
-            return database.Table<Result>().Where(r => r.AssessmentSessionId == assessmentSessionId).ToListAsync();
-        }
+        }      
     }
 }

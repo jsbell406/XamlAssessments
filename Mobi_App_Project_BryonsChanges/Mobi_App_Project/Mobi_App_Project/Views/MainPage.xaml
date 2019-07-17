@@ -2,7 +2,11 @@
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:views="clr-namespace:Mobi_App_Project.Views"
-            x:Class="Mobi_App_Project.Views.MainPage">
+            x:Class="Mobi_App_Project.Views.MainPage"
+            xmlns:syncfusion="clr-namspace:Sysfusion.SfPdfViewer.XForms;assembly=Syncfusion.SfPdfViewer.XForms">
+   
+    <!--<syncfusion:SfPdfViewer x:Name="pdfViewerControl" InputFileStream ="{Binding PdfDocumentStream}"/>-->
+    
 
     <MasterDetailPage.Master>
         <views:MenuPage />

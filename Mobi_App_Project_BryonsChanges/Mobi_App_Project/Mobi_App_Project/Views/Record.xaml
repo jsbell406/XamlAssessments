@@ -1,14 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mobi_App_Project.Views.Record">
-    <ContentPage.Content>
-        
+             x:Class="Mobi_App_Project.Views.Record"
+             Title="{Binding Title}"
+             x:Name="BrowseStudentsPage">
+             
+    <!--Binding Document Stream needs to be placed in different place-->
+    <!--<syncfusion:SfPdfViewer x:Name="pdfViewerControl" InputFileStream ="{Binding PdfDocumentStream}"/>-->
+    <StackLayout Orientation="Vertical">
+        <Label Text="Please Enter Student Name. "/>
 
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+        <SearchBar x:Name="SearchBar" Placeholder="Search"
+           Text="{Binding SearchedText, Mode=TwoWay}"
+           SearchCommand="{Binding SearchCommand}"/>
+
+
+        <ListView x:Name="StudentListView"
+                ItemsSource="{Binding FilteredList}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"               
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="SelectedStudent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Student}" 
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label Text="Please Enter Session Date. "/>
+
+        <SearchBar x:Name="SearchBar" Placeholder="Search"
+           Text="{Binding SearchedText, Mode=TwoWay}"
+           SearchCommand="{Binding SearchCommand}"/>
+
+        <ListView x:Name="DateListView"
+                ItemsSource="{Binding DateList}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"               
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="SelectedDate">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding SessionDate}" 
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
+
+
+    </StackLayout>
+
 </ContentPage>

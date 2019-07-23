@@ -18,16 +18,16 @@ namespace Mobi_App_Project.ViewModels
 
         public string ResultString { get; private set; }
 
-        public TripleTextTemplateViewModel(Question question, AssessmentQuestion assessmentQuestion)
+        public TripleTextTemplateViewModel(Question question, AssessmentQuestion assessmentQuestion) : base(question, assessmentQuestion)
         {
             Question = question;
             AssessmentQuestion = assessmentQuestion;
 
             Result = new Result();
-            TemplateNavigation = new TemplateNavigation();
-
-            NextAssessmentQuestion = App.AssesmentQuestionDB.GetNextAssessmentQuestion(App.Assessment.AssessmentId, AssessmentQuestion.OrderNum).Result;
-            NextQuestion = App.QuestionDB.GetItemAsync(NextAssessmentQuestion.QuestionId).Result;
+            Result.QuestionId = question.QuestionId;
+            Result.AssesmentQuestionId = assessmentQuestion.AssessmentQuestionId;
+            Result.AssessmentSessionId = App.AssessmentSession.SessionId;
+            TemplateNavigation = new TemplateNavigation();                  
         }
 
         public string BuildResultString()

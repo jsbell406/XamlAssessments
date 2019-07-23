@@ -1,11 +1,8 @@
 ﻿using Mobi_App_Project.Models;
-using Mobi_App_Project.DB;
-using Mobi_App_Project.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Windows.Input;
@@ -41,9 +38,6 @@ namespace Mobi_App_Project.ViewModels
             set { searchedText = value; OnPropertyChanged(); }
         }
 
-      
-
-
         public IndividualStudentSelectionViewModel()
         {
             Title = "Browse Students";
@@ -52,8 +46,7 @@ namespace Mobi_App_Project.ViewModels
 
             FilteredList = new ObservableCollection<Student>();
             Students = App.StudentDB.GetItemsAsync().Result;
-            SearchCommand = new Command(async () => await SearchCommandExecute());
-        
+            SearchCommand = new Command(async () => await SearchCommandExecute());        
         }
 
         async Task SearchCommandExecute()
@@ -63,8 +56,8 @@ namespace Mobi_App_Project.ViewModels
 
             IsBusy = true;
 
-            try
-            {
+            try { 
+          
                 FilteredList.Clear();
                 var tempRecords = students.Where(s => s.FirstName.Contains(SearchedText));
                 foreach (var item in tempRecords)
@@ -81,9 +74,7 @@ namespace Mobi_App_Project.ViewModels
                 IsBusy = false;
             }
         }
-            
-            
-            
+                      
         async Task ExecuteLoadStudentsCommand()
         {
             if (IsBusy)
@@ -94,10 +85,10 @@ namespace Mobi_App_Project.ViewModels
             try
             {
                 StudentList.Clear();
-                var items = await App.StudentDB.GetItemsAsync();
-                foreach (var item in items)
+                List<Student> students = await App.StudentDB.GetItemsAsync();
+                foreach (Student student in students)
                 {
-                    StudentList.Add(item);
+                    StudentList.Add(student);
                 }
             }
             catch (Exception ex)
@@ -109,7 +100,6 @@ namespace Mobi_App_Project.ViewModels
                 IsBusy = false;
             }
         }
-
     }
 }
    

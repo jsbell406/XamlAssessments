@@ -15,7 +15,7 @@ namespace Mobi_App_Project.ViewModels
         public string Opt1 { get; set; }
         public string Opt2 { get; set; }
        
-        public TwoWayMCTemplateViewModel(Question question, AssessmentQuestion assessmentQuestion)
+        public TwoWayMCTemplateViewModel(Question question, AssessmentQuestion assessmentQuestion) : base(question, assessmentQuestion)
         {
             Question = question;
             AssessmentQuestion = assessmentQuestion;
@@ -23,9 +23,9 @@ namespace Mobi_App_Project.ViewModels
             OptionsParser();
 
             Result = new Result();
-
-            NextAssessmentQuestion = App.AssesmentQuestionDB.GetNextAssessmentQuestion(App.Assessment.AssessmentId, AssessmentQuestion.OrderNum).Result;
-            NextQuestion = App.QuestionDB.GetItemAsync(NextAssessmentQuestion.QuestionId).Result;
+            Result.QuestionId = question.QuestionId;
+            Result.AssesmentQuestionId = assessmentQuestion.AssessmentQuestionId;
+            Result.AssessmentSessionId = App.AssessmentSession.SessionId;
         }
 
         private void OptionsParser()

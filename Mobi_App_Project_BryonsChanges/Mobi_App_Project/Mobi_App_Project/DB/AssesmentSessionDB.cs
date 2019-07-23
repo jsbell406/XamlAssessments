@@ -50,7 +50,7 @@ namespace Mobi_App_Project.DB
 
         public Task<int> SaveItemAsync(AssessmentSession item)
         {
-            if (item.StudentId != 0)
+            if (item.SessionId != 0)
             {
                 return database.UpdateAsync(item);
             }

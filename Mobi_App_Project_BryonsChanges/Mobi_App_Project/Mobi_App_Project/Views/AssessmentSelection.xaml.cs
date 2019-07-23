@@ -1,17 +1,13 @@
 ﻿using Mobi_App_Project.Models;
 using Mobi_App_Project.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Mobi_App_Project.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AssessmentSelection : ContentPage
 	{
         AssessmentSelectionViewModel viewModel;
@@ -30,7 +26,19 @@ namespace Mobi_App_Project.Views
 
             // TODO: verify assessment gets set in app
             App.Assessment = assessment;
-            await Navigation.PushAsync(new NavigationPage(new AssessmentHome()));
+
+            Task<List<AssessmentQuestion>> assessmentQuestionsInTask = App.AssesmentQuestionDB.GetAssessmentQuestionsByAssessmentId(App.Assessment.AssessmentId);
+            List<AssessmentQuestion> assessmentQuestions = assessmentQuestionsInTask.Result;
+            AssessmentQuestion[] assessmentQuestionsArray = new AssessmentQuestion[assessmentQuestions.Count];
+
+            foreach(AssessmentQuestion assessmentQuestion in assessmentQuestions)
+            {
+                assessmentQuestionsArray[assessmentQuestion.OrderNum - 1] = assessmentQuestion;
+            }
+
+            App.CurrentAssessmentQuestions.AddRange(assessmentQuestionsArray);
+
+            await Navigation.PushAsync(new AssessmentHome());
 
             AssessmentListView.SelectedItem = null;
         }

@@ -9,7 +9,6 @@ namespace Mobi_App_Project.Models
         public string Qtype { get; set; }
         public string DisplayText { get; set; }
         public string Option1 { get; set; }
-        public string Option2 { get; set; }
-       
+        public string Option2 { get; set; }      
     }
 }

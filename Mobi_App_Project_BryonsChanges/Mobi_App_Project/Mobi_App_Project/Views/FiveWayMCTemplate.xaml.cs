@@ -23,13 +23,19 @@ namespace Mobi_App_Project.Views
 
         private async void HandleResult(string result)
         {
-            viewModel.Result.AssesmentQuestionId = viewModel.Question.QuestionId;
             viewModel.Result.TextResults = result;
-            viewModel.Result.QuestionId = viewModel.Question.QuestionId;
-            viewModel.Result.AssesmentQuestionId = viewModel.AssessmentQuestion.AssessmentQuestionId;
-            viewModel.Result.ResultId = await App.ResultDB.SaveItemAsync(viewModel.Result);
+            await App.ResultDB.SaveItemAsync(viewModel.Result);
 
-            NavigateToNextQuestionViewAsync(viewModel.NextQuestion, viewModel.NextAssessmentQuestion);
+            if(!viewModel.IsLastQuestion)
+            {
+                viewModel.NextAssessmentQuestion = App.CurrentAssessmentQuestions[viewModel.AssessmentQuestion.OrderNum];
+                viewModel.NextQuestion = App.CurrentQuestions[viewModel.AssessmentQuestion.OrderNum];
+                NavigateToNextQuestionViewAsync(viewModel.NextQuestion, viewModel.NextAssessmentQuestion);
+            }
+            else
+            {
+                await Navigation.PushAsync(new Results());
+            }
         }
 
         void Submit_Opt1_Clicked(object sender, EventArgs e)
@@ -59,6 +65,7 @@ namespace Mobi_App_Project.Views
 
         public async void NavigateToNextQuestionViewAsync(Question question, AssessmentQuestion assessmentQuestion)
         {
+
             switch (question.Qtype)
             {
                 case "5WayMC":

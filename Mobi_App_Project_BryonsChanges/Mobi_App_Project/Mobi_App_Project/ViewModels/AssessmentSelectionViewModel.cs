@@ -13,11 +13,13 @@ namespace Mobi_App_Project.ViewModels
     {
         public ObservableCollection<Assessment> Assessments { get; set; }
         public Command LoadAssessmentsCommand { get; set; }
+        private List<Question> Questions { get; set; }
 
         public AssessmentSelectionViewModel()
         {
             Title = "Browse Assessments";
             Assessments = new ObservableCollection<Assessment>();
+            Questions = new List<Question>();
             LoadAssessmentsCommand = new Command(async () => await ExecuteLoadAssessmentsCommand());
         }
 

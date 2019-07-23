@@ -28,10 +28,20 @@ namespace Mobi_App_Project.Views
             //string newText = e.NewTextValue;
         }
 
-        void OnEditorCompleted(object sender, EventArgs e)
+        async void OnEditorCompleted(object sender, EventArgs e)
         {
             viewModel.Result.TextResults = ((Editor)sender).Text;
-            NavigateToNextQuestionViewAsync(viewModel.NextQuestion, viewModel.NextAssessmentQuestion);
+            await App.ResultDB.SaveItemAsync(viewModel.Result);
+            if (!viewModel.IsLastQuestion)
+            {
+                viewModel.NextAssessmentQuestion = App.CurrentAssessmentQuestions[viewModel.AssessmentQuestion.OrderNum];
+                viewModel.NextQuestion = App.CurrentQuestions[viewModel.AssessmentQuestion.OrderNum];
+                NavigateToNextQuestionViewAsync(viewModel.NextQuestion, viewModel.NextAssessmentQuestion);
+            }
+            else
+            {
+                await Navigation.PushAsync(new Results());
+            }
         }
 
         public async void NavigateToNextQuestionViewAsync(Question question, AssessmentQuestion assessmentQuestion)

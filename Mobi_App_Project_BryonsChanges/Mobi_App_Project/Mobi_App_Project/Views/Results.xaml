@@ -5,9 +5,10 @@
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="ResultsListView"
-                ItemsSource="{Binding ResultList}"
+                ItemsSource="{Binding ResultsList}"
                 VerticalOptions="FillAndExpand"
-                HasUnevenRows="true"               
+                HasUnevenRows="true"          
+                RefreshCommand="{Binding LoadResultsCommand}"
                 IsPullToRefreshEnabled="true"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 CachingStrategy="RecycleElement"

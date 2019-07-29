@@ -9,6 +9,8 @@ using Mobi_App_Project.Models;
 using Mobi_App_Project.Services;
 using System.Collections.Generic;
 using Mobi_App_Project.ViewModels;
+using Mobi_App_Project.Helpers;
+using System.Threading.Tasks;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Mobi_App_Project
@@ -28,18 +30,50 @@ namespace Mobi_App_Project
         private static ResultDB resultDB;
         private static StudentDB studentDB;
         private static StudentGroupDB studentGroupDB;
+
         public static AdminUser AdminUser { get; set; }
         public static Assessment Assessment { get; set; }
+        public static Student Student { get; set; }
+        public static AssessmentSession AssessmentSession { get; set; }
+        //public static Group Group { get; set; }
+        
+        public static List<AssessmentQuestion> CurrentAssessmentQuestions { get; set; }
+        public static List<Question> CurrentQuestions { get; set; }
+        public static int CurrentAssessmentSessionId { get; set; }
+        public static bool IsGroup { get; set; }
+        public static int CurrentQuestion { get; set; }
+
 
         public static List<AdminUser> AdminUsers;
-
+        
         public App()
         {
             InitializeComponent();
+           
 
+            AdminUser user = new AdminUser();
+            user.UserName = "a";
+            user.PasswordHash = "b";
+            user.UserName = "testUser";
+            user.DBName = "testUserDb";
+           
+            AdminUser = user;
             LoginViewModel lvm = new LoginViewModel();
-            MainPage = new NewStudentForm();
-            //MainPage = new NavigationPage(new AdminLogin(lvm));
+
+            DatabaseInit dbInit = new DatabaseInit();
+
+            Student = null;
+            Assessment = null;
+            AssessmentSession = null;
+            CurrentAssessmentSessionId = 0;
+            IsGroup = false;
+            CurrentQuestion = 0;
+
+            CurrentAssessmentQuestions = new List<AssessmentQuestion>();
+            CurrentQuestions = new List<Question>();
+            
+            MainPage = new NavigationPage(new AdminHome());
+            //MainPage = new SingleTextTemplate(new SingleTextTemplateViewModel(nextQuestion, nextAssessmentQuestion));
         }
         public static AssesmentDB AssesmentDB
         {
@@ -47,7 +81,7 @@ namespace Mobi_App_Project
             {
                 if (assesmentDB == null)
                 {
-                    assesmentDB = new AssesmentDB(App.UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
+                    assesmentDB = new AssesmentDB(UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
                 }
                 return assesmentDB;
             }
@@ -59,7 +93,7 @@ namespace Mobi_App_Project
             {
                 if (assesmentQuestionDB == null)
                 {
-                    assesmentQuestionDB = new AssesmentQuestionDB(App.UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
+                    assesmentQuestionDB = new AssesmentQuestionDB(UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
                 }
                 return assesmentQuestionDB;
             }
@@ -71,7 +105,7 @@ namespace Mobi_App_Project
             {
                 if (assesmentSessionDB == null)
                 {
-                    assesmentSessionDB = new AssesmentSessionDB(App.UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
+                    assesmentSessionDB = new AssesmentSessionDB(UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
                 }
                 return assesmentSessionDB;
             }
@@ -83,7 +117,7 @@ namespace Mobi_App_Project
             {
                 if (groupDB == null)
                 {
-                    groupDB = new GroupDB(App.UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
+                    groupDB = new GroupDB(UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
                 }
                 return groupDB;
             }
@@ -95,7 +129,7 @@ namespace Mobi_App_Project
             {
                 if (questionDB == null)
                 {
-                    questionDB = new QuestionDB(App.UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
+                    questionDB = new QuestionDB(UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
                 }
                 return questionDB;
             }
@@ -107,7 +141,7 @@ namespace Mobi_App_Project
             {
                 if (resultDB == null)
                 {
-                    resultDB = new ResultDB(App.UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
+                    resultDB = new ResultDB(UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
                 }
                 return resultDB;
             }
@@ -119,9 +153,9 @@ namespace Mobi_App_Project
             {
                 if (studentDB == null)
                 {
-                    studentDB = new StudentDB(App.UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
+                    studentDB = new StudentDB(UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
                 }
-                return StudentDB;
+                return studentDB;
             }
         }
 
@@ -131,7 +165,7 @@ namespace Mobi_App_Project
             {
                 if (studentGroupDB == null)
                 {
-                    studentGroupDB = new StudentGroupDB(App.UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
+                    studentGroupDB = new StudentGroupDB(UserDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
                 }
                 return studentGroupDB;
             }
@@ -145,7 +179,7 @@ namespace Mobi_App_Project
             {
                 if (adminUserDB == null)
                 {
-                    adminUserDB = new AdminUserDB(App.AppDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
+                    adminUserDB = new AdminUserDB(AppDatabase.GetConnection()); // (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TodoSQLite.db3"));
                 }
                 return adminUserDB;
             }

@@ -15,23 +15,26 @@ namespace Mobi_App_Project.Views
 		public AdminHome ()
 		{
 			InitializeComponent ();
+
+            Title = "Admin Home";
             BindingContext = this;
 		}
-        async void Group_Clicked(object sender, EventArgs e)
-        {
-            //check login MessagingCenter.Send(this, "AddItem", Item);
-            await Navigation.PushAsync(new StudentEntry());
-        }
+        //async void Group_Clicked(object sender, EventArgs e)
+        //{
+        //    //check login MessagingCenter.Send(this, "AddItem", Item);
+        //    App.IsGroup = true;
+        //    await Navigation.PushAsync(new StudentEntry());
+        //}
 
         async void Individual_Clicked(object sender, EventArgs e)
         {
-
-            await Navigation.PushAsync(new StudentEntry());
+            App.IsGroup = false;
+            await Navigation.PushAsync(new IndividualStudentSelection());
         }
 
-        async void Record_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new Record());
-        }     
+        //async void Record_Clicked(object sender, EventArgs e)
+        //{
+        //    await Navigation.PushAsync(new Record());
+        //}     
     }
 }

@@ -1,44 +1,57 @@
-﻿using Mobi_App_Project.Helpers;
-using Mobi_App_Project.Models;
+﻿using Mobi_App_Project.Models;
 using Mobi_App_Project.ViewModels;
 using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Mobi_App_Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AssessmentHome : ContentPage
+	public partial class ThreeWayMCTemplate : ContentPage
 	{
-		public AssessmentHome ()
-		{
-			InitializeComponent ();        
-            Title = "Assessment Title";
-            List<AssessmentQuestion> assessmentQuestions = App.CurrentAssessmentQuestions;
-            foreach(AssessmentQuestion assessmentQuestion in assessmentQuestions)
-            {
-                App.CurrentQuestions.Add(App.QuestionDB.GetItemAsync(assessmentQuestion.QuestionId).Result);
-            }
-            BindingContext = App.Assessment;          
-		}
+        ThreeWayMCTemplateViewModel viewModel;
 
-        async void Start_Clicked(object sender, EventArgs e)
+        public ThreeWayMCTemplate()
         {
-            AssessmentSession assessmentSession = new AssessmentSession();
-            assessmentSession.AssessmentId = App.Assessment.AssessmentId;
-            assessmentSession.StudentId = App.Student.StudentId;
-            assessmentSession.SessionDate = JulianDateParser.ConverToJD(DateTime.Now);
-            int success = App.AssesmentSessionDB.SaveItemAsync(assessmentSession).Result;
-            if(success == 1)
-            {
-                App.AssessmentSession = assessmentSession;
-                App.CurrentAssessmentSessionId = assessmentSession.SessionId;
-            }
+            InitializeComponent();
+        }
 
-            Question question = App.CurrentQuestions[0];
-            AssessmentQuestion assessmentQuestion = App.CurrentAssessmentQuestions[0];
-            NavigateToNextQuestionViewAsync(question, assessmentQuestion);   
+        public ThreeWayMCTemplate(ThreeWayMCTemplateViewModel vm)
+        {
+            InitializeComponent();
+            BindingContext = viewModel = vm;
+        }
+
+        void Submit_Opt1_Clicked(object sender, EventArgs e)
+        {
+            HandleResult(viewModel.Opt1);
+        }
+
+        void Submit_Opt2_Clicked(object sender, EventArgs e)
+        {
+            HandleResult(viewModel.Opt2);
+        }
+
+        void Submit_Opt3_Clicked(object sender, EventArgs e)
+        {
+            HandleResult(viewModel.Opt3);
+        }
+
+        private async void HandleResult(string result)
+        {            
+            viewModel.Result.TextResults = result;           
+            await App.ResultDB.SaveItemAsync(viewModel.Result);
+
+            if(!viewModel.IsLastQuestion)
+            {
+                viewModel.NextAssessmentQuestion = App.CurrentAssessmentQuestions[viewModel.AssessmentQuestion.OrderNum];
+                viewModel.NextQuestion = App.CurrentQuestions[viewModel.AssessmentQuestion.OrderNum];
+                NavigateToNextQuestionViewAsync(viewModel.NextQuestion, viewModel.NextAssessmentQuestion);
+            }
+            else
+            {
+                await Navigation.PushAsync(new Results());
+            }        
         }
 
         public async void NavigateToNextQuestionViewAsync(Question question, AssessmentQuestion assessmentQuestion)

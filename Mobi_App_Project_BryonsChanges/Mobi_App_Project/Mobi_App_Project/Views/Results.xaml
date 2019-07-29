@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobi_App_Project.Views.Results">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="ResultsListView"
+                ItemsSource="{Binding ResultsList}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"          
+                RefreshCommand="{Binding LoadResultsCommand}"
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="SelectedResult">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding TextResults}" 
+                                LineBreakMode="WordWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                               
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="{Binding Student.FirstName}" 
+                                LineBreakMode="WordWrap"                                
+                                FontSize="16" />
+
+            <Editor Text="" AutoSize="TextChanges"
+             BindingContext="{Binding MyEditor}" />
+            <Button Text="Submit Notes"
+                    Clicked="Submit_Clicked"/>
+
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

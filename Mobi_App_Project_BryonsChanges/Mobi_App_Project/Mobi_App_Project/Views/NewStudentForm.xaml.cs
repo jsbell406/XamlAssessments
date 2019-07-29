@@ -20,21 +20,25 @@ namespace Mobi_App_Project.Views
 
             Student = new Student
             {
-                FirstName = "First Name",
-                LastName = "Last Name",
-                MiddleName = "Middle Name",
+                FirstName = "",
+                LastName = "",
+                MiddleName = "",
                 Age = 00,
-                Grade = "Grade"
+                Grade = ""
             };
 
-            BindingContext = this;
+            BindingContext = Student;
 		}
 
         async void Submit_Clicked(object sender, EventArgs e)
         {
-            App.StudentDB.SaveItemAsync(Student);
-            await Navigation.PushAsync(new AssessmentHome());
+            Task<int> successTask = App.StudentDB.SaveItemAsync(Student);
+            int success = successTask.Result;
+            if(success == 1)
+            {
+                await Navigation.PopAsync(true);
+            }
+            return;           
         }
-
     }
 }

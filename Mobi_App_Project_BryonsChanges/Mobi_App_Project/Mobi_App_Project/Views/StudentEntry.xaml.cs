@@ -27,7 +27,7 @@ namespace Mobi_App_Project.Views
         {
             //MessagingCenter.Send(this, "AddItem", Item);
            // await Navigation.PopModalAsync();
-            await Navigation.PushAsync(new Question1());
+            //await Navigation.PushAsync(new Question1());
         }
 
         public StudentEntry ()

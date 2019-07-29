@@ -18,21 +18,41 @@ namespace Mobi_App_Project.DB
             //loadData();
         }
 
+        public Task<List<AssessmentQuestion>> GetAssessmentQuestionsByAssessmentId(int assessmentId)
+        {
+            return database.Table<AssessmentQuestion>().Where(aq => aq.AssessmentId == assessmentId).ToListAsync();
+        }
+
+        public Task<AssessmentQuestion> GetFirstAssessmentQuestion(int assessmentId)
+        {
+            return database.Table<AssessmentQuestion>().Where(aq => aq.AssessmentId == assessmentId && aq.OrderNum == 1).FirstOrDefaultAsync();
+        }
+
         public Task<List<AssessmentQuestion>> GetItemsAsync()
         {
             return database.Table<AssessmentQuestion>().ToListAsync();
         }
 
-       
+        public Task<AssessmentQuestion> GetNextAssessmentQuestion(int assessmentId, int orderNumber)
+        {
+            orderNumber++;
+
+            return database.Table<AssessmentQuestion>().Where(aq => aq.AssessmentId == assessmentId & aq.OrderNum == orderNumber).FirstOrDefaultAsync();
+        }
+
+        //public Task<AssessmentQuestion> GetAssessmentQuestionByQuestionIdAssessmentId(int questionId, int assessmentId)
+        //{
+        //    return database.Table<AssessmentQuestion>().Where(aq => aq.QuestionId == questionId && aq.AssessmentId == assessmentId).FirstOrDefaultAsync();
+        //}
 
         public  Task<AssessmentQuestion> GetItemAsync(int id)
         {
-            return database.Table<AssessmentQuestion>().Where(i => i.AssesmentQuestionId == id).FirstOrDefaultAsync();
+            return database.Table<AssessmentQuestion>().Where(i => i.AssessmentQuestionId == id).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveItemAsync(AssessmentQuestion item)
         {
-            if (item.AssesmentQuestionId != 0)
+            if (item.AssessmentQuestionId != 0)
             {
                 return database.UpdateAsync(item);
             }
@@ -42,9 +62,8 @@ namespace Mobi_App_Project.DB
             }
         }
 
-        public Task<int> DeleteItemAsync(AssesmentQuestionDB item)
-        {
-            
+        public Task<int> DeleteItemAsync(AssessmentQuestion item)
+        {          
             return database.DeleteAsync(item);
         }
     }

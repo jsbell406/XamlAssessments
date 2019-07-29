@@ -9,6 +9,7 @@ namespace Mobi_App_Project.Models
         public int StudentId { get; set; }
         public int GroupId { get; set; }
         public int AssessmentId { get; set; }
-        public double SessionDate { get; set; }        
+        public double SessionDate { get; set; }
+        public string AdminNotes { get; set; }
     }
 }

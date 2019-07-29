@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SQLite;
 using Mobi_App_Project.Models;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
 
 namespace Mobi_App_Project.DB
 {
@@ -16,7 +17,7 @@ namespace Mobi_App_Project.DB
         public StudentDB(SQLiteAsyncConnection db)
         {
             database = db;
-            database.CreateTableAsync<Group>();
+            database.CreateTableAsync<Student>();
             //loadData();
         }
         public Task<List<Student>> GetItemsAsync()
@@ -24,11 +25,27 @@ namespace Mobi_App_Project.DB
             return database.Table<Student>().ToListAsync();
         }
 
-        
+        public SQLiteAsyncConnection GetConnection()
+        {
+            return database;
+
+        }
+
+
 
         public Task<Student> GetItemAsync(int id)
         {
             return database.Table<Student>().Where(i => i.StudentId == id).FirstOrDefaultAsync();
+        }
+
+        public Task<Student> GetStudentByName(string firstName, string middleName, string lastName)
+        {
+            return database.Table<Student>().Where(s => s.FirstName == firstName & s.MiddleName == middleName & s.LastName == lastName).FirstOrDefaultAsync();
+        }
+
+        public Task<Student> GetStudentByName(string firstName, string lastName)
+        {
+            return database.Table<Student>().Where(s => s.FirstName == firstName & s.LastName == lastName).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveItemAsync(Student item)
@@ -47,6 +64,11 @@ namespace Mobi_App_Project.DB
         {
             //GetItemAsync(id);
             return database.DeleteAsync(item);
+        }
+
+        internal void SaveItemAsync(ObservableCollection<string> myStudents)
+        {
+            throw new NotImplementedException();
         }
     }
 }

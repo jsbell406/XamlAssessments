@@ -1,35 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
-             xmlns:local="clr-namespace:Mobi_App_Project.Core;assembly=SampleBrowser.Core"
-             xmlns:core="clr-namespace:Mobi_App_Project.SfComboBox;"
-             xmlns:icon="clr-namespace:Mobi_App_Project.SfComboBox;assembly=SampleBrowser.SfComboBox"
-             x:Class="Mobi_App_Project.Views.IndividualStudentSelection">
-
-    <Grid>
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="45"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            <!--<comboBox:SfComboBox x:Name="combobox" MultiSelectMode="Token"
-                                 IsEditableMode="True"
-                                 DisplayMemberPath="AppName"
-                                 Grid.Row="0"
-                                 MaximumDropDownHeight="180"-->
-            <!--SuggestionBoxPlacement="Contains"-->
-
-        </Grid>
-    </Grid>
+             xmlns:local="clr-namespace:Mobi_App_Project.Helpers"
+             x:Class="Mobi_App_Project.Views.IndividualStudentSelection"
+             Title="{Binding Title}"
+             x:Name="BrowseStudentsPage">
 
 
-    <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
 
-     </StackLayout>
+    <StackLayout Orientation="Vertical">
+        <Label Text="Search for Student"
+               VerticalOptions="Center"
+               HorizontalOptions="CenterAndExpand"
+               FontSize="Large"/>
+        
+        
+        <SearchBar x:Name="SearchBar" Placeholder="Search"
+                   VerticalOptions="Fill"                 
+                   FontSize="Large"
+                   Margin="0,20,0,20"                   
+                   Text="{Binding SearchedText, Mode=TwoWay}"
+                   SearchCommand="{Binding SearchCommand}"/>
+       
+
+        <ListView x:Name="StudentListView"
+                ItemsSource="{Binding FilteredList}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"               
+                IsPullToRefreshEnabled="false"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="SelectedStudent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15">
+                            <Label Text="{Binding FirstName}" 
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="Medium" />
+                            <Label Text="{Binding LastName}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="Small" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+        <Button Text="CREATE NEW STUDENT"
+                Clicked="Create_Clicked"
+                Padding="0,20,0,20"
+                FontSize="Large"/>
+        
+    </StackLayout>
 
 </ContentPage>

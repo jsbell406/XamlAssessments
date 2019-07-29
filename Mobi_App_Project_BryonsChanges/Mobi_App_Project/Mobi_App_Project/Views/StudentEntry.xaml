@@ -2,10 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.StudentEntry">
-    
     <StackLayout>
-        
-        
         <Label Text="Please enter Students Full Name"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"/>
@@ -25,8 +22,6 @@
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
                 Clicked="Submit_Clicked" />
-
-
     </StackLayout>
     
 </ContentPage>

@@ -10,6 +10,6 @@ namespace Mobi_App_Project.Models
         public string LastName { get; set; }
         public string MiddleName { get; set; }
         public int Age { get; set; }
-        public string Grade { get; set; }       
+        public string Grade { get; set; }
     }
 }

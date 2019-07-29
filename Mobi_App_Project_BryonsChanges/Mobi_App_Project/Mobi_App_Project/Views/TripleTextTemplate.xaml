@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobi_App_Project.Views.TripleTextTemplate">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Question.DisplayText}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <Editor Placeholder="1st answer"
+        HeightRequest="200"
+        Completed="First_OnEditorCompleted" />
+
+            <Editor Placeholder="2nd answer"
+        HeightRequest="200"
+        Completed="Second_OnEditorCompleted" />
+
+            <Editor Placeholder="1st answer"
+        HeightRequest="200"
+        Completed="Third_OnEditorCompleted" />
+
+            <Button Text="Done"
+                Clicked="Done_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Data.Common;
 using System.Threading.Tasks;
 using SQLite;
 using Mobi_App_Project.Models;
 using Xamarin.Forms;
+using SQLiteNetExtensionsAsync.Extensions;
 
 namespace Mobi_App_Project.DB
 {
@@ -15,15 +16,26 @@ namespace Mobi_App_Project.DB
         public QuestionDB(SQLiteAsyncConnection db)
         {
             database = db;
-            database.CreateTableAsync<Group>();
+            database.CreateTableAsync<Question>();
+            //database.CreateTableAsync<AssessmentQuestion>();
             //loadData();
         }
+        public Task<Question> GetQuestionByDisplayText(string displayText)
+        {
+            return database.Table<Question>().Where(q => q.DisplayText == displayText).FirstOrDefaultAsync();
+        }
+
         public Task<List<Question>> GetItemsAsync()
         {
             return database.Table<Question>().ToListAsync();
         }
 
-        
+        //public Task<Question> GetNextQuestion(int assessmentId, int orderNum)
+        //{
+        //    AssessmentQuestion ques = database.Table<AssessmentQuestion>().Where(aq => aq.AssessmentId == assessmentId && aq.OrderNum == (orderNum + 1)).FirstOrDefaultAsync().Result;
+        //    return database.Table<Question>().Where(q => q.QuestionId == ques.QuestionId).FirstOrDefaultAsync();
+        //}
+
         public Task<Question> GetItemAsync(int id)
         {
             return database.Table<Question>().Where(i => i.QuestionId == id).FirstOrDefaultAsync();

@@ -13,5 +13,7 @@ namespace Mobi_App_Project.ViewModels
     {
         public ObservableCollection<Student> StudentList { get; set; }
         public Command LoadStudentListCommand { get; set; }
+
+
     }
 }

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SQLite;
+﻿using SQLite;
 
 namespace Mobi_App_Project.Models
 {
-   public class AdminUser : ObservableObject
+    public class AdminUser : ObservableObject
     {
         private int id;
         private string userName;

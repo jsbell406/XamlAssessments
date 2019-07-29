@@ -16,12 +16,7 @@ namespace Mobi_App_Project.Views
             InitializeComponent();          
             BindingContext = viewModel = new IndividualStudentSelectionViewModel();     
         }
-
-        public IndividualStudentSelection(Page lastPage)
-        {
-            InitializeComponent();
-            BindingContext = viewModel = new IndividualStudentSelectionViewModel();
-        }
+     
         private async void SelectedStudent(object sender, SelectedItemChangedEventArgs e)
         {
             Student student = e.SelectedItem as Student;

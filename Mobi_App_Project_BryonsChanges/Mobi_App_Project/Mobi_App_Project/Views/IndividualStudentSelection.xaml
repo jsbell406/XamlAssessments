@@ -9,34 +9,40 @@
 
 
     <StackLayout Orientation="Vertical">
-        <Label Text="Please enter a student's name or create new. "/>
+        <Label Text="Search for Student"
+               VerticalOptions="Center"
+               HorizontalOptions="CenterAndExpand"
+               FontSize="Large"/>
         
         
         <SearchBar x:Name="SearchBar" Placeholder="Search"
-           Text="{Binding SearchedText, Mode=TwoWay}"
-           SearchCommand="{Binding SearchCommand}"/>
+                   VerticalOptions="Fill"                 
+                   FontSize="Large"
+                   Margin="0,20,0,20"                   
+                   Text="{Binding SearchedText, Mode=TwoWay}"
+                   SearchCommand="{Binding SearchCommand}"/>
        
 
         <ListView x:Name="StudentListView"
                 ItemsSource="{Binding FilteredList}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"               
-                IsPullToRefreshEnabled="true"
+                IsPullToRefreshEnabled="false"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 CachingStrategy="RecycleElement"
                 ItemSelected="SelectedStudent">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="10">
+                        <StackLayout Padding="15">
                             <Label Text="{Binding FirstName}" 
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
+                                FontSize="Medium" />
                             <Label Text="{Binding LastName}" 
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
+                                FontSize="Small" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
@@ -45,7 +51,9 @@
 
 
         <Button Text="CREATE NEW STUDENT"
-                Clicked="Create_Clicked"/>
+                Clicked="Create_Clicked"
+                Padding="0,20,0,20"
+                FontSize="Large"/>
         
     </StackLayout>
 

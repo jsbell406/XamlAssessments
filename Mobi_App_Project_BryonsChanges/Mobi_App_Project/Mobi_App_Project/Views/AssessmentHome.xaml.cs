@@ -13,16 +13,14 @@ namespace Mobi_App_Project.Views
 	{
 		public AssessmentHome ()
 		{
-			InitializeComponent ();
-            Assessment assessment = new Assessment();
-            assessment.AssessName = App.Assessment.AssessName;
+			InitializeComponent ();        
             Title = "Assessment Title";
             List<AssessmentQuestion> assessmentQuestions = App.CurrentAssessmentQuestions;
             foreach(AssessmentQuestion assessmentQuestion in assessmentQuestions)
             {
                 App.CurrentQuestions.Add(App.QuestionDB.GetItemAsync(assessmentQuestion.QuestionId).Result);
             }
-            BindingContext = assessment;          
+            BindingContext = App.Assessment;          
 		}
 
         async void Start_Clicked(object sender, EventArgs e)
@@ -35,6 +33,7 @@ namespace Mobi_App_Project.Views
             if(success == 1)
             {
                 App.AssessmentSession = assessmentSession;
+                App.CurrentAssessmentSessionId = assessmentSession.SessionId;
             }
 
             Question question = App.CurrentQuestions[0];

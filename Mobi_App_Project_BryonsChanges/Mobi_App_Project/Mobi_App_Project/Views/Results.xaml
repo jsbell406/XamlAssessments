@@ -27,7 +27,9 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
+            <Label Text="{Binding Student.FirstName}" 
+                                LineBreakMode="WordWrap"                                
+                                FontSize="16" />
 
             <Editor Text="" AutoSize="TextChanges"
              BindingContext="{Binding MyEditor}" />

@@ -15,6 +15,8 @@ namespace Mobi_App_Project.Views
 		public AdminHome ()
 		{
 			InitializeComponent ();
+
+            Title = "Admin Home";
             BindingContext = this;
 		}
         //async void Group_Clicked(object sender, EventArgs e)

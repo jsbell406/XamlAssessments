@@ -11,9 +11,10 @@ namespace Mobi_App_Project.Views
         ResultsViewModel viewModel;
 
         public Results()
-        {      
+        {
+            InitializeComponent();
             BindingContext = viewModel = new ResultsViewModel();
-            InitializeComponent();           
+                      
         }
 
         private async void SelectedResult(object sender, EventArgs e)

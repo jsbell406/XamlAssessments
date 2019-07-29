@@ -12,12 +12,14 @@ namespace Mobi_App_Project.ViewModels
         public ObservableCollection<Result> ResultsList { get; set; }
         public Command LoadResultsCommand { get; set; }
         public string MyEditor { get; set;}
+        public Student Student { get; set; }
 
         public ResultsViewModel()
         {
             Title = "Browse Results";
             ResultsList = new ObservableCollection<Result>();
             LoadResultsCommand = new Command(async () => await ExecuteLoadResultsCommand());
+            Student = App.Student;
         }
 
         async Task ExecuteLoadResultsCommand()

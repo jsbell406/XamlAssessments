@@ -27,10 +27,39 @@ namespace Mobi_App_Project.Views
             //string oldText = e.OldTextValue;
             //string newText = e.NewTextValue;
         }
-
-        async void OnEditorCompleted(object sender, EventArgs e)
+        void Done_Clicked(object sender, EventArgs e)
         {
-            viewModel.Result.TextResults = ((Editor)sender).Text;
+            HandleResult();
+        }
+        void OnEditorCompleted(object sender, EventArgs e)
+        {
+            //HandleResult();
+            //viewModel.Result = new Result();
+            //viewModel.Result.QuestionId = App.CurrentQuestionId;
+            //viewModel.Result.AssesmentQuestionId = App.CurrentAssessmentQuestionId;
+            //viewModel.Result.AssessmentSessionId = App.AssessmentSession.SessionId;
+            //viewModel.Result.TextResults = ((Editor)sender).Text;
+
+            //await App.ResultDB.SaveItemAsync(viewModel.Result);
+            //if (!viewModel.IsLastQuestion)
+            //{
+            //    viewModel.NextAssessmentQuestion = App.CurrentAssessmentQuestions[viewModel.AssessmentQuestion.OrderNum];
+            //    viewModel.NextQuestion = App.CurrentQuestions[viewModel.AssessmentQuestion.OrderNum];
+            //    NavigateToNextQuestionViewAsync(viewModel.NextQuestion, viewModel.NextAssessmentQuestion);
+            //}
+            //else
+            //{
+            //    await Navigation.PushAsync(new Results());
+            //}
+        }
+        private async void HandleResult()
+        {
+            viewModel.Result = new Result();
+            viewModel.Result.QuestionId = App.CurrentQuestionId;
+            viewModel.Result.AssesmentQuestionId = App.CurrentAssessmentQuestionId;
+            viewModel.Result.AssessmentSessionId = App.AssessmentSession.SessionId;
+            viewModel.Result.TextResults = viewModel.TextResult;
+
             await App.ResultDB.SaveItemAsync(viewModel.Result);
             if (!viewModel.IsLastQuestion)
             {

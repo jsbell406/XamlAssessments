@@ -11,16 +11,16 @@ namespace Mobi_App_Project.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AssessmentHome : ContentPage
 	{
-		public AssessmentHome ()
+        AssessmentSelectionViewModel viewModel;
+		public AssessmentHome (AssessmentSelectionViewModel vm)
 		{
 			InitializeComponent ();        
-            Title = "Assessment Title";
             List<AssessmentQuestion> assessmentQuestions = App.CurrentAssessmentQuestions;
             foreach(AssessmentQuestion assessmentQuestion in assessmentQuestions)
             {
                 App.CurrentQuestions.Add(App.QuestionDB.GetItemAsync(assessmentQuestion.QuestionId).Result);
             }
-            BindingContext = App.Assessment;          
+            BindingContext = viewModel = vm;          
 		}
 
         async void Start_Clicked(object sender, EventArgs e)
@@ -46,22 +46,27 @@ namespace Mobi_App_Project.Views
             switch (question.Qtype)
             {
                 case "5WayMC":
-                    await Navigation.PushAsync(new FiveWayMCTemplate(new FiveWayMCTemplateViewModel(question, assessmentQuestion)));
+                    await Navigation.PushAsync(new FiveWayMCTemplate(new FiveWayMCTemplateViewModel(question, assessmentQuestion)), true);
+                    Navigation.RemovePage(this);
                     break;
                 case "3WayMC":
-                    await Navigation.PushAsync(new ThreeWayMCTemplate(new ThreeWayMCTemplateViewModel(question, assessmentQuestion)));
+                    await Navigation.PushAsync(new ThreeWayMCTemplate(new ThreeWayMCTemplateViewModel(question, assessmentQuestion)), true);
+                    Navigation.RemovePage(this);
                     break;
                 case "2WayMC":
-                    await Navigation.PushAsync(new TwoWayMCTemplate(new TwoWayMCTemplateViewModel(question, assessmentQuestion)));
+                    await Navigation.PushAsync(new TwoWayMCTemplate(new TwoWayMCTemplateViewModel(question, assessmentQuestion)), true);
+                    Navigation.RemovePage(this);
                     break;
                 case "SingleText":
-                    await Navigation.PushAsync(new SingleTextTemplate(new SingleTextTemplateViewModel(question, assessmentQuestion)));
+                    await Navigation.PushAsync(new SingleTextTemplate(new SingleTextTemplateViewModel(question, assessmentQuestion)), true);
+                    Navigation.RemovePage(this);
                     break;
                 case "TripleText":
-                    await Navigation.PushAsync(new TripleTextTemplate(new TripleTextTemplateViewModel(question, assessmentQuestion)));
+                    await Navigation.PushAsync(new TripleTextTemplate(new TripleTextTemplateViewModel(question, assessmentQuestion)), true);
+                    Navigation.RemovePage(this);
                     break;
                 default:
-                    await Navigation.PushModalAsync(new AssessmentHome());
+                    await Navigation.PushModalAsync(new AdminHome());
                     break;
             }
         }

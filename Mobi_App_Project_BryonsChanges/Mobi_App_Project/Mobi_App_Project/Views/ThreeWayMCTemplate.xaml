@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mobi_App_Project.Views.ThreeWayMCTemplate">
+             x:Class="Mobi_App_Project.Views.ThreeWayMCTemplate"
+             Title="{Binding StudentFullName}">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="{Binding Question.DisplayText}"
@@ -9,14 +10,17 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Button Text="{Binding Opt1}"
+                    FontSize="Large"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"    
                 Clicked="Submit_Opt1_Clicked"/>
             <Button Text="{Binding Opt2}"
+                    FontSize="Large"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
                 Clicked="Submit_Opt2_Clicked"/>
             <Button Text="{Binding Opt3}"
+                    FontSize="Large"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
                 Clicked="Submit_Opt3_Clicked"/>

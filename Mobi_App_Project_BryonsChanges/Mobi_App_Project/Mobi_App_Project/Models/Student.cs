@@ -11,5 +11,10 @@ namespace Mobi_App_Project.Models
         public string MiddleName { get; set; }
         public int Age { get; set; }
         public string Grade { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1}",FirstName,LastName);
+        }
     }
 }

@@ -21,6 +21,7 @@
         <Button Text="Submit Student and Begin Assessment"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
+                FontSize="Large"
                 Clicked="Submit_Clicked" />
     </StackLayout>
     

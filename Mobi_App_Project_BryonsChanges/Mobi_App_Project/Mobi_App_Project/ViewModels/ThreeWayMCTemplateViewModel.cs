@@ -11,6 +11,13 @@ namespace Mobi_App_Project.ViewModels
         public AssessmentQuestion AssessmentQuestion { get; set; }
         public AssessmentQuestion NextAssessmentQuestion { get; set; }
         public TemplateNavigation TemplateNavigation { get; set; }
+        public string StudentFullName
+        {
+            get
+            {
+                return string.Format("{0} {1}", App.Student.FirstName, App.Student.LastName);
+            }
+        }
 
         public string Opt1 { get; set; }
         public string Opt2 { get; set; }

@@ -26,7 +26,6 @@ namespace Mobi_App_Project.Views
                 Age = 00,
                 Grade = ""
             };
-
             BindingContext = Student;
 		}
 
@@ -36,9 +35,11 @@ namespace Mobi_App_Project.Views
             int success = successTask.Result;
             if(success == 1)
             {
-                await Navigation.PopAsync(true);
+                App.Student = Student;
+                await Navigation.PushAsync(new AssessmentSelection());
+                Navigation.RemovePage(this);
             }
             return;           
-        }
+        }    
     }
 }

@@ -26,6 +26,7 @@ namespace Mobi_App_Project.Views
 
             // TODO: verify assessment gets set in app
             App.Assessment = assessment;
+            viewModel.Assessment = assessment;
 
             Task<List<AssessmentQuestion>> assessmentQuestionsInTask = App.AssesmentQuestionDB.GetAssessmentQuestionsByAssessmentId(App.Assessment.AssessmentId);
             List<AssessmentQuestion> assessmentQuestions = assessmentQuestionsInTask.Result;
@@ -38,7 +39,7 @@ namespace Mobi_App_Project.Views
 
             App.CurrentAssessmentQuestions.AddRange(assessmentQuestionsArray);
 
-            await Navigation.PushAsync(new AssessmentHome());
+            await Navigation.PushAsync(new AssessmentHome(viewModel));
 
             AssessmentListView.SelectedItem = null;
         }

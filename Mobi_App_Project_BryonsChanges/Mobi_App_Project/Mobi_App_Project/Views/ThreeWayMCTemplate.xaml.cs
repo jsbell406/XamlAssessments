@@ -50,7 +50,8 @@ namespace Mobi_App_Project.Views
             }
             else
             {
-                await Navigation.PushAsync(new Results());
+                await Navigation.PushAsync(new Results(), true);
+                Navigation.RemovePage(this);
             }        
         }
 
@@ -60,21 +61,26 @@ namespace Mobi_App_Project.Views
             {
                 case "5WayMC":
                     await Navigation.PushAsync(new FiveWayMCTemplate(new FiveWayMCTemplateViewModel(question, assessmentQuestion)));
+                    Navigation.RemovePage(this);
                     break;
                 case "3WayMC":
                     await Navigation.PushAsync(new ThreeWayMCTemplate(new ThreeWayMCTemplateViewModel(question, assessmentQuestion)));
+                    Navigation.RemovePage(this);
                     break;
                 case "2WayMC":
                     await Navigation.PushAsync(new TwoWayMCTemplate(new TwoWayMCTemplateViewModel(question, assessmentQuestion)));
+                    Navigation.RemovePage(this);
                     break;
                 case "SingleText":
                     await Navigation.PushAsync(new SingleTextTemplate(new SingleTextTemplateViewModel(question, assessmentQuestion)));
+                    Navigation.RemovePage(this);
                     break;
                 case "TripleText":
                     await Navigation.PushAsync(new TripleTextTemplate(new TripleTextTemplateViewModel(question, assessmentQuestion)));
+                    Navigation.RemovePage(this);
                     break;
                 default:
-                    await Navigation.PushModalAsync(new AssessmentHome());
+                    await Navigation.PushModalAsync(new AdminHome());
                     break;
             }
         }

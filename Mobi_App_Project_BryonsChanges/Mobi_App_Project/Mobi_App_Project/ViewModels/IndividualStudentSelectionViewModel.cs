@@ -59,7 +59,7 @@ namespace Mobi_App_Project.ViewModels
             try { 
           
                 FilteredList.Clear();
-                var tempRecords = students.Where(s => s.FirstName.Contains(SearchedText));
+                var tempRecords = students.Where(s => s.ToString().ToUpper().Contains(SearchedText.ToUpper()));
                 foreach (var item in tempRecords)
                 {
                     FilteredList.Add(item);

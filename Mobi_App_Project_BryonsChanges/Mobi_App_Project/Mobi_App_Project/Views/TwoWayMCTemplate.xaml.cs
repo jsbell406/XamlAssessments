@@ -69,7 +69,7 @@ namespace Mobi_App_Project.Views
                     await Navigation.PushAsync(new TripleTextTemplate(new TripleTextTemplateViewModel(question, assessmentQuestion)));
                     break;
                 default:
-                    await Navigation.PushModalAsync(new AssessmentHome());
+                    await Navigation.PushModalAsync(new AdminHome());
                     break;
             }
         }

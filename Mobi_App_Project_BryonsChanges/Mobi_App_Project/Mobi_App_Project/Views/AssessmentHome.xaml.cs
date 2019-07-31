@@ -11,16 +11,16 @@ namespace Mobi_App_Project.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AssessmentHome : ContentPage
 	{
-		public AssessmentHome ()
+        AssessmentSelectionViewModel viewModel;
+		public AssessmentHome (AssessmentSelectionViewModel vm)
 		{
 			InitializeComponent ();        
-            Title = "Assessment Title";
             List<AssessmentQuestion> assessmentQuestions = App.CurrentAssessmentQuestions;
             foreach(AssessmentQuestion assessmentQuestion in assessmentQuestions)
             {
                 App.CurrentQuestions.Add(App.QuestionDB.GetItemAsync(assessmentQuestion.QuestionId).Result);
             }
-            BindingContext = App.Assessment;          
+            BindingContext = viewModel = vm;          
 		}
 
         async void Start_Clicked(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace Mobi_App_Project.Views
                     await Navigation.PushAsync(new TripleTextTemplate(new TripleTextTemplateViewModel(question, assessmentQuestion)));
                     break;
                 default:
-                    await Navigation.PushModalAsync(new AssessmentHome());
+                    await Navigation.PushModalAsync(new AdminHome());
                     break;
             }
         }

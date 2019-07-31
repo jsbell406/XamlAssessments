@@ -32,7 +32,7 @@ namespace Mobi_App_Project.Views
             App.Student = null;
             if (App.IsGroup)
             {
-                await Navigation.PushModalAsync(new NavigationPage(new AssessmentHome()));
+                //await Navigation.PushModalAsync(new NavigationPage(new AssessmentHome()));
             }
             else
             {

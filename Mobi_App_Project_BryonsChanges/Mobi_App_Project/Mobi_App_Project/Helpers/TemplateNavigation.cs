@@ -47,7 +47,7 @@ namespace Mobi_App_Project.Helpers
                     break;
 
                 default:
-                    await Navigation.PushModalAsync(new AssessmentHome());
+                    await Navigation.PushModalAsync(new AdminHome());
                     break;
 
             }

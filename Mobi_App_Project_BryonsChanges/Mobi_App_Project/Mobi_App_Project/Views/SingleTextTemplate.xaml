@@ -6,12 +6,19 @@
         <StackLayout>
             <Label Text="{Binding Question.DisplayText}"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" 
+                   FontSize="Large"/>
             
-            <Editor Placeholder="Enter multi-line text here"
+            <!--<Editor Placeholder="Enter multi-line text here"
         HeightRequest="200"
         TextChanged="OnEditorTextChanged"
-        Completed="OnEditorCompleted" />
+        Completed="OnEditorCompleted" />-->
+            <Editor Text="{Binding TextResult}" AutoSize="TextChanges"
+                    HeightRequest="200"
+                    Completed="OnEditorCompleted"
+                                                    />
+            <Button Text="Done"
+                Clicked="Done_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

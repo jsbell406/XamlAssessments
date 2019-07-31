@@ -11,15 +11,15 @@
                 HorizontalOptions="CenterAndExpand" />
 
             <Editor Placeholder="1st answer"
-        HeightRequest="200"
+       AutoSize="TextChanges"
         Completed="First_OnEditorCompleted" />
 
             <Editor Placeholder="2nd answer"
-        HeightRequest="200"
+        AutoSize="TextChanges"
         Completed="Second_OnEditorCompleted" />
 
             <Editor Placeholder="1st answer"
-        HeightRequest="200"
+       AutoSize="TextChanges"
         Completed="Third_OnEditorCompleted" />
 
             <Button Text="Done"

@@ -27,7 +27,7 @@ namespace Mobi_App_Project.Views
             App.AssessmentSession.AdminNotes = viewModel.MyEditor;
             int resultId = App.AssesmentSessionDB.SaveItemAsync(App.AssessmentSession).Result;
             App.CurrentAssessmentQuestions.Clear();
-            App.CurrentQuestion = 0;
+            App.CurrentQuestionId = 0;
             App.CurrentQuestions.Clear();
             App.Student = null;
             if (App.IsGroup)

@@ -36,27 +36,28 @@ namespace Mobi_App_Project
         public static Student Student { get; set; }
         public static AssessmentSession AssessmentSession { get; set; }
         //public static Group Group { get; set; }
-        
+
         public static List<AssessmentQuestion> CurrentAssessmentQuestions { get; set; }
         public static List<Question> CurrentQuestions { get; set; }
         public static int CurrentAssessmentSessionId { get; set; }
         public static bool IsGroup { get; set; }
-        public static int CurrentQuestion { get; set; }
+        public static int CurrentQuestionId { get; set; }
+        public static int CurrentAssessmentQuestionId { get; set; }
 
 
         public static List<AdminUser> AdminUsers;
-        
+
         public App()
         {
             InitializeComponent();
-           
+
 
             AdminUser user = new AdminUser();
             user.UserName = "a";
             user.PasswordHash = "b";
             user.UserName = "testUser";
             user.DBName = "testUserDb";
-           
+
             AdminUser = user;
             LoginViewModel lvm = new LoginViewModel();
 
@@ -67,11 +68,11 @@ namespace Mobi_App_Project
             AssessmentSession = null;
             CurrentAssessmentSessionId = 0;
             IsGroup = false;
-            CurrentQuestion = 0;
+            CurrentQuestionId = 0;
 
             CurrentAssessmentQuestions = new List<AssessmentQuestion>();
             CurrentQuestions = new List<Question>();
-            
+
             MainPage = new NavigationPage(new AdminHome());
             //MainPage = new SingleTextTemplate(new SingleTextTemplateViewModel(nextQuestion, nextAssessmentQuestion));
         }

@@ -57,7 +57,8 @@ namespace Mobi_App_Project.Views
             }
             else
             {
-                await Navigation.PushModalAsync(new Results(), false);
+                await Navigation.PushAsync(new Results(), true);
+                Navigation.RemovePage(this);
             }
         }
 
@@ -66,19 +67,24 @@ namespace Mobi_App_Project.Views
             switch (question.Qtype)
             {
                 case "5WayMC":
-                    await Navigation.PushModalAsync(new FiveWayMCTemplate(new FiveWayMCTemplateViewModel(question, assessmentQuestion)));
+                    await Navigation.PushAsync(new FiveWayMCTemplate(new FiveWayMCTemplateViewModel(question, assessmentQuestion)));
+                    Navigation.RemovePage(this);
                     break;
                 case "3WayMC":
-                    await Navigation.PushModalAsync(new ThreeWayMCTemplate(new ThreeWayMCTemplateViewModel(question, assessmentQuestion)));
+                    await Navigation.PushAsync(new ThreeWayMCTemplate(new ThreeWayMCTemplateViewModel(question, assessmentQuestion)));
+                    Navigation.RemovePage(this);
                     break;
                 case "2WayMC":
-                    await Navigation.PushModalAsync(new TwoWayMCTemplate(new TwoWayMCTemplateViewModel(question, assessmentQuestion)));
+                    await Navigation.PushAsync(new TwoWayMCTemplate(new TwoWayMCTemplateViewModel(question, assessmentQuestion)));
+                    Navigation.RemovePage(this);
                     break;
                 case "SingleText":
-                    await Navigation.PushModalAsync(new SingleTextTemplate(new SingleTextTemplateViewModel(question, assessmentQuestion)));
+                    await Navigation.PushAsync(new SingleTextTemplate(new SingleTextTemplateViewModel(question, assessmentQuestion)));
+                    Navigation.RemovePage(this);
                     break;
                 case "TripleText":
-                    await Navigation.PushModalAsync(new TripleTextTemplate(new TripleTextTemplateViewModel(question, assessmentQuestion)));
+                    await Navigation.PushAsync(new TripleTextTemplate(new TripleTextTemplateViewModel(question, assessmentQuestion)));
+                    Navigation.RemovePage(this);
                     break;
                 default:
                     await Navigation.PushModalAsync(new AdminHome());

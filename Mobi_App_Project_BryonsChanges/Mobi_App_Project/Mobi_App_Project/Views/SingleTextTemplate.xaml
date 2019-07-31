@@ -19,6 +19,7 @@
                     Completed="OnEditorCompleted"
                                                     />
             <Button Text="Done"
+                    FontSize="Large"
                 Clicked="Done_Clicked"/>
         </StackLayout>
     </ContentPage.Content>

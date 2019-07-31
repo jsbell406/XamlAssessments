@@ -5,16 +5,12 @@
              x:Class="Mobi_App_Project.Views.IndividualStudentSelection"
              Title="{Binding Title}"
              x:Name="BrowseStudentsPage">
-
-
-
     <StackLayout>
         <Label Text="Search for Student"
                VerticalOptions="Center"
                HorizontalOptions="CenterAndExpand"
                FontSize="Large"/>
-        
-        
+               
         <SearchBar x:Name="SearchBar" Placeholder="Search"
                    VerticalOptions="Fill"                 
                    FontSize="Large"
@@ -22,7 +18,6 @@
                    Text="{Binding SearchedText, Mode=TwoWay}"
                    SearchCommand="{Binding SearchCommand}"/>
        
-
         <ListView x:Name="StudentListView"
                 ItemsSource="{Binding FilteredList}"
                 VerticalOptions="FillAndExpand"
@@ -48,7 +43,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
 
         <Button Text="CREATE NEW STUDENT"
                 Clicked="Create_Clicked"

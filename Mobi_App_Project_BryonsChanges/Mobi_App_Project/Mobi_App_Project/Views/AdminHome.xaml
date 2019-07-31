@@ -12,6 +12,7 @@
         <Button Text="Individual Assessment"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand"
+                FontSize="Large"
                 Clicked="Individual_Clicked" />
       <!-- <Button Text="View Records"
                 VerticalOptions="CenterAndExpand"

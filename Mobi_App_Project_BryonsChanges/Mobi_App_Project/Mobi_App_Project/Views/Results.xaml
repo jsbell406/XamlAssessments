@@ -20,7 +20,7 @@
                                 <Label Text="{Binding TextResults}" 
                                 LineBreakMode="WordWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
+                                FontSize="Large" />
                                
                             </StackLayout>
                         </ViewCell>

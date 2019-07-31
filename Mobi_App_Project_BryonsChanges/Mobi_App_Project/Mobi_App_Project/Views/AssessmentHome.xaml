@@ -19,6 +19,7 @@
             <Button Text="Begin Assessment"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
+                    FontSize="Large"
                 Clicked="Start_Clicked" />
 
         </StackLayout>

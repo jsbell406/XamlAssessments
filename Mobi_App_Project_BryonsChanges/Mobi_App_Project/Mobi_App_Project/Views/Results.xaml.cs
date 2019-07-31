@@ -37,6 +37,7 @@ namespace Mobi_App_Project.Views
             else
             {
                 await Navigation.PushModalAsync(new NavigationPage(new AdminHome()));
+                Navigation.RemovePage(this);
             }
         }
 

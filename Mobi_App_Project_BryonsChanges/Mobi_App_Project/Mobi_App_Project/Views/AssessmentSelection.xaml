@@ -22,7 +22,8 @@
                             <Label Text="{Binding AssessName}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
+                                   FontSize="Large"
+                             />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

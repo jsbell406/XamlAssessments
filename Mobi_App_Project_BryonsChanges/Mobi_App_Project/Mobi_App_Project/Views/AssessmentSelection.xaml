@@ -3,9 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.AssessmentSelection"
              Title="{Binding StudentFullName}"
-              >
+             BackgroundColor="DarkBlue" >
 
-    <StackLayout>
+    <StackLayout  BackgroundColor="Aquamarine"
+                     Padding="8,8,8,8"
+                     Margin="10,10,10,10">
         <ListView x:Name="AssessmentListView"
             ItemsSource="{Binding Assessments}"
             VerticalOptions="FillAndExpand"
@@ -20,6 +22,7 @@
                     <ViewCell>
                         <StackLayout Padding="10">
                             <Label Text="{Binding AssessName}" 
+                                   TextColor="Navy"
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
                                    FontSize="Large"

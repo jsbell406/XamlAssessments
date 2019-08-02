@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mobi_App_Project.Views.NewStudentForm">
+             x:Class="Mobi_App_Project.Views.NewStudentForm"
+             BackgroundColor="DarkBlue">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout  BackgroundColor="Aquamarine"
+                     Padding="8,8,8,8"
+                     Margin="10,10,10,10">
             <Label Text="Please enter a new student."
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />

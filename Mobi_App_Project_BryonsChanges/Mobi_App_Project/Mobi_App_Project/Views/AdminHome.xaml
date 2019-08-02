@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.AdminHome"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             BackgroundColor="DarkBlue">
 
-    <StackLayout>
+    <StackLayout BackgroundColor="Aquamarine"
+                     Padding="8,8,8,8"
+                     Margin="10,10,10,10">
         <!--<Button Text="Group Assessment"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"

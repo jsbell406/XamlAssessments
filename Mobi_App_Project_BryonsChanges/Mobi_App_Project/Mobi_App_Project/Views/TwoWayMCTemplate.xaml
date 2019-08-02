@@ -2,23 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.TwoWayMCTemplate"
-             Title="{Binding StudentFullName}">
+             Title="{Binding StudentFullName}"
+             BackgroundColor="DarkBlue">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding Question.DisplayText}"
-                   FontSize="Large"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Button Text="{Binding Opt1}"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                    FontSize="Large"
-                Clicked="Submit_Opt1_Clicked" />
-            <Button Text="{Binding Opt2}"
-                VerticalOptions="Center"
-                    FontSize="Large"
-                HorizontalOptions="Center"
-                Clicked="Submit_Opt2_Clicked" />
+        <StackLayout BackgroundColor="Aquamarine"
+                     Padding="8,8,8,8"
+                     Margin="10,10,10,10">
+            <Label 
+                    Text="{Binding Question.DisplayText}"
+                    TextColor="BlueViolet"
+                    FontSize="28"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="CenterAndExpand" />
+            <StackLayout
+                BackgroundColor="LightBlue"                   
+                Margin="2,2,2,2"
+                VerticalOptions="FillAndExpand">
+                
+                <Button Text="{Binding Opt1}"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center"
+                        FontSize="Large"
+                        Clicked="Submit_Opt1_Clicked" 
+                        />
+                
+                <Button Text="{Binding Opt2}"
+                        VerticalOptions="CenterAndExpand"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Clicked="Submit_Opt2_Clicked" 
+                        />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -2,23 +2,31 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.SingleTextTemplate"
-             Title="{Binding StudentFullName}">
+             Title="{Binding StudentFullName}"
+             BackgroundColor="DarkBlue">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding Question.DisplayText}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
-                   FontSize="Large"/>
+        <StackLayout BackgroundColor="Aquamarine"
+                     Padding="8,8,8,8"
+                     Margin="10,10,10,10">
             
-            <!--<Editor Placeholder="Enter multi-line text here"
-        HeightRequest="200"
-        TextChanged="OnEditorTextChanged"
-        Completed="OnEditorCompleted" />-->
-            <Editor Text="{Binding TextResult}" AutoSize="TextChanges"
-                    HeightRequest="200"
+            <Label Text="{Binding Question.DisplayText}"
+                    Margin="10,10,10,10"
+                    TextColor="BlueViolet"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="CenterAndExpand" 
+                    FontSize="28"                  
+                    />
+
+            <Editor Text="{Binding TextResult}"    
+                    AutoSize="TextChanges"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="Azure"
+                    VerticalOptions="FillAndExpand"
                     Completed="OnEditorCompleted"
+                    
                                                     />
             <Button Text="Done"
+                    Padding="3,3,3,3"
                     FontSize="Large"
                 Clicked="Done_Clicked"/>
         </StackLayout>

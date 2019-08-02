@@ -2,29 +2,42 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.TripleTextTemplate"
-             Title="{Binding StudentFullName}">
+             Title="{Binding StudentFullName}"
+             BackgroundColor="DarkBlue">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding Question.DisplayText}"
-                   FontSize="Large"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <ScrollView>
+            <StackLayout  BackgroundColor="Aquamarine"
+                     Padding="8,8,8,8"
+                     Margin="10,10,10,10">
+                <Label Text="{Binding Question.DisplayText}"
+                       TextColor="BlueViolet"
+                       
+                VerticalOptions="Center" 
+                HorizontalOptions="CenterAndExpand" 
+                   FontSize="28" />
 
-            <Editor Placeholder="1st answer"
-        HeightRequest="200"
-        Completed="First_OnEditorCompleted" />
+                <Editor Placeholder="1st answer"         
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="Azure"
+                    VerticalOptions="FillAndExpand"     
+            Completed="First_OnEditorCompleted" />
 
-            <Editor Placeholder="2nd answer"
-        HeightRequest="200"
-        Completed="Second_OnEditorCompleted" />
+                <Editor Placeholder="2nd answer"       
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="Azure"
+                    VerticalOptions="FillAndExpand"      
+                    Completed="Second_OnEditorCompleted" />
 
-            <Editor Placeholder="1st answer"
-        HeightRequest="200"
-        Completed="Third_OnEditorCompleted" />
+                <Editor Placeholder="3rd answer"            
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="Azure"
+                    VerticalOptions="FillAndExpand"
+            Completed="Third_OnEditorCompleted" />
 
-            <Button Text="Done"
-                    FontSize="Large"
-                Clicked="Done_Clicked"/>
-        </StackLayout>
+                <Button Text="Done"
+                        FontSize="Large"
+                    Clicked="Done_Clicked"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

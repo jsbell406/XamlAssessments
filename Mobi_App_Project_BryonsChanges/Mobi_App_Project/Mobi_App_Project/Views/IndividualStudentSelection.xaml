@@ -4,8 +4,12 @@
              xmlns:local="clr-namespace:Mobi_App_Project.Helpers"
              x:Class="Mobi_App_Project.Views.IndividualStudentSelection"
              Title="{Binding Title}"
-             x:Name="BrowseStudentsPage">
-    <StackLayout>
+             x:Name="BrowseStudentsPage"
+             BackgroundColor="DarkBlue">
+    <StackLayout  BackgroundColor="Aquamarine"
+                     Padding="8,8,8,8"
+                     Margin="10,10,10,10">
+        
         <Label Text="Search for Student"
                VerticalOptions="Center"
                HorizontalOptions="CenterAndExpand"
@@ -31,13 +35,15 @@
                     <ViewCell>
                         <StackLayout Padding="15">
                             <Label Text="{Binding FirstName}" 
+                                   TextColor="Navy"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="Medium" />
+                                FontSize="Large" />
                             <Label Text="{Binding LastName}" 
+                                   TextColor="Navy"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Small" />
+                                FontSize="Medium" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

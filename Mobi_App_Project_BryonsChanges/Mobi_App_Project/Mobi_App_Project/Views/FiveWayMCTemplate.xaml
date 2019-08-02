@@ -2,40 +2,49 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.FiveWayMCTemplate"
-             Title="{Binding StudentFullName}">
+             Title="{Binding StudentFullName}"
+             BackgroundColor="DarkBlue">
+    
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout  BackgroundColor="Aquamarine"
+                     Padding="8,8,8,8"
+                     Margin="10,10,10,10">
             <Label Text="{Binding Question.DisplayText}"
-                VerticalOptions="CenterAndExpand" 
+                   TextColor="BlueViolet"
+                VerticalOptions="Center" 
                 HorizontalOptions="CenterAndExpand"
-                   FontSize="Large"
+                  FontSize="28"
                 />
-
-            <Button Text="{Binding Opt1}"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="Center"
-                FontSize="Large"
-                Clicked="Submit_Opt1_Clicked"/>
-            <Button Text="{Binding Opt2}"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="Center"
-                FontSize="Large"    
-                Clicked="Submit_Opt2_Clicked"/>
-            <Button Text="{Binding Opt3}"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="Center"
-                FontSize="Large"    
-                Clicked="Submit_Opt3_Clicked"/>
-            <Button Text="{Binding Opt4}"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="Center"
-                FontSize="Large"    
-                Clicked="Submit_Opt4_Clicked"/>
-            <Button Text="{Binding Opt5}"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="Center"
-                FontSize="Large"    
-                Clicked="Submit_Opt5_Clicked"/>
+            <StackLayout
+                    BackgroundColor="LightBlue"                   
+                    Margin="2,2,2,2"
+                    VerticalOptions="FillAndExpand">
+                <Button Text="{Binding Opt1}"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    FontSize="Large"
+                    Clicked="Submit_Opt1_Clicked"/>
+                <Button Text="{Binding Opt2}"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    FontSize="Large"    
+                    Clicked="Submit_Opt2_Clicked"/>
+                <Button Text="{Binding Opt3}"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    FontSize="Large"    
+                    Clicked="Submit_Opt3_Clicked"/>
+                <Button Text="{Binding Opt4}"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    FontSize="Large"    
+                    Clicked="Submit_Opt4_Clicked"/>
+                <Button Text="{Binding Opt5}"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    FontSize="Large"    
+                    Clicked="Submit_Opt5_Clicked"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

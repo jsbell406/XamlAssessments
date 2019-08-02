@@ -16,6 +16,7 @@
                 HorizontalOptions="CenterAndExpand" 
                    FontSize="28" />
 
+<<<<<<< HEAD
                 <Editor Placeholder="1st answer"         
                     HorizontalOptions="FillAndExpand"
                     BackgroundColor="Azure"
@@ -33,6 +34,19 @@
                     BackgroundColor="Azure"
                     VerticalOptions="FillAndExpand"
             Completed="Third_OnEditorCompleted" />
+=======
+            <Editor Placeholder="1st answer"
+       AutoSize="TextChanges"
+        Completed="First_OnEditorCompleted" />
+
+            <Editor Placeholder="2nd answer"
+        AutoSize="TextChanges"
+        Completed="Second_OnEditorCompleted" />
+
+            <Editor Placeholder="1st answer"
+       AutoSize="TextChanges"
+        Completed="Third_OnEditorCompleted" />
+>>>>>>> fbb0fa946f1cdc61d531481aa7882c86ed116b81
 
                 <Button Text="Done"
                         FontSize="Large"

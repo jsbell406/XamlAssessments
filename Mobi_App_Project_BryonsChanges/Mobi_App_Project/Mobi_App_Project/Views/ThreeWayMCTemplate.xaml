@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.ThreeWayMCTemplate"
              Title="{Binding StudentFullName}"
-             BackgroundColor="DarkBlue">
+             BackgroundColor="#0D48A1">
     <ContentPage.Content>
-        <StackLayout  BackgroundColor="Aquamarine"
+        <StackLayout  BackgroundColor="#B3C1C4"
                      Padding="8,8,8,8"
                      Margin="10,10,10,10">
             <Label Text="{Binding Question.DisplayText}"
@@ -22,16 +22,19 @@
                 
                 <Button Text="{Binding Opt1}"
                         FontSize="Large"
+                        BackgroundColor="#B9A5F2"
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="Center"    
                     Clicked="Submit_Opt1_Clicked"/>
                 <Button Text="{Binding Opt2}"
                         FontSize="Large"
+                        BackgroundColor="#B9A5F2"
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="Center"
                     Clicked="Submit_Opt2_Clicked"/>
                 <Button Text="{Binding Opt3}"
                         FontSize="Large"
+                        BackgroundColor="#B9A5F2"
                     VerticalOptions="CenterAndExpand"
                     HorizontalOptions="Center"
                     Clicked="Submit_Opt3_Clicked"/>

@@ -6,7 +6,7 @@
              x:Name="AssessmentHomePage"
              BackgroundColor="DarkBlue">
     <ContentPage.Content>
-        <StackLayout  BackgroundColor="Aquamarine"
+        <StackLayout  BackgroundColor="#A1D6ED"
                      Padding="8,8,8,8"
                      Margin="10,10,10,10">
             <Label Text="{Binding Assessment.AssessName}"
@@ -24,6 +24,7 @@
             <Button Text="Begin Assessment"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
+                    BackgroundColor="#B9A5F2"
                     FontSize="Large"
                 Clicked="Start_Clicked" />
 

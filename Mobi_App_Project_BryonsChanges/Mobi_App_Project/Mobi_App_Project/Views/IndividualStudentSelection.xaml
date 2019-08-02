@@ -5,12 +5,13 @@
              x:Class="Mobi_App_Project.Views.IndividualStudentSelection"
              Title="{Binding Title}"
              x:Name="BrowseStudentsPage"
-             BackgroundColor="DarkBlue">
-    <StackLayout  BackgroundColor="Aquamarine"
+             BackgroundColor="#0D48A1">
+    <StackLayout  BackgroundColor="#A1D6ED"
                      Padding="8,8,8,8"
                      Margin="10,10,10,10">
         
         <Label Text="Search for Student"
+               TextColor="Navy"
                VerticalOptions="Center"
                HorizontalOptions="CenterAndExpand"
                FontSize="Large"/>
@@ -53,6 +54,7 @@
         <Button Text="CREATE NEW STUDENT"
                 Clicked="Create_Clicked"
                 Padding="0,20,0,20"
+                BackgroundColor="#B9A5F2"
                 FontSize="Large"/>
         
     </StackLayout>

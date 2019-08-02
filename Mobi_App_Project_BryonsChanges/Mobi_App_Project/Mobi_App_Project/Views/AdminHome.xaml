@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.AdminHome"
              Title="{Binding Title}"
-             BackgroundColor="DarkBlue">
+             BackgroundColor="#0D48A1">
 
-    <StackLayout BackgroundColor="Aquamarine"
+    <StackLayout BackgroundColor="#A1D6ED"
                      Padding="8,8,8,8"
                      Margin="10,10,10,10">
         <!--<Button Text="Group Assessment"
@@ -15,7 +15,8 @@
         <Button Text="Individual Assessment"
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand"
-                FontSize="Large"
+                FontSize="Large"              
+                BackgroundColor="#B9A5F2"
                 Clicked="Individual_Clicked" />
       <!-- <Button Text="View Records"
                 VerticalOptions="CenterAndExpand"

@@ -22,6 +22,7 @@
                 VerticalOptions="CenterAndExpand"
                 HorizontalOptions="Center"
                 FontSize="Large"
+                BackgroundColor="#B9A5F2"
                 Clicked="Submit_Clicked" />
     </StackLayout>
     

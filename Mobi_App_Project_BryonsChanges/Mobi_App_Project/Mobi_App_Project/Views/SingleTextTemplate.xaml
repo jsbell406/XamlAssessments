@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.SingleTextTemplate"
              Title="{Binding StudentFullName}"
-             BackgroundColor="DarkBlue">
+             BackgroundColor="#0D48A1">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="Aquamarine"
+        <StackLayout BackgroundColor="#B3C1C4"
                      Padding="8,8,8,8"
                      Margin="10,10,10,10">
             
@@ -27,6 +27,7 @@
                                                     />
             <Button Text="Done"
                     Padding="3,3,3,3"
+                    BackgroundColor="#B9A5F2"
                     FontSize="Large"
                 Clicked="Done_Clicked"/>
         </StackLayout>

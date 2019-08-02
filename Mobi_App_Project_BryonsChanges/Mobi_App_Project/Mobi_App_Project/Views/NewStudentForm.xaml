@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.NewStudentForm"
-             BackgroundColor="DarkBlue">
+             BackgroundColor="#0D48A1">
     <ContentPage.Content>
         <StackLayout  BackgroundColor="Aquamarine"
                      Padding="8,8,8,8"
@@ -38,6 +38,7 @@
 
             <Button Text="Submit Student"
                 VerticalOptions="CenterAndExpand"
+                    BackgroundColor="#B9A5F2"
                 HorizontalOptions="Center"
                 Clicked="Submit_Clicked" />
         </StackLayout>

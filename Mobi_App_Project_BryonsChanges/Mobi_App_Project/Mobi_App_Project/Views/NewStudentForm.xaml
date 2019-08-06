@@ -4,7 +4,7 @@
              x:Class="Mobi_App_Project.Views.NewStudentForm"
              BackgroundColor="#0D48A1">
     <ContentPage.Content>
-        <StackLayout  BackgroundColor="Aquamarine"
+        <StackLayout  BackgroundColor="#A1D6ED"
                      Padding="8,8,8,8"
                      Margin="10,10,10,10">
             <Label Text="Please enter a new student."

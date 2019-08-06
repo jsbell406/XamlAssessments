@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using Mobi_App_Project.Helpers;
+using Mobi_App_Project.Models;
 using Mobi_App_Project.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,13 +16,16 @@ namespace Mobi_App_Project.Views
         public Results()
         {
             InitializeComponent();
-            BindingContext = viewModel = new ResultsViewModel();
-                      
+            BindingContext = viewModel = new ResultsViewModel();                    
         }
 
-        private async void SelectedResult(object sender, EventArgs e)
+        private async void SelectedResult(object sender, SelectedItemChangedEventArgs e)
         {
-            //Possible addition to view result answer in pop up box            
+            Result selectedResult = e.SelectedItem as Result;
+            Question selectedQuestion = App.CurrentQuestions.Where(q => q.QuestionId == selectedResult.QuestionId).FirstOrDefault();
+
+            await DisplayAlert(selectedQuestion.DisplayText, selectedResult.TextResults, "Done");
+
         }
 
         async void Submit_Clicked(object sender, EventArgs e)

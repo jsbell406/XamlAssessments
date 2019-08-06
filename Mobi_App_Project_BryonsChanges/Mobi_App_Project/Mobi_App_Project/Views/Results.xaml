@@ -21,7 +21,7 @@
                         <ViewCell>
                             <StackLayout Padding="10">
                                 <Label Text="{Binding TextResults}" 
-                                LineBreakMode="WordWrap" 
+                                LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                        TextColor="Navy"
                                 FontSize="Large" />

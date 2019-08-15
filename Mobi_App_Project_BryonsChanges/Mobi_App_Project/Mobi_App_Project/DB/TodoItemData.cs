@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
 using Mobi_App_Project.Models;
-using Xamarin.Forms;
 
 namespace Mobi_App_Project.DB
 {
@@ -17,12 +13,21 @@ namespace Mobi_App_Project.DB
         {
             //database = DependencyService.Get<AppDatabase>().GetConnection();
             database = App.AppDatabase.GetConnection();
+
+            //ToDoItemDataInit();
+
             database.CreateTableAsync<TodoItem>();
             //SaveItemAsync(new TodoItem(0, "Wash Car", "Bring soap", false));
             //SaveItemAsync(new TodoItem(0, "Wash Dog", "Bring shampoo", false));
             //SaveItemAsync(new TodoItem(0, "Buy Oil filter", "", false));
             //SaveItemAsync(new TodoItem(0, "Change Oil", "", false));
         }
+
+        public async void ToDoItemDataInit()
+        {
+            await database.CreateTableAsync<TodoItem>();
+        }
+
         public Task<List<TodoItem>> GetItemsAsync()
         {
             return database.Table<TodoItem>().ToListAsync();

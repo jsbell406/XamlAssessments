@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
 using Mobi_App_Project.Models;
@@ -11,44 +9,49 @@ namespace Mobi_App_Project.DB
     {
         static SQLiteAsyncConnection database;
 
-        public string DBName { get; internal set; }
+        public string DbName { get; internal set; }
 
         public AdminUserDB(SQLiteAsyncConnection db)
         {
             database = db;
-            DBName = App.AdminUser.DBName;
+            DbName = App.AdminUser.DbName;
+
+            //AdminUserDbInit();
+
             database.CreateTableAsync<AdminUser>();
-            DBName = "testDb";
+            DbName = "testDb";
             //loadData();
+        }
+
+        public async void AdminUserDbInit()
+        {
+            await database.CreateTableAsync<AdminUser>();
         }
 
         private void loadData()
         {
             AdminUser user = new AdminUser();
             user.UserName = "a";
-            user.PasswordHash = "b";
-            user.DBName = user.UserName;
-            user.InstructorName = "Bob";
-            user.PasswordSalt = "a;ldfsdfsdkjf";
+            user.Hash = "b";
+            user.DbName = user.UserName;
+            user.Salt = "a;ldfsdfsdkjf";
             SaveItemAsync(user);
         }
         public Task<List<AdminUser>> GetItemsAsync()
-        {
-           
-            return database.Table<AdminUser>().ToListAsync();
-           
+        {         
+            return database.Table<AdminUser>().ToListAsync();          
         }
 
        
 
         public Task<AdminUser> GetItemAsync(int id)
         {
-            return database.Table<AdminUser>().Where(i => i.ID == id).FirstOrDefaultAsync();
+            return database.Table<AdminUser>().Where(i => i.AdminUserId == id).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveItemAsync(AdminUser item)
         {
-            if (item.ID != 0)
+            if (item.AdminUserId != 0)
             {
                 return database.UpdateAsync(item);
             }

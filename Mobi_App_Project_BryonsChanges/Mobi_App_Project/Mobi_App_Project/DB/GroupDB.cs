@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
 using Mobi_App_Project.Models;
-using Xamarin.Forms;
 
 namespace Mobi_App_Project.DB
 {
@@ -16,14 +12,22 @@ namespace Mobi_App_Project.DB
         public GroupDB(SQLiteAsyncConnection db)
         {
             database = db;
+
+            //GroupDbInit();
+
             database.CreateTableAsync<Group>();
             //loadData();
         }
+
+        public async void GroupDbInit()
+        {
+            await database.CreateTableAsync<Group>();
+        }
+
         public Task<List<Group>> GetItemsAsync()
         {
             return database.Table<Group>().ToListAsync();
         }
-
         
         public Task<Group> GetItemAsync(int id)
         {

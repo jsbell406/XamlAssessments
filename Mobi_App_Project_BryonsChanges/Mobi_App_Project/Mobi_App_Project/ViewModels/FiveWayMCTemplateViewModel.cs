@@ -30,6 +30,7 @@ namespace Mobi_App_Project.ViewModels
             OptionsParser();
 
             Result = new Result();
+            //Result.AssessmentQuestionInstructorNotes = "";
             Result.QuestionId = question.QuestionId;
             Result.AssesmentQuestionId = assessmentQuestion.AssessmentQuestionId;
             Result.AssessmentSessionId = App.AssessmentSession.SessionId;

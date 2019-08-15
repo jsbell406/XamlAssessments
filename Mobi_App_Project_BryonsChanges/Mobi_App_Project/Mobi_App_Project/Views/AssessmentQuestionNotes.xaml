@@ -1,14 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mobi_App_Project.Views.SingleTextTemplate"
-             Title="{Binding StudentFullName}"
+             x:Class="Mobi_App_Project.Views.AssessmentQuestionNotes"
+             Title="Notes"          
              BackgroundColor="#0D48A1">
+
     <ContentPage.Content>
         <StackLayout BackgroundColor="#B3C1C4"
                      Padding="8,8,8,8"
                      Margin="10,10,10,10">
-            
+
             <Label Text="{Binding Question.DisplayText}"
                     Margin="10,10,10,10"
                     TextColor="BlueViolet"
@@ -17,26 +18,18 @@
                     FontSize="28"                  
                     />
 
-            <Editor Text="{Binding TextResult}"    
+            <Editor Text="{Binding Result.AssessmentQuestionInstructorNotes}"    
                     AutoSize="TextChanges"
                     HorizontalOptions="FillAndExpand"
                     BackgroundColor="Azure"
                     VerticalOptions="FillAndExpand"
                     Completed="OnEditorCompleted"
-                    
-                                                    />
-            <Button Text="Done"                  
+                                                                       />
+            <Button Text="Done"
                     Padding="3,3,3,3"
                     BackgroundColor="#B9A5F2"
                     FontSize="Large"
-                    Clicked="Done_Clicked"/>
-
-            <Button Text="Notes"
-                    x:Name="btnNotesDone"                  
-                    Padding="3,3,3,3"
-                    BackgroundColor="Gray"
-                    FontSize="Small"
-                    Clicked="Notes_Clicked"/>
+                Clicked="Done_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

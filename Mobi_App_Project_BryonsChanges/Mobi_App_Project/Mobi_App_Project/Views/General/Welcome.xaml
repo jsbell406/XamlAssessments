@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobi_App_Project.Views.General.Welcome"
+             Title="First Time Setup">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Mobi!" 
+                 VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="CenterAndExpand"/>
+
+            <Editor Text="Mobi is a screening tool meant to assess the emotional state of young children who are new to the you." IsEnabled="False"
+                  VerticalOptions="CenterAndExpand"
+                  HorizontalOptions="CenterAndExpand"
+                  Margin="5,5,5,5"  />
+
+            <Button Text="Get Started"
+                  VerticalOptions="CenterAndExpand"
+                  HorizontalOptions="CenterAndExpand"
+                  Clicked="OnButtonClicked" />
+            
+            <Label Text="Please submit feedback to mobiapp406@gmail.com, help us help you."
+                 VerticalOptions="CenterAndExpand"
+                 HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

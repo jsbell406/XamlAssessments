@@ -24,7 +24,11 @@ namespace Mobi_App_Project.Views
             Result selectedResult = e.SelectedItem as Result;
             Question selectedQuestion = App.CurrentQuestions.Where(q => q.QuestionId == selectedResult.QuestionId).FirstOrDefault();
 
-            await DisplayAlert(selectedQuestion.DisplayText, selectedResult.TextResults, "Done");
+            bool isNotes = await DisplayAlert(selectedQuestion.DisplayText, selectedResult.TextResults, "Notes", "Done");
+            if(isNotes)
+            {
+                await Navigation.PushAsync(new AssessmentQuestionNotes(selectedResult));
+            }
 
         }
 

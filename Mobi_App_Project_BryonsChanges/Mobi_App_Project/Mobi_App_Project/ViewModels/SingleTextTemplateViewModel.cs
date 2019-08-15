@@ -27,10 +27,10 @@ namespace Mobi_App_Project.ViewModels
             Question = question;
             AssessmentQuestion = assessmentQuestion;
 
-            //Result = new Result();
-            //Result.QuestionId = question.QuestionId;
-            //Result.AssesmentQuestionId = assessmentQuestion.AssessmentQuestionId;
-            //Result.AssessmentSessionId = App.AssessmentSession.SessionId;
+            Result = new Result();
+            Result.QuestionId = question.QuestionId;
+            Result.AssesmentQuestionId = assessmentQuestion.AssessmentQuestionId;
+            Result.AssessmentSessionId = App.AssessmentSession.SessionId;
             // TemplateNavigation = new TemplateNavigation();          
         }
     }

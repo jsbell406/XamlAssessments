@@ -1,6 +1,8 @@
 ﻿using Mobi_App_Project.Models;
 using Mobi_App_Project.ViewModels;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,14 +16,23 @@ namespace Mobi_App_Project.Views
 		public TripleTextTemplate ()
 		{
 			InitializeComponent ();
-		}
+            btnNotesDone.IsEnabled = true;
+            questionNotes.IsVisible = false;
+            notesButton.IsVisible = false;
+        }
 
         public TripleTextTemplate(TripleTextTemplateViewModel vm)
         {
             InitializeComponent();
             BindingContext = viewModel = vm;
+            btnNotesDone.IsEnabled = true;
+            questionNotes.IsVisible = false;
+            notesButton.IsVisible = false;
+            
         }
 
+        
+        
         void First_OnEditorCompleted(object sender, EventArgs e)
         {
             viewModel.FirstAnswer = ((Editor)sender).Text;
@@ -39,7 +50,56 @@ namespace Mobi_App_Project.Views
 
         void Done_Clicked(object sender, EventArgs e)
         {
+            viewModel.Result.AssessmentQuestionInstructorNotes = questionNotes.Text;
             HandleResult();
+        }
+        async void Notes_Clicked(object sender, EventArgs e)
+        {
+            
+            btnNotesDone.IsEnabled = false;
+            questionNotes.IsVisible = true;
+            notesButton.IsVisible = true;
+
+            //Editor editor = new Editor
+            //{
+            //    AutomationId = "questionNotes",
+            //    VerticalOptions = LayoutOptions.FillAndExpand,
+            //    HorizontalOptions = LayoutOptions.FillAndExpand
+            //};
+            //editor.SetBinding(Editor.TextProperty, new Binding("Text", source: viewModel.Result.AssessmentQuestionInstructorNotes));
+
+            //Button button = new Button
+            //{
+            //    Text = "Done",
+            //    BackgroundColor = Color.Gray,
+            //    FontSize = 12,
+            //    AutomationId = "notesButton"
+            //};
+            //button.Clicked += Notes_Done_Clicked;
+
+            //StackLayout layout = (StackLayout)Content;
+            //layout.Children.Add(editor);
+            //layout.Children.Add(button);
+
+            //Content = layout;
+            //await Navigation.PushAsync(new AssessmentQuestionNotes(viewModel.Result));
+        }
+
+        void Notes_Done_Clicked(object sender, EventArgs e)
+        {
+            //StackLayout layout = (StackLayout)Content;
+            //IList<View> items = layout.Children;
+
+            //Editor editor = (Editor)items.Where(x => x.AutomationId == "questionNotes").FirstOrDefault();
+            //viewModel.Result.AssessmentQuestionInstructorNotes = editor.Text;
+            //layout.Children.Remove(items.Where(x => x.AutomationId == "notesButton").FirstOrDefault());
+            //layout.Children.Remove(editor);
+
+            //Content = layout;
+            viewModel.Result.AssessmentQuestionInstructorNotes = questionNotes.Text;
+            btnNotesDone.IsEnabled = true;
+            questionNotes.IsVisible = false;
+            notesButton.IsVisible = false;
         }
 
         private async void HandleResult()

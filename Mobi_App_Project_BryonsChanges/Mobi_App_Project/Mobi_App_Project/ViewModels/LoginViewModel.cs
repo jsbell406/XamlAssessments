@@ -49,7 +49,7 @@ namespace Mobi_App_Project.ViewModels
                 if (user != null)
                 {
 
-                    if (user.PasswordHash == PassWord)
+                    if (user.Hash == PassWord)
                     {
                         App.AdminUser = user;
                         return true;

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
 using Mobi_App_Project.Models;
-using Xamarin.Forms;
+
 namespace Mobi_App_Project.DB
 {
     public class ResultDB
@@ -14,15 +11,16 @@ namespace Mobi_App_Project.DB
         public ResultDB(SQLiteAsyncConnection db)
         {
             database = db;
+            //int s = database.DropTableAsync<Result>().Result;
             database.CreateTableAsync<Result>();
+            // ResultDBInit();
             //loadData();
         }
 
-        internal object SaveItemAsync()
+        public async void ResultDBInit()
         {
-            throw new NotImplementedException();
+            await database.CreateTableAsync<Result>();
         }
-
         public Task<List<Result>> GetItemsAsync()
         {
             return database.Table<Result>().ToListAsync();

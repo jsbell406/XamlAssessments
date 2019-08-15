@@ -5,12 +5,12 @@ using Mobi_App_Project.Views;
 using Mobi_App_Project.DB;
 using System.IO;
 using Mobi_App_Project.Models;
-
 using Mobi_App_Project.Services;
 using System.Collections.Generic;
 using Mobi_App_Project.ViewModels;
 using Mobi_App_Project.Helpers;
 using System.Threading.Tasks;
+using Mobi_App_Project.Views.General;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Mobi_App_Project
@@ -51,12 +51,12 @@ namespace Mobi_App_Project
         {
             InitializeComponent();
 
-
             AdminUser user = new AdminUser();
             user.UserName = "a";
-            user.PasswordHash = "b";
+            user.Hash = "b";
+            user.Pin = 1234;
             user.UserName = "testUser";
-            user.DBName = "testUserDb";
+            user.DbName = "testUserDb";
 
             AdminUser = user;
             LoginViewModel lvm = new LoginViewModel();
@@ -73,7 +73,12 @@ namespace Mobi_App_Project
             CurrentAssessmentQuestions = new List<AssessmentQuestion>();
             CurrentQuestions = new List<Question>();
 
-            MainPage = new NavigationPage(new AdminHome());
+
+
+            MainPage = new NavigationPage(new Welcome());
+
+
+            //MainPage = new NavigationPage(new AdminHome());
             //MainPage = new SingleTextTemplate(new SingleTextTemplateViewModel(nextQuestion, nextAssessmentQuestion));
         }
         public static AssesmentDB AssesmentDB
@@ -205,7 +210,7 @@ namespace Mobi_App_Project
                 if (userDatabase == null && adminUserDB != null)
                 {
                     userDatabase = new UserDatabase(
-                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), adminUserDB.DBName)); //"TodoSQLite.db3"
+                      Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), adminUserDB.DbName)); //"TodoSQLite.db3"
                 }
                 return userDatabase;
             }

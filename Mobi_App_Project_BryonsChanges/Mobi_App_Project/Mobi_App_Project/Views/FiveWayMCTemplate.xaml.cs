@@ -1,6 +1,8 @@
 ﻿using Mobi_App_Project.Models;
 using Mobi_App_Project.ViewModels;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -38,7 +40,49 @@ namespace Mobi_App_Project.Views
                 Navigation.RemovePage(this);
             }
         }
+        async void Notes_Clicked(object sender, EventArgs e)
+        {
+            btnNotesDone.IsEnabled = false;
+            StackLayout layout = (StackLayout)Content;
 
+            Editor editor = new Editor
+            {
+                AutomationId = "questionNotes",
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand
+            };
+            editor.SetBinding(Editor.TextProperty, new Binding("Text", source: viewModel.Result.AssessmentQuestionInstructorNotes));
+
+            Button button = new Button
+            {
+                Text = "Done",
+                BackgroundColor = Color.Gray,
+                FontSize = 12,
+                AutomationId = "notesButton"
+            };
+
+            button.Clicked += Notes_Done_Clicked;
+
+            layout.Children.Add(editor);
+            layout.Children.Add(button);
+
+            Content = layout;
+            //await Navigation.PushAsync(new AssessmentQuestionNotes(viewModel.Result));
+        }
+
+        void Notes_Done_Clicked(object sender, EventArgs e)
+        {
+            StackLayout layout = (StackLayout)Content;
+            IList<View> items = layout.Children;
+
+            Editor editor = (Editor)items.Where(x => x.AutomationId == "questionNotes").FirstOrDefault();
+            viewModel.Result.AssessmentQuestionInstructorNotes = editor.Text;
+            layout.Children.Remove(items.Where(x => x.AutomationId == "notesButton").FirstOrDefault());
+            layout.Children.Remove(editor);
+
+            Content = layout;
+            btnNotesDone.IsEnabled = true;
+        }
         void Submit_Opt1_Clicked(object sender, EventArgs e)
         {
              HandleResult(viewModel.Opt1);          

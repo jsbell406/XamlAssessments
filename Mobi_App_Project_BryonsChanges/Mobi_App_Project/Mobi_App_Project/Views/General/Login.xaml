@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobi_App_Project.Views.General.Login"
+             Title="Login">
+    <ContentPage.Content>
+        <ScrollView>
+            <Frame CornerRadius="20"
+                    OutlineColor="Purple"
+                    Padding="15"
+                    Margin="20" >
+                <StackLayout VerticalOptions="Center" >
+                    <Frame CornerRadius="10"
+                           OutlineColor="RoyalBlue"
+                           Padding="5" >
+                        <StackLayout Padding="5,5,5,5">
+                            <Label  x:Name="lblLogin" 
+                                Text="User Name"
+                                VerticalOptions="Start" 
+                                HorizontalOptions="Center"
+                                FontSize="28" />
+                            <Entry x:Name="txtLogin"
+                               VerticalOptions="Center" 
+                               HorizontalOptions="FillAndExpand"
+                               FontSize="Large"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame CornerRadius="10"
+                           OutlineColor="RoyalBlue"
+                           Padding="5">
+                        <StackLayout>
+                            <Label x:Name="lblPassword" 
+                                    Text="Password"
+                                    VerticalOptions="Start" 
+                                    HorizontalOptions="Center" 
+                                    FontSize="28"/>
+                            <Entry x:Name="txtPassword"
+                                    IsPassword="true"
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="Large"/>
+                        </StackLayout>
+                    </Frame>
+                   
+                    <Frame CornerRadius="10"
+                           OutlineColor="RoyalBlue"
+                           Padding="0"
+                           Margin="5">
+                        <Button Text="Login"
+                                x:Name="btnLogin"
+                            BackgroundColor="RoyalBlue"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Clicked="OnLoginClicked"/>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

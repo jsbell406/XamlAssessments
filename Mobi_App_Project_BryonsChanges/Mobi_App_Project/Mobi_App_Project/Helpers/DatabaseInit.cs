@@ -241,6 +241,113 @@ namespace Mobi_App_Project.Helpers
             aq9.QuestionId = q9.QuestionId;
             aq9.OrderNum = 9;
             App.AssesmentQuestionDB.SaveItemAsync(aq9);
-        }       
+
+            //--------------------------------------------------------------------------------------------------------------
+
+            List<AssessmentSession> assessmentSessions = new List<AssessmentSession>();
+
+            assessmentSessions = App.AssesmentSessionDB.GetItemsAsync().Result;
+
+            if(assessmentSessions.Count > 0)
+            {
+                foreach(AssessmentSession assessmentSession in assessmentSessions)
+                {
+                    App.AssesmentSessionDB.DeleteItemAsync(assessmentSession);
+                }
+            }
+
+            AssessmentSession as1 = new AssessmentSession();
+            as1.AssessmentId = App.AssesmentDB.GetAssessmentByAssessNameAsync(EnumHatersGonnaVerify.AssessName_FeelingsCheckIn).Result.AssessmentId;
+            as1.SessionDate = JulianDateParser.ConverToJD(DateTime.Now);
+            as1.StudentId = App.StudentDB.GetStudentByName("James","Bell").Result.StudentId;
+            App.AssesmentSessionDB.SaveItemAsync(as1);
+
+            //--------------------------------------------------------------------------------------------------------------
+
+            List<Result> results;
+
+            results = App.ResultDB.GetItemsAsync().Result;
+            Result re1 = App.ResultDB.GetItemAsync(1).Result;
+
+            if(results.Count > 0 )
+            {
+                foreach(Result result in results)
+                {
+                    App.ResultDB.DeleteItemAsync(result);
+                }
+            }
+
+            Result r1 = new Result();
+            r1.AssesmentQuestionId = aq1.AssessmentQuestionId;
+            r1.AssessmentSessionId = as1.SessionId;
+            r1.QuestionId = q1.QuestionId;
+            r1.TextResults = "Happy";
+            r1.AssessmentQuestionInstructorNotes = "Kid Seems Happy";
+            App.ResultDB.SaveItemAsync(r1);
+
+            Result r2 = new Result();
+            r2.AssesmentQuestionId = aq2.AssessmentQuestionId;
+            r2.AssessmentSessionId = as1.SessionId;
+            r2.QuestionId = q2.QuestionId;
+            r2.TextResults = "In my happy house";
+            r2.AssessmentQuestionInstructorNotes = "Kid Seems to have a good home life";
+            App.ResultDB.SaveItemAsync(r2);
+
+            Result r3 = new Result();
+            r3.AssesmentQuestionId = aq3.AssessmentQuestionId;
+            r3.AssessmentSessionId = as1.SessionId;
+            r3.QuestionId = q3.QuestionId;
+            r3.TextResults = "My happy mom and dad";
+            r3.AssessmentQuestionInstructorNotes = "Kid Seems has happy parents";
+            App.ResultDB.SaveItemAsync(r3);
+
+            Result r4 = new Result();
+            r4.AssesmentQuestionId = aq4.AssessmentQuestionId;
+            r4.AssessmentSessionId = as1.SessionId;
+            r4.QuestionId = q4.QuestionId;
+            r4.TextResults = "Yes";
+            r4.AssessmentQuestionInstructorNotes = "Kid has friends";
+            App.ResultDB.SaveItemAsync(r4);
+
+            Result r5 = new Result();
+            r5.AssesmentQuestionId = aq5.AssessmentQuestionId;
+            r5.AssessmentSessionId = as1.SessionId;
+            r5.QuestionId = q5.QuestionId;
+            r5.TextResults = "Mom and Dad";
+            r5.AssessmentQuestionInstructorNotes = "His mom and dad";
+            App.ResultDB.SaveItemAsync(r5);
+
+            Result r6 = new Result();
+            r6.AssesmentQuestionId = aq6.AssessmentQuestionId;
+            r6.AssessmentSessionId = as1.SessionId;
+            r6.QuestionId = q6.QuestionId;
+            r6.TextResults = "Yes";
+            r6.AssessmentQuestionInstructorNotes = "Kid feels safe";
+            App.ResultDB.SaveItemAsync(r6);
+
+            Result r7 = new Result();
+            r7.AssesmentQuestionId = aq7.AssessmentQuestionId;
+            r7.AssessmentSessionId = as1.SessionId;
+            r7.QuestionId = q7.QuestionId;
+            r7.TextResults = "Yes";
+            r7.AssessmentQuestionInstructorNotes = "Kid is always full";
+            App.ResultDB.SaveItemAsync(r7);
+
+            Result r8 = new Result();
+            r8.AssesmentQuestionId = aq8.AssessmentQuestionId;
+            r8.AssessmentSessionId = as1.SessionId;
+            r8.QuestionId = q8.QuestionId;
+            r8.TextResults = "Go to space :FULLSTOP: Be an astronaut :FULLSTOP: Ride a rocket";
+            r8.AssessmentQuestionInstructorNotes = "Kid is an adrenaline junky";
+            App.ResultDB.SaveItemAsync(r8);
+
+            Result r9 = new Result();
+            r9.AssesmentQuestionId = aq9.AssessmentQuestionId;
+            r9.AssessmentSessionId = as1.SessionId;
+            r9.QuestionId = q9.QuestionId;
+            r9.TextResults = "Brush";
+            r9.AssessmentQuestionInstructorNotes = "Kid has clean teeth";
+            App.ResultDB.SaveItemAsync(r9);
+        }
     }
 }

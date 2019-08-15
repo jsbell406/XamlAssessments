@@ -39,6 +39,12 @@
                     HorizontalOptions="Center"
                     Clicked="Submit_Opt3_Clicked"/>
             </StackLayout>
+            <Button Text="Notes"
+                    x:Name="btnNotesDone"                  
+                    Padding="3,3,3,3"
+                    BackgroundColor="Gray"
+                    FontSize="Small"
+                    Clicked="Notes_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

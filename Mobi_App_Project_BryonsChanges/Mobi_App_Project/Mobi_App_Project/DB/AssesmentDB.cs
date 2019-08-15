@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using SQLite;
 using Mobi_App_Project.Models;
-using Xamarin.Forms;
 
 namespace Mobi_App_Project.DB
 {
@@ -15,8 +12,16 @@ namespace Mobi_App_Project.DB
         public AssesmentDB(SQLiteAsyncConnection db)
         {
             database = db;
+
+            //AssessmentDbInit();
+
             database.CreateTableAsync<Assessment>();
             //loadData();
+        }
+
+        public async void AssessmentDbInit()
+        {
+            await database.CreateTableAsync<Assessment>();
         }
 
         public Task<List<Assessment>> GetItemsAsync()

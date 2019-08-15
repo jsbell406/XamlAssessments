@@ -38,6 +38,28 @@
                         FontSize="Large"
                         BackgroundColor="#B9A5F2"
                     Clicked="Done_Clicked"/>
+                
+                <Button Text="Notes"
+                    x:Name="btnNotesDone"                  
+                    Padding="3,3,3,3"
+                    BackgroundColor="Gray"
+                    FontSize="Small"
+                    Clicked="Notes_Clicked"/>
+
+                <Editor    
+                    Text="{Binding Result.AssessmentQuestionInstructorNotes}"
+                    x:Name="questionNotes"
+                    HorizontalOptions="FillAndExpand"                  
+                    VerticalOptions="FillAndExpand"
+                    Completed="Third_OnEditorCompleted" 
+                    />
+
+                <Button Text="Done"
+                    x:Name="notesButton"                              
+                    BackgroundColor="Gray"
+                    FontSize="12"
+                    Clicked="Notes_Done_Clicked"
+                    />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

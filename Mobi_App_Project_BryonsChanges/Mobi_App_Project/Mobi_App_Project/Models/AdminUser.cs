@@ -2,19 +2,15 @@
 
 namespace Mobi_App_Project.Models
 {
-    public class AdminUser : ObservableObject
+    public class AdminUser
     {
-        private int id;
-        private string userName;
-        private string instructorName;
-        private string dbName;
-        public string PasswordHash { get; set; }
-        public string PasswordSalt { get; set; }
-
         [PrimaryKey, AutoIncrement]
-        public int ID { get => id; set => SetProperty(ref id, value); }
-        public string UserName { get => userName; set => SetProperty(ref userName, value); }
-        public string InstructorName { get => instructorName; set => SetProperty(ref instructorName, value); }
-        public string DBName { get => dbName; set => SetProperty(ref dbName, value); }
+        public int AdminUserId { get; set; }
+        public string UserName { get; set; }
+        public int Pin { get; set; }
+        public string Salt { get; set; }
+        public string Hash { get; set; }
+        public string DbName { get; set; }
+
     }
 }

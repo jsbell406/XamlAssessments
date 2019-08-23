@@ -27,5 +27,17 @@ namespace Mobi_App_Project.Helpers
         public static readonly string OptionText_HappySadExcitedMadScared = "Happy,Sad,Excited,Mad,Scared";
         public static readonly string OptionText_YesNo = "Yes,No";
         public static readonly string OptionText_YesNoKinda = "Yes,No,Kinda";
+
+
+        // Error messages
+        public static readonly string PasswordError_ContainEightCharacters = "Password must contain at least 8 characters";
+        public static readonly string PasswordError_ContainUpperCharacter = "Password must contain at least one upper case letter";
+        public static readonly string PasswordError_ContainNumber = "Password must contain at least one number";
+
+        public static readonly string PinError_NotNumber = "Pin must be a number";
+        public static readonly string PinError_Not4Digit = "Pin must be 4 digits";
+
+
+
     }
 }

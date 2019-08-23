@@ -14,12 +14,13 @@ namespace Mobi_App_Project.DB
         public AdminUserDB(SQLiteAsyncConnection db)
         {
             database = db;
-            DbName = App.AdminUser.DbName;
+           // DbName = App.AdminUser.DbName;
 
             //AdminUserDbInit();
+            //int s = database.DropTableAsync<AdminUser>().Result;
 
             database.CreateTableAsync<AdminUser>();
-            DbName = "testDb";
+            DbName = "MyAssessmentsDb";
             //loadData();
         }
 
@@ -27,6 +28,13 @@ namespace Mobi_App_Project.DB
         {
             await database.CreateTableAsync<AdminUser>();
         }
+
+        public Task<AdminUser> GetUserByUsername(string userName)
+        {
+            return database.Table<AdminUser>().Where(a => a.UserName == userName).FirstOrDefaultAsync();
+        }
+
+
 
         private void loadData()
         {

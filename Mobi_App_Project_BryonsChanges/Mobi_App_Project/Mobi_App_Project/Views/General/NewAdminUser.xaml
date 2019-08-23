@@ -8,27 +8,33 @@
             <Frame CornerRadius="20"
                     OutlineColor="Purple"
                     Padding="15"
-                    Margin="20" >
+                    Margin="20"
+                   >
                 <StackLayout VerticalOptions="Center" >
                     <Frame CornerRadius="10"
-                           OutlineColor="RoyalBlue"
-                           Padding="5" >
+                           BorderColor="RoyalBlue"
+                           Padding="5"
+                           x:Name="UserNameFrame">
                         <StackLayout Padding="5,5,5,5">
-                            <Label  x:Name="lblLogin" 
+                            <Label  x:Name="lblUserName" 
                                 Text="User Name"
                                 VerticalOptions="Start" 
                                 HorizontalOptions="Center"
                                 FontSize="28" />
-                            <Entry x:Name="txtLogin"
+                            <Entry x:Name="txtUserName"
                                VerticalOptions="Center" 
                                HorizontalOptions="FillAndExpand"
-                               FontSize="Large"/>
+                               FontSize="Large"
+                               ReturnType="Done"                              
+                               TextChanged="OnChangeUserNameVerify"
+                               Completed="OnChangeUserNameVerify"/>
                         </StackLayout>
                     </Frame>
 
                     <Frame CornerRadius="10"
                            OutlineColor="RoyalBlue"
-                           Padding="5">
+                           Padding="5"
+                           x:Name="PasswordFrame">
                         <StackLayout>
                             <Label x:Name="lblPassword" 
                                     Text="Password"
@@ -39,13 +45,17 @@
                                     IsPassword="true"
                                     VerticalOptions="Center" 
                                     HorizontalOptions="FillAndExpand"
-                                    FontSize="Large"/>
+                                    FontSize="Large"
+                                   ReturnType="Done"
+                                   Completed="OnChangePasswordVerify"
+                                   TextChanged="OnChangePasswordVerify"/>
                         </StackLayout>
                     </Frame>
 
                     <Frame CornerRadius="10"
-                           OutlineColor="RoyalBlue"
-                           Padding="5">
+                           BorderColor="RoyalBlue"
+                           Padding="5"
+                           x:Name="PinFrame">
                         <StackLayout>
                             <Label x:Name="lblPin" 
                                     Text="4-digit Pin"
@@ -57,12 +67,15 @@
                                    Keyboard="Numeric"
                                    VerticalOptions="CenterAndExpand" 
                                    HorizontalOptions="FillAndExpand"
-                                   FontSize="Large" />
+                                   FontSize="Large"
+                                   ReturnType="Done"
+                                   Completed="OnChangePinVerify"
+                                   TextChanged="OnChangePinVerify"/>
                         </StackLayout>
                     </Frame>
                     
                     <Frame CornerRadius="10"
-                           OutlineColor="RoyalBlue"
+                           BorderColor="RoyalBlue"
                            Padding="0"
                            Margin="5">
                         <Button Text="Submit"

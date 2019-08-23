@@ -16,7 +16,7 @@ namespace Mobi_App_Project.DB
             database = db;
 
             //StudentDbInit();
-
+            
             database.CreateTableAsync<Student>();
             //loadData();
         }

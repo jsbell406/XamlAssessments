@@ -11,7 +11,7 @@ namespace Mobi_App_Project.DB
         public ResultDB(SQLiteAsyncConnection db)
         {
             database = db;
-            //int s = database.DropTableAsync<Result>().Result;
+            int s = database.DropTableAsync<Result>().Result;
             database.CreateTableAsync<Result>();
             // ResultDBInit();
             //loadData();

@@ -45,39 +45,64 @@ namespace Mobi_App_Project
         public static int CurrentAssessmentQuestionId { get; set; }
 
 
-        public static List<AdminUser> AdminUsers;
+        //public static List<AdminUser> AdminUsers;
 
         public App()
         {
             InitializeComponent();
 
-            AdminUser user = new AdminUser();
-            user.UserName = "a";
-            user.Hash = "b";
-            user.Pin = 1234;
-            user.UserName = "testUser";
-            user.DbName = "testUserDb";
 
-            AdminUser = user;
-            LoginViewModel lvm = new LoginViewModel();
+            // Initialize App
+            List<AdminUser> adminUsers = new List<AdminUser>();
 
-            DatabaseInit dbInit = new DatabaseInit();
-
-            Student = null;
-            Assessment = null;
-            AssessmentSession = null;
-            CurrentAssessmentSessionId = 0;
-            IsGroup = false;
-            CurrentQuestionId = 0;
-
-            CurrentAssessmentQuestions = new List<AssessmentQuestion>();
-            CurrentQuestions = new List<Question>();
+            // Check for admin user
+            try
+            {
+                adminUsers = AdminUserDB.GetItemsAsync().Result;
+            }
+            catch(Exception ex)
+            {
+                
+                Console.Error.WriteLineAsync("Failed to connect to database");
+                return;
+            }
 
 
+            // Main Page assignment
+            if(adminUsers.Count == 0)
+            {
+                // Start First Time set Up
+                MainPage = new NavigationPage(new Welcome());
+            }
+            else
+            {
+                // Standard Start
+                MainPage = new NavigationPage(new Login());
+            }
 
-            MainPage = new NavigationPage(new Welcome());
 
+            //AdminUser user = new AdminUser();
+            //user.UserName = "a";
+            //user.Hash = "b";
+            //user.Pin = 1234;
+            //user.UserName = "testUser";
+            //user.DbName = "testUserDb";
 
+            //AdminUser = user;
+            //LoginViewModel lvm = new LoginViewModel();
+
+            //DatabaseInit dbInit = new DatabaseInit();
+
+            //Student = null;
+            //Assessment = null;
+            //AssessmentSession = null;
+            //CurrentAssessmentSessionId = 0;
+            //IsGroup = false;
+            //CurrentQuestionId = 0;
+
+            //CurrentAssessmentQuestions = new List<AssessmentQuestion>();
+            //CurrentQuestions = new List<Question>();
+        
             //MainPage = new NavigationPage(new AdminHome());
             //MainPage = new SingleTextTemplate(new SingleTextTemplateViewModel(nextQuestion, nextAssessmentQuestion));
         }

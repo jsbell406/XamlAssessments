@@ -14,13 +14,13 @@ namespace Mobi_App_Project.DB
         public AdminUserDB(SQLiteAsyncConnection db)
         {
             database = db;
-           // DbName = App.AdminUser.DbName;
+            DbName = "MyAssessmentsDb";
 
             //AdminUserDbInit();
             //int s = database.DropTableAsync<AdminUser>().Result;
 
             database.CreateTableAsync<AdminUser>();
-            DbName = "MyAssessmentsDb";
+            
             //loadData();
         }
 

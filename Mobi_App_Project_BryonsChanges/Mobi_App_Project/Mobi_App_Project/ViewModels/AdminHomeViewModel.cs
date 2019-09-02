@@ -11,7 +11,7 @@ namespace Mobi_App_Project.ViewModels
 {
     public class AdminHomeViewModel : BaseViewModel
     {
-        public ObservableCollection<Student> StudentList { get; set; }
+        public ObservableCollection<Mobi_App_Project.Models.Student> StudentList { get; set; }
         public Command LoadStudentListCommand { get; set; }
 
 

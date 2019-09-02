@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobi_App_Project.Views.Create.StudentCreate"           
+             BackgroundColor="#0D48A1" >
+    
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+
+                <Button Text="Back"
+                VerticalOptions="Start"
+                HorizontalOptions="Start"
+            Clicked="Back_Clicked"
+                 />
+                <StackLayout  BackgroundColor="#A1D6ED"
+                     Padding="8,8,8,8"
+                     Margin="10,10,10,10"
+                      VerticalOptions="FillAndExpand"
+                      HorizontalOptions="FillAndExpand">
+            <Label Text="Please enter a new student."
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Label Text="First Name"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
+
+            <Entry Text="{Binding Student.FirstName}" x:Name="txtFirstName" FontSize="Large"/>
+
+            <Label Text="Middle Name"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Entry Text="{Binding Student.MiddleName}" x:Name="txtMiddleName" FontSize="Large"/>
+
+            <Label Text="Last Name"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Entry Text="{Binding Student.LastName}" x:Name="txtLastName" FontSize="Large"/>
+
+            <!--<Label Text="Age"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Entry Text="{Binding }" FontSize="Large"/>-->
+
+            <Label Text="Grade"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Entry Text="{Binding Student.Grade}" x:Name="txtGrade" FontSize="Large"/>
+
+            <Button Text="Submit Student"
+                VerticalOptions="CenterAndExpand"
+                    BackgroundColor="#B9A5F2"
+                HorizontalOptions="Center"
+                Clicked="Submit_Clicked" />
+        </StackLayout>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

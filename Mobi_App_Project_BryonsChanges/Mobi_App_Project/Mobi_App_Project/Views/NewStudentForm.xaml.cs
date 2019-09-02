@@ -13,6 +13,8 @@ namespace Mobi_App_Project.Views
 	public partial class NewStudentForm : ContentPage
 	{
         public Student Student { get; set; }
+        
+
 
 		public NewStudentForm()
 		{

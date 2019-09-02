@@ -1,20 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using Mobi_App_Project.Models;
+using Mobi_App_Project.ViewModels.Home;
+using Mobi_App_Project.Views.Create;
+using Mobi_App_Project.Views.Detail;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Mobi_App_Project.Views.Home
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Students : ContentPage
 	{
-		public Students ()
-		{
-			InitializeComponent ();
-		}
-	}
+        public StudentsViewModel viewModel;
+
+        public Students()
+        {
+            InitializeComponent();
+            BindingContext = viewModel = new StudentsViewModel();
+        }
+
+        private async void SelectedStudent(object sender, SelectedItemChangedEventArgs e)
+        {
+            Student student = e.SelectedItem as Student;
+            if (student == null)
+                return;
+
+            App.Student = student;
+            await Navigation.PushModalAsync(new StudentDetail());
+        }
+
+        async void Create_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new StudentCreate());
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.StudentList.Clear();
+            viewModel.Students.Clear();
+            viewModel.FilteredList.Clear();
+            viewModel.Students = App.StudentDB.GetItemsAsync().Result;
+            viewModel.LoadStudentsCommand.Execute(true);
+        }
+    }
 }

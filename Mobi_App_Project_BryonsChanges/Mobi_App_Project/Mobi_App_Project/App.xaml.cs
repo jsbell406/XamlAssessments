@@ -11,6 +11,7 @@ using Mobi_App_Project.ViewModels;
 using Mobi_App_Project.Helpers;
 using System.Threading.Tasks;
 using Mobi_App_Project.Views.General;
+using Mobi_App_Project.Views.Home;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Mobi_App_Project
@@ -51,34 +52,83 @@ namespace Mobi_App_Project
         {
             InitializeComponent();
 
-
-            // Initialize App
-            List<AdminUser> adminUsers = new List<AdminUser>();
-
-            // Check for admin user
-            try
+            bool isDev = true;
+            if(isDev)
             {
-                adminUsers = AdminUserDB.GetItemsAsync().Result;
-            }
-            catch(Exception ex)
-            {
-                
-                Console.Error.WriteLineAsync("Failed to connect to database");
-                return;
-            }
+                // Initialize App
+                List<AdminUser> adminUsers = new List<AdminUser>();
+
+                // Check for admin user
+                try
+                {
+                    adminUsers = AdminUserDB.GetItemsAsync().Result;
+                }
+                catch (Exception ex)
+                {
+
+                    Console.Error.WriteLineAsync("Failed to connect to database");
+                    return;
+                }
+
+                DatabaseInit dbInit = new DatabaseInit();
+               
+
+                AdminUser = AdminUserDB.GetUserByUsername("jimmy").Result;
+
+                //NavigationPage p1 = new NavigationPage(new Students());
+                //NavigationPage p2 = new NavigationPage(new Assessments());
+                //NavigationPage p3 = new NavigationPage(new Records());
+
+                //TabbedPage adminHome = new TabbedPage();
+                //adminHome.Children.Add(p1);
+                //adminHome.Children.Add(p2);
+                //adminHome.Children.Add(p3);
+                //MainPage = adminHome;
 
 
-            // Main Page assignment
-            if(adminUsers.Count == 0)
-            {
-                // Start First Time set Up
-                MainPage = new NavigationPage(new Welcome());
+
+
+                TabbedPage adminHome = new TabbedPage();
+                adminHome.Children.Add(new Students());
+                adminHome.Children.Add(new Assessments());
+                adminHome.Children.Add(new Records());
+                MainPage = adminHome;
+
             }
             else
             {
-                // Standard Start
-                MainPage = new NavigationPage(new Login());
+                // Initialize App
+                List<AdminUser> adminUsers = new List<AdminUser>();
+
+                // Check for admin user
+                try
+                {
+                    
+                    adminUsers = AdminUserDB.GetItemsAsync().Result;
+                }
+                catch (Exception ex)
+                {
+
+                    Console.Error.WriteLineAsync("Failed to connect to database");
+                    return;
+                }
+
+
+                // Main Page assignment
+                if (adminUsers.Count == 0)
+                {
+                    // Start First Time set Up
+                    MainPage = new NavigationPage(new Welcome());
+                }
+                else
+                {
+                    // Standard Start
+                    MainPage = new NavigationPage(new Login());
+                }
             }
+
+
+            
 
 
             //AdminUser user = new AdminUser();
@@ -91,7 +141,7 @@ namespace Mobi_App_Project
             //AdminUser = user;
             //LoginViewModel lvm = new LoginViewModel();
 
-            //DatabaseInit dbInit = new DatabaseInit();
+            
 
             //Student = null;
             //Assessment = null;

@@ -34,7 +34,6 @@ namespace Mobi_App_Project.DB
         public SQLiteAsyncConnection GetConnection()
         {
             return database;
-
         }
 
 
@@ -46,12 +45,12 @@ namespace Mobi_App_Project.DB
 
         public Task<Student> GetStudentByName(string firstName, string middleName, string lastName)
         {
-            return database.Table<Student>().Where(s => s.FirstName == firstName & s.MiddleName == middleName & s.LastName == lastName).FirstOrDefaultAsync();
+            return database.Table<Student>().Where(s => s.FirstName.ToUpper() == firstName.ToUpper() & s.MiddleName.ToUpper() == middleName.ToUpper() & s.LastName.ToUpper() == lastName.ToUpper()).FirstOrDefaultAsync();
         }
 
         public Task<Student> GetStudentByName(string firstName, string lastName)
         {
-            return database.Table<Student>().Where(s => s.FirstName == firstName & s.LastName == lastName).FirstOrDefaultAsync();
+            return database.Table<Student>().Where(s => s.FirstName.ToUpper() == firstName.ToUpper() & s.LastName.ToUpper() == lastName.ToUpper()).FirstOrDefaultAsync();
         }
 
         public Task<int> SaveItemAsync(Student item)

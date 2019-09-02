@@ -2,12 +2,61 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.Home.Students"
-             Title="Students">
+             Title="My Students"
+             BackgroundColor="#0D48A1">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Students"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+        <StackLayout  BackgroundColor="#A1D6ED"
+                     Padding="8,8,8,8"
+                     Margin="10,10,10,10">
+
+            <Label Text="Search for Student"
+               TextColor="Navy"
+               VerticalOptions="Center"
+               HorizontalOptions="CenterAndExpand"
+               FontSize="Large"/>
+
+            <SearchBar x:Name="SearchBar" Placeholder="Search"
+                   VerticalOptions="Fill"                 
+                   FontSize="Large"
+                   Margin="0,20,0,20"                   
+                   Text="{Binding SearchedText, Mode=TwoWay}"
+                   SearchCommand="{Binding SearchCommand}"/>
+
+            <ListView x:Name="StudentListView"
+                ItemsSource="{Binding FilteredList}"
+                VerticalOptions="FillAndExpand"
+                HasUnevenRows="true"               
+                IsPullToRefreshEnabled="false"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                CachingStrategy="RecycleElement"
+                ItemSelected="SelectedStudent">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="15">
+                                <Label Text="{Binding FirstName}" 
+                                   TextColor="Navy"
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="Large" />
+                                <Label Text="{Binding LastName}" 
+                                   TextColor="Navy"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="Medium" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="CREATE NEW STUDENT"
+                Clicked="Create_Clicked"
+                Padding="0,20,0,20"
+                BackgroundColor="#B9A5F2"
+                FontSize="Large"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

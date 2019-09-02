@@ -15,8 +15,6 @@ namespace Mobi_App_Project.Views
         private string groupName = "";
         private string individualName = "";
       
-
-
         async void Save_Clicked(object sender, EventArgs e)
         {
             //MessagingCenter.Send(this, "AddItem", Item);

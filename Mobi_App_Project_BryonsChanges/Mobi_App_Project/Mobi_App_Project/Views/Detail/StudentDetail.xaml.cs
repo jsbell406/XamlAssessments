@@ -16,7 +16,5 @@ namespace Mobi_App_Project.Views.Detail
 		{
 			InitializeComponent ();
 		}
-
-
 	}
 }

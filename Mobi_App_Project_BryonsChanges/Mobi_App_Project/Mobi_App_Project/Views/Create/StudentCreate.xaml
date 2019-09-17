@@ -3,57 +3,170 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.Create.StudentCreate"           
              BackgroundColor="#0D48A1" >
-    
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout>
-
-                <Button Text="Back"
-                VerticalOptions="Start"
-                HorizontalOptions="Start"
-            Clicked="Back_Clicked"
-                 />
+            
+            <!-- Page Frame -->
+            <Frame CornerRadius="20"
+                   OutlineColor="Purple"
+                   Padding="15"
+                   Margin="20"
+                   BackgroundColor="#A1D6ED">
+                
+                <!-- Page Layout -->
                 <StackLayout  BackgroundColor="#A1D6ED"
-                     Padding="8,8,8,8"
-                     Margin="10,10,10,10"
-                      VerticalOptions="FillAndExpand"
+                      Padding="8,8,8,8"
+                      Margin="10,10,10,10"
+                      VerticalOptions="CenterAndExpand"
                       HorizontalOptions="FillAndExpand">
-            <Label Text="Please enter a new student."
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Label Text="First Name"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand"/>
+                                      
+                    <!-- Back Button Frame -->
+                    <Frame x:Name="BackButtonFrame" 
+                           CornerRadius="10"
+                           BorderColor="Salmon"
+                           Padding="0"
+                           Margin="5">
+                        
+                        <!-- Back Button -->
+                        <Button x:Name="btnBack" 
+                                Text="Cancel"
+                                BackgroundColor="Salmon"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                Clicked="Back_Clicked"/>
+                    </Frame>
 
-            <Entry Text="{Binding Student.FirstName}" x:Name="txtFirstName" FontSize="Large"/>
+                    <!-- First Name Frame -->
+                    <Frame x:Name="FirstNameFrame" 
+                           CornerRadius="10"
+                           BorderColor="RoyalBlue"
+                           Padding="5">
+                        
+                        <!-- First Name Layout -->
+                        <StackLayout>
 
-            <Label Text="Middle Name"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand"/>
-            <Entry Text="{Binding Student.MiddleName}" x:Name="txtMiddleName" FontSize="Large"/>
+                            <!-- First Name Label -->
+                            <Label x:Name="lblFirstName"
+                                   Text="First Name"
+                                   VerticalOptions="Start" 
+                                   HorizontalOptions="Center"
+                                   FontSize="28"/>
 
-            <Label Text="Last Name"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand"/>
-            <Entry Text="{Binding Student.LastName}" x:Name="txtLastName" FontSize="Large"/>
+                            <!-- First Name Entry TODO: Add Completed Handler -->
+                            <Entry x:Name="txtFirstName"
+                                   Text="{Binding Student.FirstName}"                                
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="Large"
+                                   ReturnType="Done"
+                                   Placeholder="Required"
+                                   Completed="OnEntryComplete"
+                                   TextChanged="OnChangeFirstName"/>
+                        </StackLayout>
+                    </Frame>
 
-            <!--<Label Text="Age"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand"/>
-            <Entry Text="{Binding }" FontSize="Large"/>-->
+                    <!-- Last Name Frame -->
+                    <Frame x:Name="LastNameFrame"
+                           CornerRadius="10"
+                           OutlineColor="RoyalBlue"
+                           Padding="5">
+                        
+                        <!-- Last Name Layout -->
+                        <StackLayout>
+                            
+                            <!-- Last Name Label -->
+                            <Label x:Name="lblLastName"
+                                   Text="Last Name"
+                                   VerticalOptions="Start"
+                                   HorizontalOptions="Center"
+                                   FontSize="28"/>
 
-            <Label Text="Grade"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand"/>
-            <Entry Text="{Binding Student.Grade}" x:Name="txtGrade" FontSize="Large"/>
+                            <!-- Last Name Entry TODO: Add Completed Handler -->
+                            <Entry x:Name="txtLastName"
+                                   Text="{Binding Student.LastName}"                                 
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="Large"
+                                   ReturnType="Done"
+                                   Placeholder="Required"
+                                   Completed="OnEntryComplete"
+                                   TextChanged="OnChangeLastName"/>
+                        </StackLayout>
+                    </Frame>
 
-            <Button Text="Submit Student"
-                VerticalOptions="CenterAndExpand"
-                    BackgroundColor="#B9A5F2"
-                HorizontalOptions="Center"
-                Clicked="Submit_Clicked" />
-        </StackLayout>
-        </StackLayout>
+                    <!-- Middle Name Frame -->
+                    <Frame x:Name="MiddleNameFrame"
+                           CornerRadius="10"
+                           OutlineColor="RoyalBlue"
+                           Padding="5">
+                        
+                        <!-- Middle Name Layout -->
+                        <StackLayout>
+                            
+                            <!-- Middle Name Label-->
+                            <Label x:Name="lblMiddleName" 
+                                   Text="Middle Name"
+                                   VerticalOptions="Start"
+                                   HorizontalOptions="Center"
+                                   FontSize="28"/>
+                            
+                            <!-- Middle Name Entry -->
+                            <Entry x:Name="txtMiddleName"
+                                   Text="{Binding Student.MiddleName}"
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="Large"
+                                   ReturnType="Done"
+                                   Placeholder="Optional"
+                                   Completed="OnEntryComplete"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- Grade Frame -->
+                    <Frame x:Name="GradeFrame"
+                           CornerRadius="10"
+                           OutlineColor="RoyalBlue"
+                           Padding="5">
+                        
+                        <!-- Grade Layout -->
+                        <StackLayout>
+                            
+                            <!-- Grade Label -->
+                            <Label x:Name="lblGrade"
+                                   Text="Grade"
+                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="CenterAndExpand"
+                                   FontSize="28"/>
+                            
+                            <!-- Grade Entry -->
+                            <Entry x:Name="txtGrade" 
+                                   Text="{Binding Student.Grade}"
+                                   VerticalOptions="Center" 
+                                   HorizontalOptions="FillAndExpand"
+                                   FontSize="Large"
+                                   ReturnType="Done"
+                                   Placeholder="Optional"
+                                   Completed="OnEntryComplete"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- Submit Button Frame -->
+                    <Frame x:Name="SubmitButtonFrame" 
+                           CornerRadius="10"
+                           BorderColor="#B9A5F2"
+                           Padding="0"
+                           Margin="5">
+                        
+                        <!-- Submit Button -->
+                        <Button x:Name="btnSubmit" 
+                                Text="Save"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="FillAndExpand"                                
+                                BackgroundColor="#B9A5F2"                             
+                                Clicked="Submit_Clicked"/>
+                    </Frame>
+                </StackLayout>
+            </Frame>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

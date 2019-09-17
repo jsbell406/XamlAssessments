@@ -25,6 +25,96 @@ namespace Mobi_App_Project.Views.Create
             BindingContext = Student;
         }
 
+        async void OnChangeFirstName(object sender, EventArgs eventArgs)
+        {
+            bool isValid = await ValidateFirstName();
+            if (isValid)
+                FirstNameFrame.BorderColor = Color.Green;
+            else
+                FirstNameFrame.BorderColor = Color.Red;
+        }
+
+        async void OnEntryComplete(object sender,EventArgs eventArgs)
+        {
+            bool isFormValid = false;
+            isFormValid = await ValidateForm();
+            if (isFormValid)
+            {
+                SubmitButtonFrame.BorderColor = Color.Green;
+                btnSubmit.BackgroundColor = Color.Green;
+            }
+            else
+            {
+                SubmitButtonFrame.BorderColor = Color.Red;
+                btnSubmit.BackgroundColor = Color.Red;
+            }
+        }
+
+        async void OnChangeLastName(object sender, EventArgs eventArgs)
+        {
+            bool isValid = await ValidateLastName();
+            if (isValid)
+                LastNameFrame.BorderColor = Color.Green;
+            else
+                LastNameFrame.BorderColor = Color.Red;
+        }
+
+      
+
+        // Currently only constraint is the first name must be more than zero characters long
+        private async Task<bool> ValidateFirstName()
+        {
+            bool isValid = false;
+
+            await Task.Run(() => 
+            {
+                // validate First Name Logic
+                string fName = "";
+                fName = txtFirstName.Text;
+                if(fName != null)
+                {
+                    if (fName.Length > 0)
+                        isValid = true;
+                }
+                
+            });
+            return isValid;
+        }
+
+        private async Task<bool> ValidateLastName()
+        {
+            bool isValid = false;
+
+            await Task.Run(() =>
+            {
+                // validate Last Name Logic
+                string lName = "";
+                lName = txtLastName.Text;
+                if(lName != null)
+                {
+                    if (lName.Length > 0)
+                        isValid = true;
+                }
+                
+            });
+            return isValid;
+        }
+
+        private async Task<bool> ValidateForm()
+        {
+            bool isValid = false;
+
+            await Task.Run(async () =>
+            {
+                bool isFirstNameValid = await ValidateFirstName();
+                bool isLastNameValid = await ValidateLastName();
+                if (isFirstNameValid & isLastNameValid)
+                    isValid = true;
+            });
+            return isValid;
+        }
+
+
         async void Back_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
@@ -57,44 +147,15 @@ namespace Mobi_App_Project.Views.Create
         {           
             try
             {
-
-                bool isUni = await IsStudentUnique(Student);
-                if (isUni)
+                bool isValid = await ValidateForm();
+                if(isValid)
                 {
-                    bool isSaved = await SaveStudent(Student);
+                    bool isUni = await IsStudentUnique(Student);
+                    if (isUni)
+                    {
+                        bool isSaved = await SaveStudent(Student);
 
-                    if (isSaved)
-                    {
-                        bool isAnotherStudent = await DisplayAlert("Student Saved", "Would you like to enter another student?", "Yes", "No");
-                        if (isAnotherStudent)
-                        {
-                            Student.StudentId = 0;
-                            Student.Grade = "";
-                            Student.FirstName = "";
-                            Student.LastName = "";
-                            Student.Age = 00;
-
-                            txtFirstName.Text = "";
-                            txtLastName.Text = "";
-                            txtMiddleName.Text = "";
-                            txtGrade.Text = "";
-                        }
-                        else
-                        {
-                            await Navigation.PopModalAsync(true);
-                        }
-                    }
-                    else
-                    {
-                        await DisplayAlert("Error", "Failed to save student, Please try again.", "Done");
-                    }                   
-                }
-                else
-                {
-                    bool saveAnyway = await DisplayAlert("Duplicate Found", string.Format("{0} already exists in the database. Would you like to save anyway?", Student.ToString()), "Yes", "No");
-                    if(saveAnyway)
-                    {
-                        if (await SaveStudent(Student))
+                        if (isSaved)
                         {
                             bool isAnotherStudent = await DisplayAlert("Student Saved", "Would you like to enter another student?", "Yes", "No");
                             if (isAnotherStudent)
@@ -120,7 +181,45 @@ namespace Mobi_App_Project.Views.Create
                             await DisplayAlert("Error", "Failed to save student, Please try again.", "Done");
                         }
                     }
-                }               
+                    else
+                    {
+                        bool saveAnyway = await DisplayAlert("Duplicate Found", string.Format("{0} already exists in the database. Would you like to save anyway?", Student.ToString()), "Yes", "No");
+                        if (saveAnyway)
+                        {
+                            if (await SaveStudent(Student))
+                            {
+                                bool isAnotherStudent = await DisplayAlert("Student Saved", "Would you like to enter another student?", "Yes", "No");
+                                if (isAnotherStudent)
+                                {
+                                    Student.StudentId = 0;
+                                    Student.Grade = "";
+                                    Student.FirstName = "";
+                                    Student.LastName = "";
+                                    Student.Age = 00;
+
+                                    txtFirstName.Text = "";
+                                    txtLastName.Text = "";
+                                    txtMiddleName.Text = "";
+                                    txtGrade.Text = "";
+                                }
+                                else
+                                {
+                                    await Navigation.PopModalAsync(true);
+                                }
+                            }
+                            else
+                            {
+                                await DisplayAlert("Error", "Failed to save student, Please try again.", "Done");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    //form is not valid need to build alert message telling them whats required
+                    await DisplayAlert("Required Fields not filled", "First and last Name are required, other fields are optional", "Done");
+                }
+               
             }
             catch(Exception ex)
             {
@@ -168,9 +267,7 @@ namespace Mobi_App_Project.Views.Create
                 else
                 {
                     isStudentUnique = true;
-                }
-
-                
+                }               
             });
            return isStudentUnique;
         }

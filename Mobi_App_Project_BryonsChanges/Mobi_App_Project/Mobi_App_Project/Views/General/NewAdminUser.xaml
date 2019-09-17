@@ -46,9 +46,9 @@
                                     VerticalOptions="Center" 
                                     HorizontalOptions="FillAndExpand"
                                     FontSize="Large"
-                                   ReturnType="Done"
-                                   Completed="OnChangePasswordVerify"
-                                   TextChanged="OnChangePasswordVerify"/>
+                                    ReturnType="Done"
+                                    Completed="OnChangePasswordVerify"
+                                    TextChanged="OnChangePasswordVerify"/>
                         </StackLayout>
                     </Frame>
 

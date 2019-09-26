@@ -25,8 +25,8 @@ namespace Mobi_App_Project.Views.Home
             if (student == null)
                 return;
 
-            App.Student = student;
-            await Navigation.PushModalAsync(new StudentDetail());
+            //App.Student = student;
+            await Navigation.PushModalAsync(new StudentDetail(student));
         }
 
         async void Create_Clicked(object sender, EventArgs e)

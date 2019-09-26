@@ -52,7 +52,7 @@
                                    HorizontalOptions="Center"
                                    FontSize="28"/>
 
-                            <!-- First Name Entry TODO: Add Completed Handler -->
+                            <!-- First Name Entry  -->
                             <Entry x:Name="txtFirstName"
                                    Text="{Binding Student.FirstName}"                                
                                    VerticalOptions="Center" 

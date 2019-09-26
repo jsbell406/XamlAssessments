@@ -5,58 +5,90 @@
              Title="My Students"
              BackgroundColor="#0D48A1">
     <ContentPage.Content>
+        <!--<ScrollView>-->
 
-        <StackLayout  BackgroundColor="#A1D6ED"
-                     Padding="8,8,8,8"
-                     Margin="10,10,10,10">
+            <Frame CornerRadius="20"
+                   OutlineColor="Purple"
+                   Padding="15"
+                   Margin="20"
+                   BackgroundColor="#A1D6ED">
 
-            <Label Text="Search for Student"
-               TextColor="Navy"
-               VerticalOptions="Center"
-               HorizontalOptions="CenterAndExpand"
-               FontSize="Large"/>
+                <!-- Page Layout -->
+                <StackLayout  BackgroundColor="#A1D6ED"
+                      Padding="8,8,8,8"
+                      Margin="10,10,10,10"
+                      VerticalOptions="CenterAndExpand"
+                      HorizontalOptions="FillAndExpand">
 
-            <SearchBar x:Name="SearchBar" Placeholder="Search"
-                   VerticalOptions="Fill"                 
-                   FontSize="Large"
-                   Margin="0,20,0,20"                   
-                   Text="{Binding SearchedText, Mode=TwoWay}"
-                   SearchCommand="{Binding SearchCommand}"/>
-
-            <ListView x:Name="StudentListView"
-                ItemsSource="{Binding FilteredList}"
-                VerticalOptions="FillAndExpand"
-                HasUnevenRows="true"               
-                IsPullToRefreshEnabled="false"
-                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                CachingStrategy="RecycleElement"
-                ItemSelected="SelectedStudent">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="15">
-                                <Label Text="{Binding FirstName}" 
+                    <Frame x:Name="SearchBarFrame" 
+                           CornerRadius="10"
+                           BorderColor="RoyalBlue"
+                           Padding="5">
+                        <StackLayout>
+                            <Label Text="Search for Student"
                                    TextColor="Navy"
-                                LineBreakMode="NoWrap" 
-                                Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="Large" />
-                                <Label Text="{Binding LastName}" 
-                                   TextColor="Navy"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="Medium" />
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="CenterAndExpand"
+                                   FontSize="Large"/>
 
-            <Button Text="CREATE NEW STUDENT"
-                Clicked="Create_Clicked"
-                Padding="0,20,0,20"
-                BackgroundColor="#B9A5F2"
-                FontSize="Large"/>
+                            <SearchBar x:Name="SearchBar" Placeholder="Search"
+                                   VerticalOptions="Fill"                 
+                                   FontSize="Large"
+                                   Margin="0,20,0,20"                   
+                                   Text="{Binding SearchedText, Mode=TwoWay}"
+                                   SearchCommand="{Binding SearchCommand}"/>
+                        </StackLayout>
+                    </Frame>
 
-        </StackLayout>
+
+                    <Frame x:Name="ListViewFrame" 
+                           CornerRadius="10"
+                           BorderColor="RoyalBlue"
+                           Padding="5">
+                        <StackLayout>
+                            <ListView x:Name="StudentListView"
+                            ItemsSource="{Binding FilteredList}"                          
+                            HasUnevenRows="true"               
+                            IsPullToRefreshEnabled="false"
+                            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                            CachingStrategy="RecycleElement"
+                            ItemSelected="SelectedStudent">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Padding="15">
+                                                <Label Text="{Binding FirstName}" 
+                                               TextColor="Navy"
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="Large" />
+                                                <Label Text="{Binding LastName}" 
+                                               TextColor="Navy"
+                                            LineBreakMode="NoWrap"
+                                            Style="{DynamicResource ListItemDetailTextStyle}"
+                                            FontSize="Medium" />
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame x:Name="CreateNewStudentFrame" 
+                           CornerRadius="10"
+                           BorderColor="#B9A5F2"
+                           Padding="0"
+                           Margin="5">
+                        <Button Text="CREATE NEW STUDENT"
+                        Clicked="Create_Clicked"
+                        Padding="0,20,0,20"
+                        BackgroundColor="#B9A5F2"
+                        FontSize="Large"/>
+                    </Frame>
+
+                </StackLayout>
+            </Frame>
+        <!--</ScrollView>-->
     </ContentPage.Content>
 </ContentPage>

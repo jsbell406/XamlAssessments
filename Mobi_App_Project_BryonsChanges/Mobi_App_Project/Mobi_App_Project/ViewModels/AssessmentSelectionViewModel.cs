@@ -38,7 +38,23 @@ namespace Mobi_App_Project.ViewModels
             Assessments = new ObservableCollection<Assessment>();
             Questions = new List<Question>();
             LoadAssessmentsCommand = new Command(async () => await ExecuteLoadAssessmentsCommand());
+            App.CurrentAssessmentQuestions = new List<AssessmentQuestion>();
           
+        }
+        public void LoadAssessmentQuestions()
+        {
+             
+            Task<List<AssessmentQuestion>> assessmentQuestionsInTask = App.AssesmentQuestionDB.GetAssessmentQuestionsByAssessmentId(App.Assessment.AssessmentId);
+            List<AssessmentQuestion> assessmentQuestions = assessmentQuestionsInTask.Result;
+            AssessmentQuestion[] assessmentQuestionsArray = new AssessmentQuestion[assessmentQuestions.Count];
+
+            foreach (AssessmentQuestion assessmentQuestion in assessmentQuestions)
+            {
+                assessmentQuestionsArray[assessmentQuestion.OrderNum - 1] = assessmentQuestion;
+            }
+
+            App.CurrentAssessmentQuestions.AddRange(assessmentQuestionsArray);
+                     
         }
 
         async Task ExecuteLoadAssessmentsCommand()

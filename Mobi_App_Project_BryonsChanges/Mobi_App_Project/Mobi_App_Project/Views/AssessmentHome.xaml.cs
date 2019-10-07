@@ -14,7 +14,8 @@ namespace Mobi_App_Project.Views
         AssessmentSelectionViewModel viewModel;
 		public AssessmentHome (AssessmentSelectionViewModel vm)
 		{
-			InitializeComponent ();        
+			InitializeComponent ();
+            App.CurrentQuestions = new List<Question>();
             List<AssessmentQuestion> assessmentQuestions = App.CurrentAssessmentQuestions;
             foreach(AssessmentQuestion assessmentQuestion in assessmentQuestions)
             {

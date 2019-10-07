@@ -24,6 +24,22 @@ namespace Mobi_App_Project.DB
             await database.CreateTableAsync<Assessment>();
         }
 
+        public async Task<Dictionary<string,Assessment>> GetAssessmentDictionary()
+        {
+            Dictionary<string, Assessment> assessmentDictionary = new Dictionary<string, Assessment>();
+
+             await Task.Run(async () => {
+                 List<Assessment> assessments = await database.Table<Assessment>().ToListAsync();
+                 
+                 foreach(Assessment assessment in assessments)
+                 {
+                     assessmentDictionary.Add(assessment.AssessName, assessment);
+                 }
+             });
+
+            return assessmentDictionary;
+        }
+
         public Task<List<Assessment>> GetItemsAsync()
         {
             return database.Table<Assessment>().ToListAsync();

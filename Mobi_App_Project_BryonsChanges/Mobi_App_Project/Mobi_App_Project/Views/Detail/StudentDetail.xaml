@@ -45,6 +45,7 @@
                                 BackgroundColor="ForestGreen"
                                 VerticalOptions="CenterAndExpand"
                                 HorizontalOptions="FillAndExpand"
+                                Clicked="OnAssessmentPressed"
                                 />
                     </Frame>
                         
@@ -219,7 +220,15 @@
                                    Completed="OnEntryComplete"/>
                         </StackLayout>
                     </Frame>
-
+                    <Picker x:Name="pkrAssessment"
+                            IsVisible="False"
+                            HorizontalOptions="Center"
+                            VerticalOptions="CenterAndExpand"
+                            ItemsSource="{Binding AssessmentsList}"
+                            SelectedIndexChanged="OnAssessmentSelected">
+                        
+                        
+                    </Picker>
                     <!-- Submit Button Frame -->
                     <Frame x:Name="SubmitButtonFrame" 
                            CornerRadius="10"

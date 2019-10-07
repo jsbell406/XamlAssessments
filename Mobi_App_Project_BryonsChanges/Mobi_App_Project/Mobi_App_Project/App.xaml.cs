@@ -102,8 +102,7 @@ namespace Mobi_App_Project
 
                 // Check for admin user
                 try
-                {
-                    
+                {                 
                     adminUsers = AdminUserDB.GetItemsAsync().Result;
                 }
                 catch (Exception ex)

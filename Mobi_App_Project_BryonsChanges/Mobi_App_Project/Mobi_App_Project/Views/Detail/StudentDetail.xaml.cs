@@ -1,4 +1,6 @@
 ﻿using Mobi_App_Project.Models;
+using Mobi_App_Project.ViewModels;
+using Mobi_App_Project.ViewModels.Detail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,28 +14,16 @@ namespace Mobi_App_Project.Views.Detail
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StudentDetail : ContentPage
-	{
-        public Student Student { get; set; }
+	{      
+        private bool isBusy;       
+        public StudentDetailViewModel viewModel;
  
-
-        public StudentDetail(Student student)
+        public StudentDetail(StudentDetailViewModel vm)
         {
             InitializeComponent();
+            isBusy = false;
 
-            Student = new Student
-            {
-                FirstName = student.FirstName,
-                LastName = student.LastName,
-                MiddleName = student.MiddleName,
-                Age = student.Age,
-                Grade = student.Grade,
-                StudentId = student.StudentId
-            };
-            BindingContext = Student;
-            txtFirstName.Text = Student.FirstName;
-            txtLastName.Text = Student.LastName;
-            txtMiddleName.Text = Student.MiddleName;
-            txtGrade.Text = Student.Grade;
+            BindingContext = viewModel = vm;
         }
         async void OnChangeFirstName(object sender, EventArgs eventArgs)
         {
@@ -69,8 +59,6 @@ namespace Mobi_App_Project.Views.Detail
                 LastNameFrame.BorderColor = Color.Red;
         }
 
-
-
         // Currently only constraint is the first name must be more than zero characters long
         private async Task<bool> ValidateFirstName()
         {
@@ -86,7 +74,6 @@ namespace Mobi_App_Project.Views.Detail
                     if (fName.Length > 0)
                         isValid = true;
                 }
-
             });
             return isValid;
         }
@@ -124,17 +111,11 @@ namespace Mobi_App_Project.Views.Detail
             return isValid;
         }
 
-
         async void Back_Clicked(object sender, EventArgs e)
-        {
+        {  
             await Navigation.PopModalAsync();
         }
-
-        /// <summary>
-        /// Takes Student Returns True is student was saved
-        /// </summary>
-        /// <param name="studentToSave"></param>
-        /// <returns></returns>
+  
         private async Task<bool> SaveStudent(Student studentToSave)
         {
             bool isSuccess = false;
@@ -142,7 +123,7 @@ namespace Mobi_App_Project.Views.Detail
                 int successTask = await App.StudentDB.SaveItemAsync(studentToSave);
                 if (successTask == 1)
                 {
-                    App.Student = Student;
+                    App.Student = viewModel.Student;
                     isSuccess = true;
                 }
                 else
@@ -160,21 +141,21 @@ namespace Mobi_App_Project.Views.Detail
                 bool isValid = await ValidateForm();
                 if (isValid)
                 {
-                    bool isUni = await IsStudentUnique(Student);
+                    bool isUni = await IsStudentUnique(viewModel.Student);
                     if (isUni)
                     {
-                        bool isSaved = await SaveStudent(Student);
+                        bool isSaved = await SaveStudent(viewModel.Student);
 
                         if (isSaved)
                         {
                             bool isAnotherStudent = await DisplayAlert("Student Saved", "Would you like to enter another student?", "Yes", "No");
                             if (isAnotherStudent)
                             {
-                                Student.StudentId = 0;
-                                Student.Grade = "";
-                                Student.FirstName = "";
-                                Student.LastName = "";
-                                Student.Age = 00;
+                                viewModel.Student.StudentId = 0;
+                                viewModel.Student.Grade = "";
+                                viewModel.Student.FirstName = "";
+                                viewModel.Student.LastName = "";
+                                viewModel.Student.Age = 00;
 
                                 txtFirstName.Text = "";
                                 txtLastName.Text = "";
@@ -193,19 +174,19 @@ namespace Mobi_App_Project.Views.Detail
                     }
                     else
                     {
-                        bool saveAnyway = await DisplayAlert("Duplicate Found", string.Format("{0} already exists in the database. Would you like to save anyway?", Student.ToString()), "Yes", "No");
+                        bool saveAnyway = await DisplayAlert("Duplicate Found", string.Format("{0} already exists in the database. Would you like to save anyway?", viewModel.Student.ToString()), "Yes", "No");
                         if (saveAnyway)
                         {
-                            if (await SaveStudent(Student))
+                            if (await SaveStudent(viewModel.Student))
                             {
                                 bool isAnotherStudent = await DisplayAlert("Student Saved", "Would you like to enter another student?", "Yes", "No");
                                 if (isAnotherStudent)
                                 {
-                                    Student.StudentId = 0;
-                                    Student.Grade = "";
-                                    Student.FirstName = "";
-                                    Student.LastName = "";
-                                    Student.Age = 00;
+                                    viewModel.Student.StudentId = 0;
+                                    viewModel.Student.Grade = "";
+                                    viewModel.Student.FirstName = "";
+                                    viewModel.Student.LastName = "";
+                                    viewModel.Student.Age = 00;
 
                                     txtFirstName.Text = "";
                                     txtLastName.Text = "";
@@ -282,23 +263,80 @@ namespace Mobi_App_Project.Views.Detail
             return isStudentUnique;
         }
 
-
         async void OnDeletePressed(object sender, EventArgs e)
         {
+            if(isBusy)
+            {
+                return;
+            }
+            isBusy = true;
             // display popup verify 
-
-            // on confirm delete student
-
-            // on delete pop page
+            bool isDelete = await DisplayAlert("Confirm", "Permanently delete student record?", "Yes", "No");
+            if(isDelete)
+            {
+                int intSuccess = await App.StudentDB.DeleteItemAsync(viewModel.Student);
+                if(intSuccess == 1)
+                {
+                    await DisplayAlert("Success", "Student recorded deleted", "Done");
+                    await Navigation.PopModalAsync();
+                    isBusy = false;
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Something went wrong. Please try again.", "Done");
+                    isBusy = false;
+                    return;
+                }
+            }
+            isBusy = false;
         }
 
         async void OnAssessmentPressed(object sender,EventArgs e)
         {
-            // set student to app student
+            if(isBusy)
+            {
+                return;
+            }
+            isBusy = true;
 
-            // bring up action list of assessments
+            viewModel.Assessments.Clear();
+            viewModel.Assessments = await App.AssesmentDB.GetAssessmentDictionary();
+            viewModel.AssessmentsList.Clear();
+            foreach(KeyValuePair<string,Assessment> valuePair in viewModel.Assessments)
+            {
+                viewModel.AssessmentsList.Add(valuePair.Key);
+            }
 
-            // launch selected assessment
+            //pkrAssessment.IsVisible = true;
+            pkrAssessment.Focus();
+            isBusy = false;
+        }
+
+        async void OnAssessmentSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            if (isBusy)
+                return;
+
+            isBusy = true;
+            if(!viewModel.Assessments.TryGetValue(pkrAssessment.SelectedItem.ToString(),out Assessment selectedAssessment))        
+                return;
+            
+            App.Student = viewModel.Student;
+            App.Assessment = selectedAssessment;
+
+            // nav to assessment
+            AssessmentSelectionViewModel vm = new AssessmentSelectionViewModel();
+            vm.Assessment = selectedAssessment;
+            vm.LoadAssessmentQuestions();
+            NavigationPage page = new NavigationPage(new AssessmentHome(vm));
+
+
+            Navigation.PopModalAsync();
+
+            await Navigation.PushModalAsync(page);
+            
+
+            isBusy = false;
         }
 
         async void OnEditPressed(object sender, EventArgs e)
@@ -311,8 +349,5 @@ namespace Mobi_App_Project.Views.Detail
 
             // On success reset page with updated information
         }
-
-
-
     }
 }

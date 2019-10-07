@@ -23,21 +23,11 @@ namespace Mobi_App_Project.Views
             var assessment = args.SelectedItem as Assessment;
             if (assessment == null)
                 return;
-
-            // TODO: verify assessment gets set in app
+           
             App.Assessment = assessment;
             viewModel.Assessment = assessment;
 
-            Task<List<AssessmentQuestion>> assessmentQuestionsInTask = App.AssesmentQuestionDB.GetAssessmentQuestionsByAssessmentId(App.Assessment.AssessmentId);
-            List<AssessmentQuestion> assessmentQuestions = assessmentQuestionsInTask.Result;
-            AssessmentQuestion[] assessmentQuestionsArray = new AssessmentQuestion[assessmentQuestions.Count];
-
-            foreach(AssessmentQuestion assessmentQuestion in assessmentQuestions)
-            {
-                assessmentQuestionsArray[assessmentQuestion.OrderNum - 1] = assessmentQuestion;
-            }
-
-            App.CurrentAssessmentQuestions.AddRange(assessmentQuestionsArray);
+            viewModel.LoadAssessmentQuestions();
 
             await Navigation.PushAsync(new AssessmentHome(viewModel));
 

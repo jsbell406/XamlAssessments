@@ -1,4 +1,5 @@
 ﻿using Mobi_App_Project.Models;
+using Mobi_App_Project.ViewModels.Detail;
 using Mobi_App_Project.ViewModels.Home;
 using Mobi_App_Project.Views.Create;
 using Mobi_App_Project.Views.Detail;
@@ -25,8 +26,8 @@ namespace Mobi_App_Project.Views.Home
             if (student == null)
                 return;
 
-            //App.Student = student;
-            await Navigation.PushModalAsync(new StudentDetail(student));
+           
+            await Navigation.PushModalAsync(new StudentDetail(new StudentDetailViewModel(student)));
         }
 
         async void Create_Clicked(object sender, EventArgs e)
@@ -42,6 +43,7 @@ namespace Mobi_App_Project.Views.Home
             viewModel.FilteredList.Clear();
             viewModel.Students = App.StudentDB.GetItemsAsync().Result;
             viewModel.LoadStudentsCommand.Execute(true);
+            SearchBar.Text = "";
         }
     }
 }

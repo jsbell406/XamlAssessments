@@ -3,48 +3,92 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.ThreeWayMCTemplate"
              Title="{Binding StudentFullName}"
-             BackgroundColor="#0D48A1">
+              BackgroundImage="Image1.png">
     <ContentPage.Content>
-        <StackLayout  BackgroundColor="#B3C1C4"
-                     Padding="8,8,8,8"
-                     Margin="10,10,10,10">
-            <Label Text="{Binding Question.DisplayText}"
-                   TextColor="BlueViolet"
-                   FontSize="28"
-                VerticalOptions="Center" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout  BackgroundColor="#D8F0F8"
+                     Padding="20,20,20,20"
+                     Margin="20,20,20,20">
 
-            <StackLayout 
-                BackgroundColor="LightBlue"                   
-                Margin="2,2,2,2"
-                VerticalOptions="FillAndExpand"
-                >
+
+            <Frame CornerRadius="20"
+                   OutlineColor="Purple"
+                   Padding="15"
+                   Margin="20"
+                   BackgroundColor="#A1D6ED">
+                <StackLayout BackgroundColor="#A1D6ED" 
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Padding="25"
+                    Margin="25">
+
+                    <Frame CornerRadius="20"
+                         OutlineColor="Purple"
+                         Padding="15"
+                         Margin="20"
+                         BackgroundColor="#EEEEFF">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="{Binding Question.DisplayText}"
+                                TextColor="BlueViolet"
+                                FontSize="28"
+                                VerticalOptions="Center" 
+                                HorizontalOptions="CenterAndExpand"
+                                Grid.Column="0"
+                                Grid.Row="1"/>
+
+                            <Button Text="{Binding Opt1}"
+                                FontSize="Large"
+                                BackgroundColor="#B9A5F2"
+                                 VerticalOptions="CenterAndExpand"
+                                 HorizontalOptions="Center"    
+                                 Clicked="Submit_Opt1_Clicked"
+                                 Grid.Column="1"
+                                 Grid.Row="1"/>
+                            <Button Text="{Binding Opt2}"
+                            FontSize="Large"
+                            BackgroundColor="#B9A5F2"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="Center"
+                            Clicked="Submit_Opt2_Clicked"
+                            Grid.Column="1"
+                            Grid.Row="2"/>
+                            <Button Text="{Binding Opt3}"
+                            FontSize="Large"
+                            BackgroundColor="#B9A5F2"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="Center"
+                            Clicked="Submit_Opt3_Clicked"
+                            Grid.Column="1"
+                            Grid.Row="3"/>
+
+
+                        </Grid>
+
+                    </Frame>
+
+                   
+
+
+                </StackLayout>
+
                 
-                <Button Text="{Binding Opt1}"
-                        FontSize="Large"
-                        BackgroundColor="#B9A5F2"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="Center"    
-                    Clicked="Submit_Opt1_Clicked"/>
-                <Button Text="{Binding Opt2}"
-                        FontSize="Large"
-                        BackgroundColor="#B9A5F2"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="Center"
-                    Clicked="Submit_Opt2_Clicked"/>
-                <Button Text="{Binding Opt3}"
-                        FontSize="Large"
-                        BackgroundColor="#B9A5F2"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="Center"
-                    Clicked="Submit_Opt3_Clicked"/>
-            </StackLayout>
+            </Frame>
             <Button Text="Notes"
                     x:Name="btnNotesDone"                  
                     Padding="3,3,3,3"
-                    BackgroundColor="Gray"
+                    BackgroundColor="#4FBDDD"
                     FontSize="Small"
-                    Clicked="Notes_Clicked"/>
+                    Clicked="Notes_Clicked"
+                    />
+
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -2,30 +2,35 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.Home.Students"
+             xmlns:media="Microsoft.Toolkit.Uwp.UI.Media" 
              Title="My Students"
-             BackgroundColor="#0D48A1">
+             BackgroundImage="Image1.png">
+    
     <ContentPage.Content>
         <!--<ScrollView>-->
-
-            <Frame CornerRadius="20"
+        
+        
+        <Frame CornerRadius="20"
                    OutlineColor="Purple"
                    Padding="15"
                    Margin="20"
                    BackgroundColor="#A1D6ED">
-
-                <!-- Page Layout -->
-                <StackLayout  BackgroundColor="#A1D6ED"
+            
+            <!-- Page Layout -->
+            <StackLayout  
                       Padding="8,8,8,8"
                       Margin="10,10,10,10"
                       VerticalOptions="CenterAndExpand"
                       HorizontalOptions="FillAndExpand">
+                
 
-                    <Frame x:Name="SearchBarFrame" 
+                <Frame x:Name="SearchBarFrame" 
                            CornerRadius="10"
                            BorderColor="RoyalBlue"
                            Padding="5">
                         <StackLayout>
-                            <Label Text="Search for Student"
+                        
+                        <Label Text="Search for Student"
                                    TextColor="Navy"
                                    VerticalOptions="Center"
                                    HorizontalOptions="CenterAndExpand"
@@ -83,7 +88,7 @@
                         <Button Text="CREATE NEW STUDENT"
                         Clicked="Create_Clicked"
                         Padding="0,20,0,20"
-                        BackgroundColor="#B9A5F2"
+                        BackgroundColor="#EDDFFB"
                         FontSize="Large"/>
                     </Frame>
 

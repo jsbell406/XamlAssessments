@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.Create.StudentCreate"           
-             BackgroundColor="#0D48A1" >
+             BackgroundImage="Image1.png" >
     <ContentPage.Content>
         <ScrollView>
             
@@ -14,7 +14,7 @@
                    BackgroundColor="#A1D6ED">
                 
                 <!-- Page Layout -->
-                <StackLayout  BackgroundColor="#A1D6ED"
+                <StackLayout  BackgroundColor="#D8F0F8"
                       Padding="8,8,8,8"
                       Margin="10,10,10,10"
                       VerticalOptions="CenterAndExpand"
@@ -30,7 +30,7 @@
                         <!-- Back Button -->
                         <Button x:Name="btnBack" 
                                 Text="Cancel"
-                                BackgroundColor="Salmon"
+                                BackgroundColor="#FFA8A8"
                                 VerticalOptions="CenterAndExpand"
                                 HorizontalOptions="FillAndExpand"
                                 Clicked="Back_Clicked"/>
@@ -39,7 +39,7 @@
                     <!-- First Name Frame -->
                     <Frame x:Name="FirstNameFrame" 
                            CornerRadius="10"
-                           BorderColor="RoyalBlue"
+                           BorderColor="#FF2626"
                            Padding="5">
                         
                         <!-- First Name Layout -->
@@ -68,7 +68,7 @@
                     <!-- Last Name Frame -->
                     <Frame x:Name="LastNameFrame"
                            CornerRadius="10"
-                           OutlineColor="RoyalBlue"
+                           OutlineColor="#FF2626"
                            Padding="5">
                         
                         <!-- Last Name Layout -->
@@ -97,7 +97,7 @@
                     <!-- Middle Name Frame -->
                     <Frame x:Name="MiddleNameFrame"
                            CornerRadius="10"
-                           OutlineColor="RoyalBlue"
+                           OutlineColor="#0AFE47"
                            Padding="5">
                         
                         <!-- Middle Name Layout -->
@@ -125,7 +125,7 @@
                     <!-- Grade Frame -->
                     <Frame x:Name="GradeFrame"
                            CornerRadius="10"
-                           OutlineColor="RoyalBlue"
+                           OutlineColor="#0AFE47"
                            Padding="5">
                         
                         <!-- Grade Layout -->
@@ -162,7 +162,7 @@
                                 Text="Save"
                                 VerticalOptions="CenterAndExpand"
                                 HorizontalOptions="FillAndExpand"                                
-                                BackgroundColor="#B9A5F2"                             
+                                BackgroundColor="#EDDFFB"                             
                                 Clicked="Submit_Clicked"/>
                     </Frame>
                 </StackLayout>

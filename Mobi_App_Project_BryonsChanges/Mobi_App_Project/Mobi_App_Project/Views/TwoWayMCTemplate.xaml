@@ -3,44 +3,78 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.TwoWayMCTemplate"
              Title="{Binding StudentFullName}"
-             BackgroundColor="#0D48A1">
+             BackgroundImage="Image1.png">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#B3C1C4"
-                     Padding="8,8,8,8"
-                     Margin="10,10,10,10">
-            <Label 
-                    Text="{Binding Question.DisplayText}"
-                    TextColor="BlueViolet"
-                    FontSize="28"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="CenterAndExpand" />
-            <StackLayout
-                BackgroundColor="LightBlue"                   
-                Margin="2,2,2,2"
-                VerticalOptions="FillAndExpand">
-                
-                <Button Text="{Binding Opt1}"
-                        VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="Center"
-                        BackgroundColor="#B9A5F2"
-                        FontSize="Large"
-                        Clicked="Submit_Opt1_Clicked" 
-                        />
-                
-                <Button Text="{Binding Opt2}"
-                        VerticalOptions="CenterAndExpand"
-                        BackgroundColor="#B9A5F2"
-                        FontSize="Large"
-                        HorizontalOptions="Center"
-                        Clicked="Submit_Opt2_Clicked" 
-                        />
-            </StackLayout>
-            <Button Text="Notes"
+
+
+        <StackLayout>
+            <Frame CornerRadius="20"
+                   OutlineColor="Purple"
+                   Padding="15"
+                   Margin="20"
+                   BackgroundColor="#A1D6ED">
+                <StackLayout BackgroundColor="#D8F0F8"
+                      Padding="8,8,8,8"
+                      Margin="10,10,10,10"
+                      VerticalOptions="CenterAndExpand"
+                      HorizontalOptions="FillAndExpand">
+
+
+                    <Frame>
+                        <StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Label 
+                            Text="{Binding Question.DisplayText}"
+                            TextColor="RoyalBlue"
+                             FontSize="28"
+                            VerticalOptions="Center" 
+                            HorizontalOptions="CenterAndExpand"
+                            Grid.Column="0"
+                            Grid.Row="1"/>
+
+                                <Button Text="{Binding Opt1}"
+                             VerticalOptions="CenterAndExpand"
+                             HorizontalOptions="Center"
+                             BackgroundColor="#B9A5F2"
+                             FontSize="Large"
+                             Clicked="Submit_Opt1_Clicked" 
+                             Grid.Column="1"
+                             Grid.Row="1"/>
+
+                                <Button Text="{Binding Opt2}"
+                             VerticalOptions="CenterAndExpand"
+                             BackgroundColor="#B9A5F2"
+                             FontSize="Large"
+                             HorizontalOptions="Center"
+                             Clicked="Submit_Opt2_Clicked" 
+                             Grid.Column="1"
+                             Grid.Row="2"/>
+                            </Grid>
+
+                        </StackLayout>
+
+                    </Frame>
+
+                </StackLayout>
+
+            </Frame>
+
+                <Button Text="Notes"
                     x:Name="btnNotesDone"                  
                     Padding="3,3,3,3"
-                    BackgroundColor="Gray"
+                    BackgroundColor="#4FBDDD"
                     FontSize="Small"
                     Clicked="Notes_Clicked"/>
+
         </StackLayout>
+        
+        
     </ContentPage.Content>
 </ContentPage>

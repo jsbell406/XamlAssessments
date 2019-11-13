@@ -2,10 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.Detail.StudentDetail"
-             BackgroundColor="#0D48A1">
+            BackgroundImage="Image1.png">
     <ContentPage.Content>
         <ScrollView>
-
+            
             <!-- Page Frame -->
             <Frame CornerRadius="20"
                    OutlineColor="Purple"
@@ -14,14 +14,15 @@
                    BackgroundColor="#A1D6ED">
 
                 <!-- Page Layout -->
-                <StackLayout  BackgroundColor="#A1D6ED"
+                <StackLayout  BackgroundColor="#D8F0F8"
                       Padding="8,8,8,8"
                       Margin="10,10,10,10"
                       VerticalOptions="CenterAndExpand"
                       HorizontalOptions="FillAndExpand">
+                    
 
-            
-                        <Grid>
+                    <Grid>
+                       
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -30,19 +31,20 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                   
-                    <Frame x:Name="AssessmentButtonFrame" 
+                        
+                        <Frame x:Name="AssessmentButtonFrame" 
                            CornerRadius="10"
-                           BorderColor="ForestGreen"
+                           BorderColor="# "
                            Padding="0"
                            Margin="5"
                            Grid.Column="1"
-                           Grid.Row="0">
+                           Grid.Row="0"
+                           >
 
                         
                         <Button x:Name="btnAssessment" 
                                 Text="Assessment"
-                                BackgroundColor="ForestGreen"
+                                BackgroundColor="#EDDFFB"
                                 VerticalOptions="CenterAndExpand"
                                 HorizontalOptions="FillAndExpand"
                                 Clicked="OnAssessmentPressed"
@@ -51,7 +53,7 @@
                         
                     <Frame x:Name="BackButtonFrame" 
                         CornerRadius="10"
-                        BorderColor="DarkGray"
+                        BorderColor="#CB59E8"
                         Padding="0"
                         Margin="5"
                         Grid.Column="0"
@@ -60,7 +62,7 @@
                         <!-- Back Button -->
                         <Button x:Name="btnBack" 
                             Text="Back"
-                            BackgroundColor="DarkGray"
+                            BackgroundColor="#EDDFFB"
                             VerticalOptions="CenterAndExpand"
                             HorizontalOptions="FillAndExpand"
                             Clicked="Back_Clicked"/>
@@ -69,7 +71,7 @@
                         
                         <Frame x:Name="EditButtonFrame" 
                            CornerRadius="10"
-                           BorderColor="BlueViolet"
+                           BorderColor="#CB59E8"
                            Padding="0"
                            Margin="5"
                            Grid.Column="1"
@@ -78,7 +80,7 @@
                        
                             <Button x:Name="btnEdit" 
                                 Text="Edit"
-                                BackgroundColor="BlueViolet"
+                                BackgroundColor="#EDDFFB"
                                 VerticalOptions="CenterAndExpand"
                                 HorizontalOptions="FillAndExpand"
                                 />
@@ -87,7 +89,7 @@
                         
                         <Frame x:Name="DeleteButtonFrame" 
                         CornerRadius="10"
-                        BorderColor="DarkRed"
+                        BorderColor="#CB59E8"
                         Padding="0"
                         Margin="5"
                         Grid.Column="0"
@@ -96,7 +98,7 @@
                       
                                 <Button x:Name="btnDelete" 
                             Text="Delete"
-                            BackgroundColor="DarkRed"
+                            BackgroundColor="#FFA8A8"
                             VerticalOptions="CenterAndExpand"
                             HorizontalOptions="FillAndExpand"
                             />

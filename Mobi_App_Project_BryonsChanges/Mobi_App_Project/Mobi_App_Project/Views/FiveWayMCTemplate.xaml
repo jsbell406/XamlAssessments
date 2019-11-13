@@ -3,61 +3,161 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.FiveWayMCTemplate"
              Title="{Binding StudentFullName}"
-             BackgroundColor="#0D48A1">
+              BackgroundImage="Image1.png">
     
     <ContentPage.Content>
-        <StackLayout  BackgroundColor="#B3C1C4"
+        <StackLayout  BackgroundColor="Purple"
                      Padding="8,8,8,8"
                      Margin="10,10,10,10">
-            <Label Text="{Binding Question.DisplayText}"
-                   TextColor="BlueViolet"
-                VerticalOptions="Center" 
-                HorizontalOptions="CenterAndExpand"
-                  FontSize="28"
-                />
-            <StackLayout
-                    BackgroundColor="#A1D6ED"                   
-                    Margin="2,2,2,2"
+            <!--Question Frame-->
+            <Frame CornerRadius="20"
+                   OutlineColor="Purple"
+                   Padding="15"
+                   Margin="20"
+                   BackgroundColor="#A1D6ED"
+                   >
+                <!--Page Layout-->
+                <StackLayout
+                    BackgroundColor="#D8F0F8" 
+                    HorizontalOptions="CenterAndExpand"
                     VerticalOptions="FillAndExpand">
-                <Button Text="{Binding Opt1}"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="Center"
-                    FontSize="Large"
-                    BackgroundColor="#B9A5F2"
-                    Clicked="Submit_Opt1_Clicked"/>
-                <Button Text="{Binding Opt2}"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="Center"
-                    FontSize="Large"   
-                        BackgroundColor="#B9A5F2"
-                    Clicked="Submit_Opt2_Clicked"/>
-                <Button Text="{Binding Opt3}"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="Center"
-                    FontSize="Large"  
-                        BackgroundColor="#B9A5F2"
-                    Clicked="Submit_Opt3_Clicked"/>
-                <Button Text="{Binding Opt4}"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="Center"
-                    FontSize="Large" 
-                        BackgroundColor="#B9A5F2"
-                    Clicked="Submit_Opt4_Clicked"/>
-                <Button Text="{Binding Opt5}"
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="Center"
-                    FontSize="Large"  
-                        BackgroundColor="#B9A5F2"
-                    Clicked="Submit_Opt5_Clicked"/>
-                
-                
-            </StackLayout>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <Label Text="{Binding Question.DisplayText}"
+                            TextColor="RoyalBlue"
+                             VerticalOptions="Center" 
+                             HorizontalOptions="CenterAndExpand"
+                             FontSize="28"
+                             Grid.Column="1"
+                             Grid.Row="1"/>
+
+                        <!--<Frame x:Name="QuestionFrame"
+                       CornerRadius="10"
+                       BorderColor="#CB59E8"
+                       Padding="0"
+                       Margin="25"
+                       Grid.Column="0"
+                       Grid.Row="2">
+                        
+                       
+
+                    </Frame>-->
+
+
+                        <Frame x:Name="Opt1ButtonFrame"
+                                BackgroundColor="#44B4D5"
+                                CornerRadius="10"
+                                BorderColor="#CB59E8"
+                                Padding="0"
+                                Margin="25"
+                                Grid.Column="3"
+                                Grid.Row="1">
+                            
+                            <Button Text="{Binding Opt1}"
+                                     CornerRadius="10"
+                                     VerticalOptions="CenterAndExpand"
+                                     HorizontalOptions="FillAndExpand"
+                                     FontSize="Large"
+                                     BackgroundColor="#B9A5F2"
+                                     Padding="5"
+                                     Clicked="Submit_Opt1_Clicked"/>
+
+                        </Frame>
+
+                        <Frame x:Name="Opt2ButtonFrame"
+                             CornerRadius="10"
+                             BorderColor="#CB59E8"
+                             Padding="0"
+                             Margin="25"
+                             Grid.Column="3"
+                             Grid.Row="5">
+                            
+                            <Button Text="{Binding Opt2}"
+                                     VerticalOptions="CenterAndExpand"
+                                     HorizontalOptions="FillAndExpand"
+                                     FontSize="Large"   
+                                     BackgroundColor="#B9A5F2"
+                                     Padding="5"
+                                     Clicked="Submit_Opt2_Clicked"/>
+
+                        </Frame>
+
+                        <Frame x:Name="Opt3ButtonFrame"
+                             CornerRadius="10"
+                             BorderColor="#CB59E8"
+                             Padding="0"
+                             Margin="25"
+                             Grid.Column="3"
+                             Grid.Row="2">
+                            <Button Text="{Binding Opt3}"
+                                 VerticalOptions="CenterAndExpand"
+                                 HorizontalOptions="FillAndExpand"
+                                 FontSize="Large"  
+                                 BackgroundColor="#B9A5F2"
+                                 Padding="5"
+                                 Clicked="Submit_Opt3_Clicked"/>
+
+                        </Frame>
+
+                        <Frame x:Name="Opt4ButtonFrame"
+                                CornerRadius="10"
+                                BorderColor="#CB59E8"
+                                Padding="0"
+                                Margin="25"
+                                Grid.Column="3"
+                                Grid.Row="3">
+                            <Button Text="{Binding Opt4}"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="Large" 
+                                    BackgroundColor="#B9A5F2"
+                                    Padding="5"
+                                    Clicked="Submit_Opt4_Clicked"/>
+
+                        </Frame>
+
+                        <Frame  x:Name="Opt5ButtonFrame"
+                             CornerRadius="10"
+                             BorderColor="#CB59E8"
+                             Padding="0"
+                             Margin="25"
+                             Grid.Column="3"
+                             Grid.Row="4">
+                            <Button Text="{Binding Opt5}"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="Large"  
+                                    BackgroundColor="#B9A5F2"
+                                    Padding="5"
+                                    Clicked="Submit_Opt5_Clicked"/>
+
+                        </Frame>
+                    </Grid>
+
+
+                </StackLayout>
+
+            </Frame>
+           
+            
             <Button Text="Notes"
                     x:Name="btnNotesDone"                  
                     Padding="3,3,3,3"
-                    BackgroundColor="Gray"
+                    BackgroundColor="#4FBDDD"
                     FontSize="Small"
-                    Clicked="Notes_Clicked"/>
+                    Clicked="Notes_Clicked"
+                    />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

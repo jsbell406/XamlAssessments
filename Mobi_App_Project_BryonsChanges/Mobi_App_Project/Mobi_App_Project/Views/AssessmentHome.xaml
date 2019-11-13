@@ -4,30 +4,62 @@
              x:Class="Mobi_App_Project.Views.AssessmentHome"
              Title="{Binding StudentsAssessHomeDisplay}"
              x:Name="AssessmentHomePage"
-             BackgroundColor="DarkBlue">
+             BackgroundColor="#COE7F3">
     <ContentPage.Content>
-        <StackLayout  BackgroundColor="#A1D6ED"
-                     Padding="8,8,8,8"
-                     Margin="10,10,10,10">
-            <Label Text="{Binding Assessment.AssessName}"
-                FontSize="Large"
-                   TextColor="Navy"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
-                   FontAttributes="Italic"/>
-            <Label Text="Eduational emotional screening tool"
-                   FontSize="Large"
-                   TextColor="Navy"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand"
-                   FontAttributes="Bold"/>
-            <Button Text="Begin Assessment"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="Center"
-                    BackgroundColor="#B9A5F2"
-                    FontSize="Large"
-                Clicked="Start_Clicked" />
+        <!--Page Frame-->
+        <Frame CornerRadius="20"
+               OutlineColor="Purple"
+               Padding="15"
+               Margin="20"
+               BackgroundColor="#A1D6ED">
 
-        </StackLayout>
+
+            <StackLayout BackgroundColor="#D8F0F8"
+                         Padding="8,8,8,8"
+                         Margin="10,10,10,10"
+                         VerticalOptions="CenterAndExpand"
+                         HorizontalOptions="FillAndExpand">
+                    <Label Text="{Binding Assessment.AssessName}"
+                        FontSize="Large"
+                        TextColor="Navy"
+                        VerticalOptions="Center" 
+                        HorizontalOptions="CenterAndExpand"/>
+
+                <Frame x:Name="BeginAssessmentFrame"
+                       CornerRadius="10"
+                       BorderColor="RoyalBlue"
+                       BackgroundColor="#44B4D5"
+                       Padding="5">
+                    <StackLayout
+                        BackgroundColor="#DD75DD"
+                        Padding="8,8,8,8"
+                        Margin="10,10,10,10"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="FillAndExpand">
+                        <Button Text="Begin Assessment"
+                        Clicked="Start_Clicked"
+                        Padding="0,20,0,20"
+                        BackgroundColor="#EDDFFB"
+                        FontSize="Large">
+
+                        </Button>
+
+                    </StackLayout>
+                    
+                </Frame>
+
+ 
+            </StackLayout>
+          
+            
+                
+   
+
+
+
+        </Frame>
+        
+
+       
     </ContentPage.Content>
 </ContentPage>

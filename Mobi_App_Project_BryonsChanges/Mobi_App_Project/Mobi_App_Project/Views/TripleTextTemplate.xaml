@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.TripleTextTemplate"
              Title="{Binding StudentFullName}"
-             BackgroundColor="#0D48A1">
+              BackgroundImage="Image1.png">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout  BackgroundColor="#B3C1C4"
-                     Padding="8,8,8,8"
-                     Margin="10,10,10,10">
+            <StackLayout  BackgroundColor="#D8F0F8"
+                          Padding="8,8,8,8"
+                          Margin="10,10,10,10"
+                          >
                 <Label Text="{Binding Question.DisplayText}"
                        TextColor="BlueViolet"
                        
@@ -42,7 +43,7 @@
                 <Button Text="Notes"
                     x:Name="btnNotesDone"                  
                     Padding="3,3,3,3"
-                    BackgroundColor="Gray"
+                    BackgroundColor="#4FBDDD"
                     FontSize="Small"
                     Clicked="Notes_Clicked"/>
 
@@ -56,7 +57,7 @@
 
                 <Button Text="Done"
                     x:Name="notesButton"                              
-                    BackgroundColor="Gray"
+                    BackgroundColor="#4FBDDD"
                     FontSize="12"
                     Clicked="Notes_Done_Clicked"
                     />

@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mobi_App_Project.Views.General.Welcome"
-             Title="First Time Setup">
+             Title="First Time Setup"
+              BackgroundImage="Image1.png">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Mobi!" 

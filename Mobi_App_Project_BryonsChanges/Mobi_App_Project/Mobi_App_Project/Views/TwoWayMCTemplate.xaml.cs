@@ -55,7 +55,7 @@ namespace Mobi_App_Project.Views
         async void Notes_Clicked(object sender, EventArgs e)
         {
             btnNotesDone.IsEnabled = false;
-            StackLayout layout = (StackLayout)Content;
+            AbsoluteLayout layout = (AbsoluteLayout)Content;
 
             Editor editor = new Editor
             {
@@ -64,6 +64,10 @@ namespace Mobi_App_Project.Views
                 HorizontalOptions = LayoutOptions.FillAndExpand
             };
             editor.SetBinding(Editor.TextProperty, new Binding("Text", source: viewModel.Result.AssessmentQuestionInstructorNotes));
+            AbsoluteLayout.SetLayoutBounds(editor, new Rectangle(100, 500, .2, 75));
+            AbsoluteLayout.SetLayoutFlags(editor, AbsoluteLayoutFlags.WidthProportional);
+            editor.BackgroundColor = Color.FromHex("#A4EAFF");
+
 
             Button button = new Button
             {
@@ -74,6 +78,10 @@ namespace Mobi_App_Project.Views
             };
 
             button.Clicked += Notes_Done_Clicked;
+            AbsoluteLayout.SetLayoutBounds(button, new Rectangle(0, 300, .2, 75));
+            AbsoluteLayout.SetLayoutFlags(button, AbsoluteLayoutFlags.WidthProportional);
+            button.Clicked += Notes_Done_Clicked;
+
 
             layout.Children.Add(editor);
             layout.Children.Add(button);
@@ -84,7 +92,7 @@ namespace Mobi_App_Project.Views
 
         void Notes_Done_Clicked(object sender, EventArgs e)
         {
-            StackLayout layout = (StackLayout)Content;
+            AbsoluteLayout layout = (AbsoluteLayout)Content;
             IList<View> items = layout.Children;
 
             Editor editor = (Editor)items.Where(x => x.AutomationId == "questionNotes").FirstOrDefault();

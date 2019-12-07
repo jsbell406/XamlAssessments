@@ -4,62 +4,50 @@
              x:Class="Mobi_App_Project.Views.AssessmentHome"
              Title="{Binding StudentsAssessHomeDisplay}"
              x:Name="AssessmentHomePage"
-             BackgroundColor="#COE7F3">
+             BackgroundImage="Image1.png">
+            <!-- Background Image #1-->
     <ContentPage.Content>
-        <!--Page Frame-->
-        <Frame CornerRadius="20"
-               OutlineColor="Purple"
-               Padding="15"
-               Margin="20"
-               BackgroundColor="#A1D6ED">
 
 
-            <StackLayout BackgroundColor="#D8F0F8"
+
+        <StackLayout BackgroundColor="#D8F0F8"
                          Padding="8,8,8,8"
                          Margin="10,10,10,10"
                          VerticalOptions="CenterAndExpand"
                          HorizontalOptions="FillAndExpand">
-                    <Label Text="{Binding Assessment.AssessName}"
+            <Label Text="{Binding Assessment.AssessName}"
                         FontSize="Large"
                         TextColor="Navy"
                         VerticalOptions="Center" 
                         HorizontalOptions="CenterAndExpand"/>
 
-                <Frame x:Name="BeginAssessmentFrame"
+            <Frame x:Name="BeginAssessmentFrame"
                        CornerRadius="10"
                        BorderColor="RoyalBlue"
                        BackgroundColor="#44B4D5"
                        Padding="5">
-                    <StackLayout
+                <StackLayout
                         BackgroundColor="#DD75DD"
                         Padding="8,8,8,8"
                         Margin="10,10,10,10"
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="FillAndExpand">
-                        <Button Text="Begin Assessment"
+                    <Button Text="Begin Assessment"
                         Clicked="Start_Clicked"
                         Padding="0,20,0,20"
                         BackgroundColor="#EDDFFB"
                         FontSize="Large">
 
-                        </Button>
+                    </Button>
 
-                    </StackLayout>
-                    
-                </Frame>
+                </StackLayout>
 
- 
-            </StackLayout>
-          
-            
-                
-   
+            </Frame>
+
+
+        </StackLayout>
 
 
 
-        </Frame>
-        
-
-       
     </ContentPage.Content>
 </ContentPage>

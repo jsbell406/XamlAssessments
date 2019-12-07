@@ -9,10 +9,10 @@ using Xamarin.Forms.Xaml;
 namespace Mobi_App_Project.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SingleTextTemplate : ContentPage
-	{
+    public partial class SingleTextTemplate : ContentPage
+    {
         SingleTextTemplateViewModel viewModel;
-
+       
 		public SingleTextTemplate ()
 		{
 			InitializeComponent ();
@@ -36,22 +36,34 @@ namespace Mobi_App_Project.Views
         async void Notes_Clicked(object sender, EventArgs e)
         {
             btnNotesDone.IsEnabled = false;
-            StackLayout layout = (StackLayout)Content;
+            AbsoluteLayout layout = (AbsoluteLayout)Content;
            
             Editor editor = new Editor {
                 AutomationId = "questionNotes",
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand
+                
+                
             };
+            AbsoluteLayout.SetLayoutBounds(editor, new Rectangle(100,500,.2,75)); 
+            AbsoluteLayout.SetLayoutFlags(editor, AbsoluteLayoutFlags.WidthProportional);
+            editor.BackgroundColor = Color.FromHex("#A4EAFF");
             editor.SetBinding(Editor.TextProperty, new Binding("Text", source: viewModel.Result.AssessmentQuestionInstructorNotes));
 
             Button button = new Button
-            {               
+            {
                 Text = "Done",
                 BackgroundColor = Color.Gray,
-                FontSize = 12     ,
-                AutomationId = "notesButton"
+                FontSize = 12,
+                AutomationId = "notesButton",
+                
+                
+                
             };
+            
+            AbsoluteLayout.SetLayoutBounds(button, new Rectangle(0, 300, .2, 75));
+            AbsoluteLayout.SetLayoutFlags(button, AbsoluteLayoutFlags.WidthProportional);
+            button.BackgroundColor = Color.FromHex("#FF4848");
             
             button.Clicked += Notes_Done_Clicked;
             
@@ -64,7 +76,7 @@ namespace Mobi_App_Project.Views
        
         void Notes_Done_Clicked(object sender, EventArgs e)
         {
-            StackLayout layout = (StackLayout)Content;
+            AbsoluteLayout layout = (AbsoluteLayout)Content;
             IList<View> items = layout.Children;
 
             Editor editor = (Editor)items.Where(x => x.AutomationId == "questionNotes").FirstOrDefault();

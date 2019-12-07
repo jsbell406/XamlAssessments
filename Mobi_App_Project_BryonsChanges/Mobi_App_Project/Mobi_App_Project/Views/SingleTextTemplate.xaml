@@ -1,75 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              x:Class="Mobi_App_Project.Views.SingleTextTemplate"
              Title="{Binding StudentFullName}"
-              BackgroundImage="Image1.png">
+             BackgroundImage="Image1.png">
+            <!--Background Image #1-->
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#A1D6ED"
-                     Padding="8,8,8,8"
-                     Margin="10,10,10,10">
-           
-                <!--BackgroundColor="#A1D6ED" 
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="FillAndExpand"
-                        Padding="20"
-                        Margin="20"-->
 
+        <ScrollView>
+            <AbsoluteLayout>
+                <!--Question and Entry Layout-->
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,110,1,200" AbsoluteLayout.LayoutFlags="WidthProportional">
 
+                    <Label x:Name="QuestionLabel"  Text="{Binding Question.DisplayText}"
+                        FontAttributes="Bold" 
+                        FontSize="40"
+                        AbsoluteLayout.LayoutBounds="50,1,1,50" AbsoluteLayout.LayoutFlags="WidthProportional"/>
+                    <Editor x:Name="EntryResponse" Text = "{Binding TextResult}"
+                    Completed = "OnEditorCompleted"
+                    BackgroundColor="#AFF8D8"
+                    FontSize="Large"
+                    AbsoluteLayout.LayoutBounds="500,100,.5,75" AbsoluteLayout.LayoutFlags="WidthProportional"/>
 
-            <Frame  CornerRadius="10"
-                 OutlineColor="Purple"
-                 Padding="5"
-                 Margin="5"
-                 BackgroundColor="#D8F0F8">
-                    <Label Text="{Binding Question.DisplayText}"
-                                Margin="5"
-                                TextColor="BlueViolet"
-                                VerticalOptions="Center" 
-                                HorizontalOptions="CenterAndExpand" 
-                                FontSize="28"
-                                
-                                   />
-
-                </Frame>
-
-
-                <Frame
-                
-                CornerRadius="10"
-                 OutlineColor="Purple"
-                 Padding="80"
-                 Margin="80"
-                 BackgroundColor="#D8F0F8">
-                    <Editor Text="{Binding TextResult}"    
-                                AutoSize="TextChanges"
-                                VerticalOptions="FillAndExpand"
-                                HorizontalOptions="FillAndExpand"
-                                BackgroundColor="Azure"
-                                
-                                Completed="OnEditorCompleted"
-                                />
-
-                </Frame>
-           
-
-           
-            
-
-
-            <Button Text="Done"                  
-                    Padding="3,3,3,3"
+                </AbsoluteLayout>
+                <!--Done button and Notes Button Layout-->
+                <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0,500,1,250" AbsoluteLayout.LayoutFlags="WidthProportional" >
+                    <Button x:Name="DoneButton" Text="Done"  
                     BackgroundColor="#B9A5F2"
                     FontSize="Large"
                     Clicked="Done_Clicked"
-                    CornerRadius="10"/>
+                    CornerRadius="10"
+                    AbsoluteLayout.LayoutBounds="700,0,.2,75" AbsoluteLayout.LayoutFlags="WidthProportional"/>
 
-            <Button Text="Notes"
-                    x:Name="btnNotesDone"                  
-                    Padding="3,3,3,3"
+                    <Button  Text="Notes"
+                    x:Name="btnNotesDone"
                     BackgroundColor="#4FBDDD"
-                    FontSize="Small"
-                    Clicked="Notes_Clicked"/>
-        </StackLayout>
+                    FontSize="Large"
+                    CornerRadius="10"
+                    Clicked="Notes_Clicked"
+                    AbsoluteLayout.LayoutBounds="700,90,.2,75" AbsoluteLayout.LayoutFlags="WidthProportional"/>
+
+                </AbsoluteLayout>
+
+
+
+
+
+
+
+            </AbsoluteLayout>
+
+
+        </ScrollView>
+        
+       
+
+
+
+
     </ContentPage.Content>
+    
+
 </ContentPage>

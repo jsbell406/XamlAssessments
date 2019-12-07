@@ -4,160 +4,104 @@
              x:Class="Mobi_App_Project.Views.FiveWayMCTemplate"
              Title="{Binding StudentFullName}"
               BackgroundImage="Image1.png">
-    
+
     <ContentPage.Content>
-        <StackLayout  BackgroundColor="Purple"
-                     Padding="8,8,8,8"
-                     Margin="10,10,10,10">
-            <!--Question Frame-->
-            <Frame CornerRadius="20"
-                   OutlineColor="Purple"
-                   Padding="15"
-                   Margin="20"
-                   BackgroundColor="#A1D6ED"
-                   >
-                <!--Page Layout-->
-                <StackLayout
-                    BackgroundColor="#D8F0F8" 
-                    HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="FillAndExpand">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+
+        <ScrollView>
+            <AbsoluteLayout>
 
 
-                        <Label Text="{Binding Question.DisplayText}"
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,0,1,400" AbsoluteLayout.LayoutFlags="WidthProportional">
+                    <Label Text="{Binding Question.DisplayText}"
                             TextColor="RoyalBlue"
-                             VerticalOptions="Center" 
-                             HorizontalOptions="CenterAndExpand"
-                             FontSize="28"
-                             Grid.Column="1"
-                             Grid.Row="1"/>
-
-                        <!--<Frame x:Name="QuestionFrame"
-                       CornerRadius="10"
-                       BorderColor="#CB59E8"
-                       Padding="0"
-                       Margin="25"
-                       Grid.Column="0"
-                       Grid.Row="2">
-                        
-                       
-
-                    </Frame>-->
+                            FontSize="28"
+                            AbsoluteLayout.LayoutBounds="25,150,1,50" AbsoluteLayout.LayoutFlags="WidthProportional"/>
 
 
-                        <Frame x:Name="Opt1ButtonFrame"
-                                BackgroundColor="#44B4D5"
-                                CornerRadius="10"
-                                BorderColor="#CB59E8"
-                                Padding="0"
-                                Margin="25"
-                                Grid.Column="3"
-                                Grid.Row="1">
-                            
-                            <Button Text="{Binding Opt1}"
+                    <Button Text="{Binding Opt1}"
                                      CornerRadius="10"
                                      VerticalOptions="CenterAndExpand"
                                      HorizontalOptions="FillAndExpand"
                                      FontSize="Large"
                                      BackgroundColor="#B9A5F2"
                                      Padding="5"
-                                     Clicked="Submit_Opt1_Clicked"/>
+                                     Clicked="Submit_Opt1_Clicked"
+                                     AbsoluteLayout.LayoutBounds="700,0,.2,75" AbsoluteLayout.LayoutFlags="WidthProportional"/>
 
-                        </Frame>
 
-                        <Frame x:Name="Opt2ButtonFrame"
-                             CornerRadius="10"
-                             BorderColor="#CB59E8"
-                             Padding="0"
-                             Margin="25"
-                             Grid.Column="3"
-                             Grid.Row="5">
-                            
-                            <Button Text="{Binding Opt2}"
+
+
+
+                    <Button Text="{Binding Opt2}"
                                      VerticalOptions="CenterAndExpand"
                                      HorizontalOptions="FillAndExpand"
                                      FontSize="Large"   
                                      BackgroundColor="#B9A5F2"
                                      Padding="5"
-                                     Clicked="Submit_Opt2_Clicked"/>
+                                     Clicked="Submit_Opt2_Clicked"
+                                     AbsoluteLayout.LayoutBounds="700,75,.2,75" AbsoluteLayout.LayoutFlags="WidthProportional"/>
 
-                        </Frame>
 
-                        <Frame x:Name="Opt3ButtonFrame"
-                             CornerRadius="10"
-                             BorderColor="#CB59E8"
-                             Padding="0"
-                             Margin="25"
-                             Grid.Column="3"
-                             Grid.Row="2">
-                            <Button Text="{Binding Opt3}"
+
+
+                    <Button Text="{Binding Opt3}"
                                  VerticalOptions="CenterAndExpand"
                                  HorizontalOptions="FillAndExpand"
                                  FontSize="Large"  
                                  BackgroundColor="#B9A5F2"
                                  Padding="5"
-                                 Clicked="Submit_Opt3_Clicked"/>
+                                 Clicked="Submit_Opt3_Clicked"
+                                 AbsoluteLayout.LayoutBounds="700,150,.2,75" AbsoluteLayout.LayoutFlags="WidthProportional"/>
 
-                        </Frame>
 
-                        <Frame x:Name="Opt4ButtonFrame"
-                                CornerRadius="10"
-                                BorderColor="#CB59E8"
-                                Padding="0"
-                                Margin="25"
-                                Grid.Column="3"
-                                Grid.Row="3">
-                            <Button Text="{Binding Opt4}"
+
+
+                    <Button Text="{Binding Opt4}"
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="FillAndExpand"
                                     FontSize="Large" 
                                     BackgroundColor="#B9A5F2"
                                     Padding="5"
-                                    Clicked="Submit_Opt4_Clicked"/>
+                                    Clicked="Submit_Opt4_Clicked"
+                                    AbsoluteLayout.LayoutBounds="700,225,.2,75" AbsoluteLayout.LayoutFlags="WidthProportional"/>
 
-                        </Frame>
 
-                        <Frame  x:Name="Opt5ButtonFrame"
-                             CornerRadius="10"
-                             BorderColor="#CB59E8"
-                             Padding="0"
-                             Margin="25"
-                             Grid.Column="3"
-                             Grid.Row="4">
-                            <Button Text="{Binding Opt5}"
+
+
+                    <Button Text="{Binding Opt5}"
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="FillAndExpand"
                                     FontSize="Large"  
                                     BackgroundColor="#B9A5F2"
                                     Padding="5"
-                                    Clicked="Submit_Opt5_Clicked"/>
-
-                        </Frame>
-                    </Grid>
+                                    Clicked="Submit_Opt5_Clicked"
+                                    AbsoluteLayout.LayoutBounds="700,300,.2,75" AbsoluteLayout.LayoutFlags="WidthProportional"/>
 
 
-                </StackLayout>
+                </AbsoluteLayout>
 
-            </Frame>
-           
-            
-            <Button Text="Notes"
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0,500,1,250" AbsoluteLayout.LayoutFlags="WidthProportional">
+
+                    <Button Text="Notes"
                     x:Name="btnNotesDone"                  
                     Padding="3,3,3,3"
                     BackgroundColor="#4FBDDD"
                     FontSize="Small"
                     Clicked="Notes_Clicked"
-                    />
-        </StackLayout>
+                    AbsoluteLayout.LayoutBounds="700,90,.2,75" AbsoluteLayout.LayoutFlags="WidthProportional"/>
+                </AbsoluteLayout>
+
+
+
+
+
+            </AbsoluteLayout>
+
+        </ScrollView>
+
+        
+
+       
+        
     </ContentPage.Content>
 </ContentPage>

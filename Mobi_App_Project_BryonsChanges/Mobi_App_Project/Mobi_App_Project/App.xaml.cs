@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Mobi_App_Project.Views;
@@ -85,7 +85,7 @@ namespace Mobi_App_Project
                 //adminHome.Children.Add(p3);
                 //MainPage = adminHome;
 
-
+                //MainPage = new NavigationPage(new ThreeWayMCTemplate());
 
 
                 TabbedPage adminHome = new TabbedPage();

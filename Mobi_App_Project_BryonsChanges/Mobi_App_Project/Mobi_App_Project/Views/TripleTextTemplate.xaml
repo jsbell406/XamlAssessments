@@ -12,10 +12,9 @@
                           >
                 <Label Text="{Binding Question.DisplayText}"
                        TextColor="BlueViolet"
-                       
-                VerticalOptions="Center" 
-                HorizontalOptions="CenterAndExpand" 
-                   FontSize="28" />
+                       VerticalOptions="Center" 
+                       HorizontalOptions="CenterAndExpand" 
+                       FontSize="28" />
 
                 <Editor Placeholder="1st answer"         
                     HorizontalOptions="FillAndExpand"
